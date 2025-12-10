@@ -150,8 +150,9 @@ def main() -> None:
         model_name="Sentence Transformer (all-MiniLM-L6-v2)",
     )
 
-    # Download YOLOv11 layout model (optional but recommended)
-    yolo_success = download_yolo_layout_model(models_dir)
+    # Download YOLOv11 layout model (disabled as not used)
+    # yolo_success = download_yolo_layout_model(models_dir)
+    yolo_success = True
 
     # Download SAM checkpoint (optional)
     sam_success = download_sam_checkpoint(models_dir)

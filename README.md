@@ -33,7 +33,7 @@ See `project/` tree in the request; key modules are scaffolded under `extraction
     This downloads:
     - DeepSeek-OCR (~500MB)
     - Sentence Transformer (~80MB)
-    - YOLOv11x (Legacy, ~109MB)
+
 
     **Step B: Download Layout Analysis Model (Primary)**
     ```bash

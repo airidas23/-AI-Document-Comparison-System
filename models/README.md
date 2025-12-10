@@ -13,7 +13,7 @@ This directory contains locally downloaded model weights for offline use.
 
 ## Layout Detection Models
 
-### YOLOv11 for Document Layout (DocLayout-YOLO) ⭐ PRIMARY MODEL
+### DocLayout-YOLO (Document Layout Analysis) ⭐ PRIMARY MODEL
 
 **Current Model**: `doclayout_yolo_docstructbench_imgsz1024.pt` (38.82 MB)
 
@@ -50,17 +50,7 @@ YOLO_LAYOUT_MODEL_NAME=models/doclayout_yolo_docstructbench_imgsz1024.pt
 YOLO_LAYOUT_CONFIDENCE=0.3
 ```
 
----
 
-### YOLOv11x (Legacy - COCO Dataset)
-
-**File**: `yolov11x.pt` (109 MB)
-
-**Purpose**: General object detection (legacy, not used)
-
-**Note**: This model detects 80 general object classes (persons, bicycles, books, etc.) and is **not optimal** for document analysis. Replaced by DocLayout-YOLO.
-
----
 
 ### Sentence Transformer (all-MiniLM-L6-v2)
 - **Location**: `models/all-MiniLM-L6-v2/`
