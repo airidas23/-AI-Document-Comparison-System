@@ -69,15 +69,9 @@ def overlay_diffs(
         if diff.bbox is None:
             continue
         
-        # Get color based on diff type and change type
-        base_color = COLOR_MAP.get(diff.diff_type, (128, 128, 128))
-        # Blend with change type color for better visual distinction
-        change_color = CHANGE_TYPE_COLORS.get(diff.change_type, base_color)
-        # Use 70% base color, 30% change type color
-        color = tuple(
-            int(base_color[i] * 0.7 + change_color[i] * 0.3)
-            for i in range(3)
-        )
+        # Get color based on diff type only (no blending to ensure consistent colors)
+        # Green = added, Red = deleted, Yellow/Gold = modified
+        color = COLOR_MAP.get(diff.diff_type, (128, 128, 128))
         
         # Handle normalized or absolute coordinates
         # bbox is in dict format: {"x": x, "y": y, "width": w, "height": h}

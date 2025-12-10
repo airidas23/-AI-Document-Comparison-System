@@ -162,6 +162,8 @@ def _paddle_results_to_text_blocks(
     if not ocr_result:
         return text_blocks
     
+    scale_factor = 72.0 / 150.0  # Convert 150 DPI pixels to 72 DPI points
+
     # PaddleOCR 3.x returns a list of result dicts (one per page/image)
     for result in ocr_result:
         if not isinstance(result, dict):
@@ -190,15 +192,16 @@ def _paddle_results_to_text_blocks(
                 x_max = max(x_coords)
                 y_max = max(y_coords)
                 
+                # Scale to PDF points
                 bbox = {
-                    "x": float(x_min),
-                    "y": float(y_min),
-                    "width": float(x_max - x_min),
-                    "height": float(y_max - y_min),
+                    "x": float(x_min) * scale_factor,
+                    "y": float(y_min) * scale_factor,
+                    "width": float(x_max - x_min) * scale_factor,
+                    "height": float(y_max - y_min) * scale_factor,
                 }
             else:
                 # Fallback if no polygon available
-                bbox = {"x": 0, "y": 0, "width": 0, "height": 0}
+                bbox = {"x": 0.0, "y": 0.0, "width": 0.0, "height": 0.0}
             
             # Create TextBlock with metadata
             block = TextBlock(

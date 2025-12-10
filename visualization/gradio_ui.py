@@ -76,25 +76,17 @@ def build_parameters_panel():
             info="Overlay a translucent heatmap showing all differences on PDF pages",
         )
         
-        # OCR Engine Priority (only visible when Force OCR is enabled)
-        ocr_engine_priority_options = [
-            "deepseek, paddle, tesseract",
-            "paddle, tesseract, deepseek",
-            "tesseract, paddle, deepseek",
-            "deepseek, tesseract, paddle",
-            "paddle, deepseek, tesseract",
-            "tesseract, deepseek, paddle",
-        ]
-        current_priority_str = ", ".join(settings.ocr_engine_priority)
-        ocr_engine_priority = gr.Dropdown(
-            choices=ocr_engine_priority_options,
-            value=current_priority_str if current_priority_str in ocr_engine_priority_options else ocr_engine_priority_options[0],
-            label="OCR Engine Priority",
-            info="Order of OCR engines to try. DeepSeek requires GPU/MPS. PaddleOCR is fast and accurate. Tesseract is reliable fallback.",
+        # OCR Engine Selection (only visible when Force OCR is enabled)
+        ocr_engine_options = ["paddle", "deepseek", "tesseract"]
+        ocr_engine = gr.Dropdown(
+            choices=ocr_engine_options,
+            value=settings.ocr_engine,
+            label="OCR Engine",
+            info="Select OCR engine. DeepSeek requires GPU/MPS. PaddleOCR is fast/accurate. Tesseract is legacy.",
             visible=False,  # Initially hidden, shown only when Force OCR is enabled
         )
     
-    return params_accordion, sensitivity_threshold, scanned_document_mode, force_ocr, show_heatmap, ocr_engine_priority
+    return params_accordion, sensitivity_threshold, scanned_document_mode, force_ocr, show_heatmap, ocr_engine
 
 
 def build_performance_panel():
@@ -867,7 +859,7 @@ def build_comparison_interface() -> gr.Blocks:
             doc1, doc2 = build_upload_row()
         
         # Parameters Panel (collapsible)
-        params_accordion, sensitivity_threshold, scanned_document_mode, force_ocr, show_heatmap, ocr_engine_priority = build_parameters_panel()
+        params_accordion, sensitivity_threshold, scanned_document_mode, force_ocr, show_heatmap, ocr_engine = build_parameters_panel()
         
         with gr.Row():
             compare_btn = gr.Button("Compare Documents", variant="primary")
@@ -1040,13 +1032,16 @@ def build_comparison_interface() -> gr.Blocks:
             return (
                 gallery_row_update,
                 sync_container_update,
-                sync_viewer_a_update,
+            sync_viewer_a_update,
                 sync_viewer_b_update,
             )
         
         def compare_documents(
-            file_a, file_b, show_heat, scanned_mode, force_ocr_mode, 
-            sensitivity, use_sync, ocr_priority_str
+            file_a, file_b, show_heat, scanned_mode, 
+            force_ocr_mode,
+            sensitivity,
+            use_sync_viewer_flag,
+            selected_ocr_engine,
         ):
             """Main comparison function."""
             if not file_a or not file_b:
@@ -1084,12 +1079,10 @@ def build_comparison_interface() -> gr.Blocks:
                 # Update sensitivity threshold
                 settings.text_similarity_threshold = sensitivity
                 
-                # Update OCR engine priority
-                if ocr_priority_str:
-                    # Parse the priority string (e.g., "deepseek, paddle, tesseract")
-                    priority_list = [engine.strip() for engine in ocr_priority_str.split(",")]
-                    settings.ocr_engine_priority = priority_list
-                    logger.info("OCR engine priority set to: %s", priority_list)
+                # Update OCR engine
+                if selected_ocr_engine:
+                    settings.ocr_engine = selected_ocr_engine
+                    logger.info("OCR engine set to: %s", selected_ocr_engine)
                 
                 # Configure OCR based on scanned mode and force OCR
                 use_ocr = scanned_mode or force_ocr_mode
@@ -1328,7 +1321,7 @@ def build_comparison_interface() -> gr.Blocks:
                 
                 # Prepare alignment data for sync viewer
                 alignment_data = {}
-                if use_sync:
+                if use_sync_viewer_flag:
                     # Extract alignment information from comparison
                     alignment_data = {
                         "pages": len(pages_a),
@@ -1409,7 +1402,7 @@ def build_comparison_interface() -> gr.Blocks:
                 status_msg = f"Comparison complete! Found {len(classified_diffs)} differences."
                 
                 # Generate iframe HTML for sync viewers using Gradio's file serving
-                if use_sync:
+                if use_sync_viewer_flag:
                     # Gradio serves files at /file={absolute_path}
                     iframe_a_html = f'''
                     <iframe
@@ -1853,20 +1846,20 @@ def build_comparison_interface() -> gr.Blocks:
         force_ocr.change(
             toggle_ocr_priority,
             inputs=[force_ocr, scanned_document_mode],
-            outputs=[ocr_engine_priority],
+            outputs=[ocr_engine],
         )
         
         scanned_document_mode.change(
             toggle_ocr_priority,
             inputs=[force_ocr, scanned_document_mode],
-            outputs=[ocr_engine_priority],
+            outputs=[ocr_engine],
         )
         
         compare_btn.click(
             compare_documents,
             inputs=[
                 doc1, doc2, show_heatmap, scanned_document_mode, 
-                force_ocr, sensitivity_threshold, use_sync_viewer, ocr_engine_priority
+                force_ocr, sensitivity_threshold, use_sync_viewer, ocr_engine
             ],
             outputs=[
                 status,

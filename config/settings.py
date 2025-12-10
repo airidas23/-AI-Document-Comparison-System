@@ -184,9 +184,9 @@ class Settings(BaseSettings):
         default="auto",
         description="OCR enhancement mode: 'auto' (only scanned), 'hybrid' (OCR + native), 'ocr_only' (force OCR for all)",
     )
-    ocr_engine_priority: List[str] = Field(
-        default=["tesseract", "paddle", "deepseek"],
-        description="OCR engine priority list. PaddleOCR is default (fast, accurate). DeepSeek requires CUDA for reasonable speed.",
+    ocr_engine: str = Field(
+        default="paddle",
+        description="OCR engine to use. Options: 'deepseek' (requires GPU/MPS), 'paddle' (fast, accurate), 'tesseract' (legacy).",
     )
     paddle_ocr_lang: str = Field(
         default="en",

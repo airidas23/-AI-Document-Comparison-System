@@ -94,6 +94,8 @@ def _tesseract_data_to_text_blocks(
     
     n_boxes = len(ocr_data['text'])
     
+    scale_factor = 72.0 / 150.0  # Convert 150 DPI pixels to 72 DPI points
+
     for i in range(n_boxes):
         text = ocr_data['text'][i].strip()
         conf = int(ocr_data['conf'][i]) if ocr_data['conf'][i] != '-1' else 0
@@ -102,7 +104,7 @@ def _tesseract_data_to_text_blocks(
         if not text or conf < 30:  # Minimum confidence threshold
             continue
         
-        # Get bounding box coordinates
+        # Get bounding box coordinates in pixels (150 DPI)
         left = ocr_data['left'][i]
         top = ocr_data['top'][i]
         width = ocr_data['width'][i]
@@ -112,11 +114,12 @@ def _tesseract_data_to_text_blocks(
         if width < 5 or height < 5:
             continue
         
+        # Convert to PDF points (72 DPI)
         bbox = {
-            "x": float(left),
-            "y": float(top),
-            "width": float(width),
-            "height": float(height),
+            "x": float(left) * scale_factor,
+            "y": float(top) * scale_factor,
+            "width": float(width) * scale_factor,
+            "height": float(height) * scale_factor,
         }
         
         # Create TextBlock with metadata

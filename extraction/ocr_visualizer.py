@@ -43,12 +43,16 @@ def draw_ocr_bboxes(
     except Exception:
         font = ImageFont.load_default()
 
+    scale_x = image.width / page_data.width if page_data.width > 0 else 1.0
+    scale_y = image.height / page_data.height if page_data.height > 0 else 1.0
+
     for block in page_data.blocks:
         bbox = block.bbox
-        x = bbox.get("x", 0)
-        y = bbox.get("y", 0)
-        w = bbox.get("width", 0)
-        h = bbox.get("height", 0)
+        # Scale coordinates from PageData points (72 DPI) to Image pixels
+        x = bbox.get("x", 0) * scale_x
+        y = bbox.get("y", 0) * scale_y
+        w = bbox.get("width", 0) * scale_x
+        h = bbox.get("height", 0) * scale_y
 
         # Draw rectangle
         draw.rectangle(
@@ -96,10 +100,10 @@ def visualize_ocr_on_pdf_page(
     import fitz  # PyMuPDF
     from pathlib import Path
 
-    # Open PDF and render the page
+    # Open PDF and render the page at 300 DPI for visualization
     doc = fitz.open(pdf_path)
     page = doc[page_num]
-    pix = page.get_pixmap(dpi=300, matrix=fitz.Matrix(2, 2))
+    pix = page.get_pixmap(dpi=300)  # Removed Matrix(2,2) to fix scaling
     img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
     doc.close()
 

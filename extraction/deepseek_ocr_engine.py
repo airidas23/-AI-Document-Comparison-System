@@ -201,6 +201,8 @@ class DeepSeekOCR:
                     else:
                         # Try to read from output directory
                         output_files = list(Path(output_dir).glob("*.md"))
+                        if not output_files:
+                            output_files = list(Path(output_dir).glob("*.mmd"))
                         if output_files:
                             markdown_text = output_files[0].read_text(encoding='utf-8')
                     
@@ -337,6 +339,8 @@ class DeepSeekOCR:
                         # Try to read from output directory
                         output_files = list(Path(output_dir).glob("*.md"))
                         if not output_files:
+                            output_files = list(Path(output_dir).glob("*.mmd"))
+                        if not output_files:
                             output_files = list(Path(output_dir).glob("*.txt"))
                         if output_files:
                             ocr_text = output_files[0].read_text(encoding='utf-8')
@@ -448,6 +452,7 @@ class DeepSeekOCR:
         current_bbox = None
         current_style = None
         block_type = "paragraph"
+        running_y = 36.0  # Track vertical position for estimated bboxes
         
         for line in lines:
             line = line.strip()
@@ -456,16 +461,25 @@ class DeepSeekOCR:
             if not line:
                 # Empty line - finalize current block if any
                 if current_block_text:
-                    text_blocks.append(self._create_block_from_text(
+                    new_block = self._create_block_from_text(
                         '\n'.join(current_block_text),
                         current_bbox,
-                        current_style,
+                        current_style,  # Added missing style argument
                         block_type,
                         img_width,
                         img_height,
                         target_width,
                         target_height,
-                    ))
+                        estimated_y=running_y,
+                    )
+                    text_blocks.append(new_block)
+                    
+                    # Update running_y if we used an estimation or even if we had grounding
+                    if current_bbox is None:
+                         running_y += new_block.bbox['height'] + 10.0
+                    else:
+                         running_y = max(running_y, new_block.bbox['y'] + new_block.bbox['height'] + 10.0)
+
                     current_block_text = []
                     current_bbox = None
                     current_style = None
@@ -476,16 +490,23 @@ class DeepSeekOCR:
             if heading_match:
                 # Finalize previous block
                 if current_block_text:
-                    text_blocks.append(self._create_block_from_text(
+                    new_block = self._create_block_from_text(
                         '\n'.join(current_block_text),
                         current_bbox,
-                        current_style,
+                        current_style,  # Added missing style argument
                         block_type,
                         img_width,
                         img_height,
                         target_width,
                         target_height,
-                    ))
+                        estimated_y=running_y,
+                    )
+                    text_blocks.append(new_block)
+                    
+                    if current_bbox is None:
+                         running_y += new_block.bbox['height'] + 10.0
+                    else:
+                         running_y = max(running_y, new_block.bbox['y'] + new_block.bbox['height'] + 10.0)
                 
                 level = len(heading_match.group(1))
                 heading_text = heading_match.group(2)
@@ -494,7 +515,7 @@ class DeepSeekOCR:
                 bbox = self._extract_grounding_bbox(line, img_width, img_height)
                 style = Style(bold=True, size=24.0 - (level * 2))
                 
-                text_blocks.append(self._create_block_from_text(
+                new_block = self._create_block_from_text(
                     heading_text,
                     bbox,
                     style,
@@ -503,7 +524,14 @@ class DeepSeekOCR:
                     img_height,
                     target_width,
                     target_height,
-                ))
+                    estimated_y=running_y,
+                )
+                text_blocks.append(new_block)
+
+                if bbox is None:
+                     running_y += new_block.bbox['height'] + 10.0
+                else:
+                     running_y = max(running_y, new_block.bbox['y'] + new_block.bbox['height'] + 10.0)
                 
                 current_block_text = []
                 current_bbox = None
@@ -515,21 +543,29 @@ class DeepSeekOCR:
             if line.startswith('|') and line.endswith('|'):
                 # Finalize previous block
                 if current_block_text:
-                    text_blocks.append(self._create_block_from_text(
+                    new_block = self._create_block_from_text(
                         '\n'.join(current_block_text),
                         current_bbox,
-                        current_style,
+                        current_style,  # Added missing style argument
                         block_type,
                         img_width,
                         img_height,
                         target_width,
                         target_height,
-                    ))
+                        estimated_y=running_y,
+                    )
+                    text_blocks.append(new_block)
+                    
+                    if current_bbox is None:
+                         running_y += new_block.bbox['height'] + 10.0
+                    else:
+                         running_y = max(running_y, new_block.bbox['y'] + new_block.bbox['height'] + 10.0)
+                    
                     current_block_text = []
                 
                 # Parse table row
                 bbox = self._extract_grounding_bbox(line, img_width, img_height)
-                text_blocks.append(self._create_block_from_text(
+                new_block = self._create_block_from_text(
                     line,
                     bbox,
                     None,
@@ -538,7 +574,14 @@ class DeepSeekOCR:
                     img_height,
                     target_width,
                     target_height,
-                ))
+                    estimated_y=running_y,
+                )
+                text_blocks.append(new_block)
+
+                if bbox is None:
+                     running_y += new_block.bbox['height'] + 2.0 # Tighter spacing for tables
+                else:
+                     running_y = max(running_y, new_block.bbox['y'] + new_block.bbox['height'] + 2.0)
                 current_bbox = None
                 continue
             
@@ -547,21 +590,29 @@ class DeepSeekOCR:
             if list_match:
                 if current_block_text and block_type != "list":
                     # Finalize previous paragraph
-                    text_blocks.append(self._create_block_from_text(
+                    new_block = self._create_block_from_text(
                         '\n'.join(current_block_text),
                         current_bbox,
-                        current_style,
+                        current_style,  # Added missing style argument
                         block_type,
                         img_width,
                         img_height,
                         target_width,
                         target_height,
-                    ))
+                        estimated_y=running_y,
+                    )
+                    text_blocks.append(new_block)
+
+                    if current_bbox is None:
+                         running_y += new_block.bbox['height'] + 10.0
+                    else:
+                         running_y = max(running_y, new_block.bbox['y'] + new_block.bbox['height'] + 10.0)
+                    
                     current_block_text = []
                 
                 list_text = list_match.group(1)
                 bbox = self._extract_grounding_bbox(line, img_width, img_height)
-                text_blocks.append(self._create_block_from_text(
+                new_block = self._create_block_from_text(
                     list_text,
                     bbox,
                     None,
@@ -570,7 +621,14 @@ class DeepSeekOCR:
                     img_height,
                     target_width,
                     target_height,
-                ))
+                    estimated_y=running_y,
+                )
+                text_blocks.append(new_block)
+
+                if bbox is None:
+                     running_y += new_block.bbox['height'] + 5.0 # List items closer
+                else:
+                     running_y = max(running_y, new_block.bbox['y'] + new_block.bbox['height'] + 5.0)
                 current_bbox = None
                 continue
             
@@ -584,21 +642,30 @@ class DeepSeekOCR:
         
         # Finalize last block
         if current_block_text:
-            text_blocks.append(self._create_block_from_text(
+            new_block = self._create_block_from_text(
                 '\n'.join(current_block_text),
                 current_bbox,
+                current_style,  # Added missing style argument
                 block_type,
                 img_width,
                 img_height,
                 target_width,
                 target_height,
-            ))
+                estimated_y=running_y,
+            )
+            text_blocks.append(new_block)
         
         logger.debug("Parsed %d text blocks from Markdown with grounding (%d chars)", 
                     len(text_blocks), len(markdown_text))
+        
+        # Log grounding statistics  
+        grounding_count = sum(1 for b in text_blocks if b.metadata.get("bbox_source") == "grounding")
+        approx_count = len(text_blocks) - grounding_count
+        if approx_count > 0:
+            logger.info("DeepSeek grounding: %d with coords, %d estimated (no grounding tokens found)",
+                       grounding_count, approx_count)
+        
         return text_blocks
-    
-        return None
     
     def _extract_grounding_bbox(self, text: str, img_width: float, img_height: float) -> Optional[Dict[str, float]]:
         """
@@ -667,22 +734,43 @@ class DeepSeekOCR:
         img_height: float,
         target_width: float,
         target_height: float,
+        estimated_y: float = 36.0,
     ) -> TextBlock:
         """Create a TextBlock from parsed text, bbox, and style."""
         # Scale bbox to target dimensions (PDF points) if different from image dimensions
         scale_x = target_width / img_width if img_width > 0 else 1.0
         scale_y = target_height / img_height if img_height > 0 else 1.0
         
-        # If no bbox provided, create a default one
+        # Track whether we have real grounding or estimated bbox
+        has_grounding = bbox is not None
+        
+        # If no bbox provided, create an estimated bbox based on text content
+        # IMPORTANT: Do NOT create full-page bboxes as fallback - they cause visualization issues
         if bbox is None:
+            # Estimate bbox size based on text length (approximate)
+            # Use realistic line width constraints (max ~80 chars per line)
+            text_len = len(text) if text else 1
+            max_chars_per_line = 80  # Realistic max line length
+            chars_on_line = min(text_len, max_chars_per_line)
+            estimated_lines = max(1, (text_len + max_chars_per_line - 1) // max_chars_per_line)
+            estimated_line_height = 14.0  # points
+            estimated_char_width = 6.0  # points (smaller for accuracy)
+            
+            # Width based on actual line content, not full text
+            estimated_width = chars_on_line * estimated_char_width
+            estimated_height = estimated_lines * estimated_line_height
+            
+            # Cap width to reasonable portion of page (max 70%)
+            max_width = target_width * 0.7
+            
             bbox = {
-                "x": 0.0,
-                "y": 0.0,
-                "width": float(target_width),
-                "height": float(target_height),
+                "x": 36.0,  # ~0.5 inch margin from left
+                "y": estimated_y,  # Use provided estimated Y
+                "width": min(max_width, max(50.0, estimated_width)),
+                "height": max(estimated_line_height, estimated_height),
             }
         else:
-            # Scale the bbox
+            # Scale the bbox from image coordinates to target coordinates
             bbox = {
                 "x": bbox["x"] * scale_x,
                 "y": bbox["y"] * scale_y,
@@ -691,13 +779,12 @@ class DeepSeekOCR:
             }
         
         # Remove grounding tokens from text
-        # Remove <|ref|>...</|ref|> and <|det|>[[...]]<|/det|> and legacy <loc...>
         text_clean = re.sub(r'<\|ref\|>.*?<\|/ref\|>', '', text)
         text_clean = re.sub(r'<\|det\|>\[\[.*?\]\]<\|/det\|>', '', text_clean)
         text_clean = re.sub(r'<loc\d+,\d+,\d+,\d+>', '', text_clean).strip()
         
-        # Determine bbox source
-        bbox_source = "grounding" if settings.deepseek_grounding_enabled else "approx"
+        # Determine bbox source based on whether we actually had grounding data
+        bbox_source = "grounding" if has_grounding else "approx"
         
         block = TextBlock(
             text=text_clean,
@@ -739,14 +826,25 @@ class DeepSeekOCR:
         paragraphs = text.split('\n\n')
         
         if len(paragraphs) == 1:
-            # Single block for all text
+            # Single block - estimate size based on text content, NOT full page
+            text_content = text.strip()
+            text_len = len(text_content)
+            max_chars_per_line = 80  # Realistic max line length
+            chars_on_line = min(text_len, max_chars_per_line)
+            estimated_lines = max(1, (text_len + max_chars_per_line - 1) // max_chars_per_line)
+            estimated_line_height = 14.0
+            estimated_char_width = 6.0
+            estimated_width = chars_on_line * estimated_char_width
+            estimated_height = estimated_lines * estimated_line_height
+            max_width = target_width * 0.7
+            
             text_blocks.append(TextBlock(
-                text=text.strip(),
+                text=text_content,
                 bbox={
-                    "x": 0.0,
-                    "y": 0.0,
-                    "width": float(target_width),
-                    "height": float(target_height),
+                    "x": 36.0,  # ~0.5 inch margin
+                    "y": 36.0,
+                    "width": min(max_width, max(50.0, estimated_width)),
+                    "height": max(14.0, estimated_height),
                 },
                 style=None,
                 metadata={
@@ -755,19 +853,30 @@ class DeepSeekOCR:
                 }
             ))
         else:
-            # Multiple blocks for paragraphs
-            y_offset = 0.0
-            line_height = img_height / max(len(paragraphs), 1)
+            # Multiple blocks for paragraphs - estimate sizes based on content
+            y_offset = 72.0  # Start with ~1 inch top margin
+            margin_left = 36.0  # ~0.5 inch margin
+            estimated_line_height = 14.0
+            max_chars_per_line = 80
+            estimated_char_width = 6.0
+            max_width = target_width * 0.7
             
             for para in paragraphs:
-                if para.strip():
+                para_text = para.strip()
+                if para_text:
+                    text_len = len(para_text)
+                    chars_on_line = min(text_len, max_chars_per_line)
+                    estimated_lines = max(1, (text_len + max_chars_per_line - 1) // max_chars_per_line)
+                    para_height = estimated_lines * estimated_line_height
+                    para_width = chars_on_line * estimated_char_width
+                    
                     text_blocks.append(TextBlock(
-                        text=para.strip(),
+                        text=para_text,
                         bbox={
-                            "x": 0.0,
-                            "y": y_offset * (target_height / img_height), # Scale offset
-                            "width": float(target_width),
-                            "height": line_height * (target_height / img_height), # Scale height
+                            "x": margin_left,
+                            "y": y_offset,
+                            "width": min(max_width, max(50.0, para_width)),
+                            "height": max(14.0, para_height),
                         },
                         style=None,
                         metadata={
@@ -775,7 +884,7 @@ class DeepSeekOCR:
                             "bbox_source": "approx",
                         }
                     ))
-                    y_offset += line_height
+                    y_offset += para_height + 14.0  # Add spacing between paragraphs
         
         logger.debug("Created %d text blocks from OCR output (%d chars)", len(text_blocks), len(text))
         return text_blocks

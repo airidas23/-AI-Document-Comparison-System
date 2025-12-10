@@ -92,7 +92,7 @@ def is_deepseek_available() -> bool:
         logger.debug("[OCR] DeepSeek available: True (will try HuggingFace)")
         return True  # Will fail at runtime if not available, but dependency check passes
     except ImportError:
-        logger.debug("[OCR] DeepSeek: transformers not installed")
+        logger.debug("[OCR] DeepSeek: transformers not installed. Ensure you are running in the virtual environment.")
         return False
 
 
@@ -117,10 +117,11 @@ def warmup_ocr_engines(engines: Optional[List[str]] = None, background: bool = T
         logger.info("[OCR] Warmup thread started")
         
         if engines is None:
-            logger.debug("[OCR] No engines specified, detecting available engines...")
-            available, skipped = select_ocr_engine(settings.ocr_engine_priority)
-            target_engines = available[:1]  # Only warmup first available engine
-            logger.info("[OCR] Available engines: %s, will warmup: %s", available, target_engines)
+            logger.debug("[OCR] No engines specified, using configured engine...")
+            target_engine = settings.ocr_engine
+            available, skipped = select_ocr_engine([target_engine])
+            target_engines = available[:1]  # Should be just the one if available
+            logger.info("[OCR] Configured engine: %s, available: %s", target_engine, available)
             if skipped:
                 logger.info("[OCR] Skipped engines: %s", skipped)
         else:
@@ -272,7 +273,7 @@ def ocr_pdf_multi(
     
     # Get engine priority from settings if not provided
     if engine_priority is None:
-        engine_priority = settings.ocr_engine_priority
+        engine_priority = [settings.ocr_engine]
     logger.info("[OCR] Engine priority: %s", engine_priority)
     
     # Filter engines based on hardware and dependencies (preflight check)

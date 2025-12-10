@@ -20,7 +20,7 @@ def main() -> None:
         logger.info("Settings: model=%s, threshold=%.2f", 
                     settings.sentence_transformer_model, 
                     settings.text_similarity_threshold)
-        logger.info("OCR engine priority: %s", settings.ocr_engine_priority)
+        logger.info("OCR engine: %s", settings.ocr_engine)
     except Exception:
         # Settings might not be fully initialized yet
         pass
