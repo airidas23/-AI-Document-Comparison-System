@@ -54,13 +54,15 @@ flowchart TD
     M --> N[Gradio UI]
     N --> O[Sinkronizuotas PDF Viewer]
     N --> P[Skirtumų Navigatorius]
-    N --> Q[Heatmap Overlay]
+    N --> Q[Heatmap overlay]
 ```
 
 ### 1️⃣ Extraction
 
 #### Skaitmeniams PDF
 - **PyMuPDF (fitz)**: išgauna tekstą, šriftus, spalvas, pozicijas
+> [!NOTE]
+> Net skenuotų PDF atveju PyMuPDF naudojamas puslapius „renderinti“ į vaizdą (pixmap) OCR varikliams.
 
 
 #### Skenuotiems PDF
@@ -68,9 +70,9 @@ flowchart TD
 
 ```python
 # Automatinė Priority Eilė:
-1. DeepSeek-OCR (CUDA GPU) - geriausias tikslumas
-2. PaddleOCR (CPU/Mac) - greitas ir patikimas
-3. Tesseract (atsarginis) - universalus sprendimas
+1. PaddleOCR (CPU/Mac) - default pasirinkimas atsiskaitymui/CI
+2. Tesseract (atsarginis) - fallback, jei Paddle nepasiekiamas
+3. DeepSeek-OCR (optional) - įjungiamas tik kai reikia ir kai galima (pvz. `RUN_DEEPSEEK_OCR=1`)
 ```
 
 **OCR Funkcionalumas**:
@@ -87,7 +89,7 @@ flowchart TD
 - `formula` - Matematinės formulės
 - Ir daugiau (iš viso 10 klasių)
 
-**Našumas**: ~120-160ms per puslapį
+**Našumas**: N/A šiame etape (DocLayout-YOLO atskiras latency nebuvo raportuotas artefaktuose; pagal 9.4.4 tikėtina, kad layout gali būti bottleneck CPU režime)
 
 #### Antraštės/Poraštės Aptikimas
 - Aptinka pasikartojančius elementus dokumento viršuje/apačioje
@@ -152,9 +154,9 @@ Lygina:
 **2. Parametrų Pasirinkimas**
 ```
 📊 Jautrumo Threshold (0.70 - 0.95)
-🔍 Scanned Mode (OCR įjungimas)
-⚡ Force OCR Mode (priverstinis OCR visiems dokumentams)
-🎨 Show Heatmap (vizualiniai skirtumai)
+🔍 Scanned Document Mode (abi PDF laikomos skenuotomis; prioritetas OCR)
+⚡ OCR Enhancement (Hybrid, safe for digital PDFs) (native + OCR su saugikliu; neperrašo native teksto)
+🎨 Heatmap overlay (vizualiniai skirtumai)
 ```
 
 **3. Rezultatų Rodymas**
@@ -202,15 +204,15 @@ Lygina:
 
 | Modelis | Statusas | Paskirtis | Dydis |
 |---------|----------|-----------|-------|
-| **DeepSeek-OCR** | ✅ Veikia | OCR skenuotiems PDF | ~500MB |
+| **DeepSeek-OCR** | ⚠️ Optional | OCR skenuotiems PDF (GPU; išjungtas pagal nutylėjimą) | ~500MB |
 | **Sentence Transformer** | ✅ Veikia | Teksto palyginimas | ~80MB |
 | **DocLayout-YOLO** | ✅ Veikia | Layout aptikimas | ~39MB |
-| **PaddleOCR** | ✅ Veikia | Atsarginis OCR | Auto-download |
-| **Tesseract** | ✅ Veikia | Atsarginis OCR | Sistema |
+| **PaddleOCR** | ✅ Veikia | Default OCR (CPU/Mac; atsiskaitymui/CI) | Auto-download |
+| **Tesseract** | ✅ Veikia | Fallback OCR (atsarginis) | Sistema |
 
 #### 2. Išgavimo Moduliai
 - ✅ PyMuPDF Parser (skaitmeniniai PDF)
-- ✅ DeepSeek-OCR Engine (CUDA)
+- ⚠️ DeepSeek-OCR Engine (optional; `RUN_DEEPSEEK_OCR=1`)
 - ✅ PaddleOCR Engine (CPU/Mac) 
 - ✅ Tesseract OCR Engine (atsarginis)
 - ✅ OCR Router (automatinis variklio pasirinkimas)
@@ -235,7 +237,7 @@ Lygina:
 - ✅ PDF Gallery Viewer
 - ✅ Synchronized PDF Viewer
 - ✅ Diff Navigator
-- ✅ Heatmap Overlays
+- ✅ Heatmap overlay
 - ✅ Bounding Box Visualization
 - ✅ Page Navigation (Prev/Next)
 - ✅ Diff Filtering
@@ -250,16 +252,45 @@ Lygina:
 
 #### 6. Testavimas
 > [!IMPORTANT]
-> Visi testai praeiti sėkmingai (2025-12-06)
+> Faktiniai rezultatai (2026-01-04): **487 passed**, **17 skipped**, **0 failed**; coverage (comparison+extraction) **80%**; golden **P/R/F1 = 0.9714 / 0.8848 / 0.9227**; latency **p95 1.9355 s/page**.
+>
+> Pastaba: **Formatting F1 = 0.75** – pasiekia minimalų slenkstį, bet neatitinka tikslo **0.80** (DoD „MIN ONLY“).
 
-- ✅ Model Loading Tests
-- ✅ Extraction Module Tests
-- ✅ Comparison Module Tests
-- ✅ Full Pipeline Tests
-- ✅ App Startup Tests
-- ✅ Integration Tests
+- ✅ `pytest` unit + integration testai
+- ✅ Golden evaluation (10 variacijų)
+- ⚠️ Praleisti testai: DeepSeek (pagal dizainą), dalis OCR/doclayout testų (reikia papildomų testinių PDF)
 
-**Test Results**: Žiūrėti [`TEST_RESULTS.md`](file:///Users/airidas/Documents/KTU/P170M109%20Computational%20Intelligence%20and%20Decision%20Making/project/TEST_RESULTS.md)
+### 📌 Kas veikia / kas neveikia pagal metrikas (iš `TESTING_PLAN.md`, 2026-01-04)
+
+#### Techninė pusė
+
+**Kas veikia (artifact-backed)**:
+- ✅ **Skaitmeninių PDF (PyMuPDF) kelias**: kokybė gera (golden F1 **0.9227**; precision **0.9714**; recall **0.8848**) ir našumas atitinka tikslą (golden latency **p95 1.9355 s/page** < 3s).
+- ✅ **Teksto pakeitimų aptikimas**: content kategorija yra stipri (F1 ~0.95 pagal change-type suvestinę).
+- ✅ **Bazinė stabilumo kokybė**: `pytest` pilnas suitas **487 passed / 0 failed**; coverage (comparison+extraction) **80%**.
+
+**Kas neveikia / nepilnai (ir kodėl)**:
+- ❌ **Formatavimo kokybė**: golden formatting F1 **0.75 < 0.80 (MUST)** → heuristikos/tolerancijos dar per silpnos arba trūksta formatting test atvejų įvairovės.
+- ❌ **Skenuotų dokumentų našumas (R4)**: end-to-end šiame etape nepasiekia tikslo (Tesseract ~**5.96 s/page**, Paddle ~**28.43 s/page**, imtis: **1 pora**) → didelis pipeline overhead (OCR + layout + diff), tikėtinas bottleneck layout/CPU.
+- ⚠️ **Skenuotų dokumentų FP rizika (R1)**: precision žemas (ypač Paddle ~**0.4286**) → OCR triukšmas generuoja netikrus skirtumus; reikia kalibruoti `ocr_gating.py` slenksčius didesnėje imtyje.
+- N/A **IoU / Alignment accuracy**: šiems DoD kriterijams šiame etape nėra artefaktų/GT, todėl objektyviai nepatikrinta.
+
+#### UI pusė
+
+**Kas veikia**:
+- ✅ Pagrindiniai scenarijai (įkėlimas → palyginimas → diffs sąrašas → vizualizacijos) yra „demo-ready“ skaitmeniniams PDF, nes latency ir F1 (content) pakankami sklandžiai interakcijai.
+- ✅ Difų naršymas (prev/next, filtrai) yra praktiškai naudojamas, nes sistemos išvestis stabiliai generuojama (0 testų fail, 0 crash full suite).
+
+**Kas neveikia / kada UI tampa nepatogi**:
+- ❌ Skenuotuose dokumentuose UI tampa mažiau responsive, nes end-to-end laikas viršija 3s/page (ypač Paddle), todėl vartotojas laukia ilgai be aiškaus progreso.
+- ⚠️ Formatavimo difų patikimumas ribotas (formatting F1 < 0.80), todėl UI gali rodyti dalį formatavimo pakeitimų netiksliai arba nepilnai.
+
+**Trumpai – ką daryti toliau**:
+- Pirmas prioritetas: profiling + layout/OCR optimizacijos (žr. `TESTING_PLAN.md` 9.4.4), kad scanned kelias priartėtų prie <3s/page.
+- Antras prioritetas: formatavimo heuristikų kalibravimas ir papildomi formatting test atvejai, kad F1 ≥ 0.80.
+
+**Testavimo planas**: [`docs/TESTING_PLAN.md`](../TESTING_PLAN.md)  
+**Testavimo ataskaita**: [`docs/TEST_REPORT_2026-01-04.md`](../TEST_REPORT_2026-01-04.md)
 
 ---
 
@@ -377,9 +408,9 @@ Lygina:
 **Kas Yra**:
 - ✅ README.md
 - ✅ models/README.md
-- ✅ TEST_RESULTS.md
+- ✅ docs/TESTING_PLAN.md
+- ✅ docs/TEST_REPORT_2026-01-04.md
 - ✅ .env.example
-
 **Kas Galėtų Būti Geriau**:
 - [ ] API Documentation (docstrings → Sphinx)
 - [ ] User Guide (kaip naudoti sistemą)
@@ -419,10 +450,12 @@ Lygina:
 #### 1. DeepSeek-OCR
 ```yaml
 Modelis: deepseek-ai/deepseek-ocr
+Statusas: optional (pagal nutylėjimą išjungtas)
 Dydis: ~500MB
 Framework: HuggingFace Transformers
 Device: CUDA (GPU)
 Paskirtis: High-accuracy OCR su grounding
+Įjungimas: RUN_DEEPSEEK_OCR=1
 Features:
   - Markdown output su bounding boxes
   - Multi-language support
@@ -432,10 +465,12 @@ Features:
 #### 2. Sentence Transformer
 ```yaml
 Modelis: sentence-transformers/all-MiniLM-L6-v2
+Local path (cache): models/all-MiniLM-L6-v2
 Dydis: ~80MB
 Framework: Sentence Transformers
 Device: CPU/GPU
 Paskirtis: Semantic text similarity
+Naudojimas kode: comparison/ocr_gating.py (embeddings + gating), puslapių/tekstų suderinimas
 Features:
   - 384-dimensional embeddings
   - Cosine similarity computation
@@ -445,13 +480,15 @@ Features:
 #### 3. DocLayout-YOLO
 ```yaml
 Modelis: juliozhao/DocLayout-YOLO-DocStructBench
+Local file: models/doclayout_yolo_docstructbench_imgsz1024.pt
 Dydis: ~39MB
 Framework: Ultralytics YOLO
 Device: CPU/GPU
 Paskirtis: Document layout analysis
+Naudojimas kode: extraction/layout_analyzer.py (layout regionų detekcija ir klasifikacija)
 Features:
   - 10 document element classes
-  - ~120-160ms inference time
+  - N/A (atskiras DocLayout-YOLO inference laikas šiame etape nematuotas; tikėtina, kad tai viena iš „bottleneck“ vietų CPU režime)
   - Optimized for PDFs
 ```
 
@@ -490,6 +527,9 @@ DEEPSEEK_OCR_MODEL_PATH=models/deepseek-ocr
 SENTENCE_TRANSFORMER_MODEL=models/all-MiniLM-L6-v2
 YOLO_LAYOUT_MODEL_NAME=models/doclayout_yolo_docstructbench_imgsz1024.pt
 
+# Optional features (pagal nutylėjimą išjungta)
+RUN_DEEPSEEK_OCR=0
+
 # Threshold'ai
 TEXT_SIMILARITY_THRESHOLD=0.82
 FORMATTING_CHANGE_THRESHOLD=0.1
@@ -505,14 +545,16 @@ RENDER_DPI=144
 
 ## 📊 Sistemos Statistika
 
-### Performance Metrics (nuo TEST_RESULTS.md)
+### Performance Metrics (faktiniai – 2026-01-04)
 
-| Metrika | Rezultatas | Target | Statusas |
-|---------|------------|--------|----------|
-| **Similarity Computation** | 0.037s | <0.1s | ✅ Pass |
-| **Layout Detection** | 120-160ms | <200ms | ✅ Pass |
-| **Model Loading** | ~2-3s | One-time | ✅ Pass |
-| **Subsequent Loads** | Instant | Cached | ✅ Pass |
+| Metrika | Rezultatas | Šaltinis |
+|---------|------------|----------|
+| `pytest` full suite | 487 passed / 17 skipped / 0 failed (48.47s) | `docs/TEST_REPORT_2026-01-04.md` |
+| Golden P/R/F1 | 0.9714 / 0.8848 / 0.9227 | `tests/golden_results.json` |
+| Golden latency | avg 1.8525 s/page; p95 1.9355 s/page | `tests/golden_results.json` |
+| OCR benchmark (digital) | PyMuPDF 0.005 s; Tesseract 0.876 s; Paddle 16.871 s | `benchmark/benchmark_results.json` |
+| OCR benchmark (scanned) | Tesseract 1.233 s; Paddle 9.388 s | `benchmark/benchmark_results.json` |
+| Coverage (comparison+extraction) | 80% | `coverage.xml` |
 
 ### Model Sizes
 
@@ -526,11 +568,10 @@ RENDER_DPI=144
 ### Test Coverage
 
 ```
-✅ Model Tests: 100% Pass
-✅ Extraction Tests: 100% Pass
-✅ Comparison Tests: 100% Pass
-✅ Pipeline Tests: 100% Pass
-✅ App Startup: 100% Pass
+pytest: 487 passed / 17 skipped / 0 failed
+Coverage (comparison+extraction): 80%
+Golden: P/R/F1 = 0.9714 / 0.8848 / 0.9227
+Formatting F1: 0.75 (MIN ONLY; target 0.80)
 ```
 
 ---
@@ -566,15 +607,18 @@ Sistema yra **pilnai funkcionuojantis prototipas** su visais pagrindiniais kompo
 ## 📚 Naudingos Nuorodos
 
 **Projekto Failai**:
-- [README.md](file:///Users/airidas/Documents/KTU/P170M109%20Computational%20Intelligence%20and%20Decision%20Making/project/README.md)
-- [TEST_RESULTS.md](file:///Users/airidas/Documents/KTU/P170M109%20Computational%20Intelligence%20and%20Decision%20Making/project/TEST_RESULTS.md)
-- [models/README.md](file:///Users/airidas/Documents/KTU/P170M109%20Computational%20Intelligence%20and%20Decision%20Making/project/models/README.md)
+- [README.md](../../README.md)
+- [docs/TESTING_PLAN.md](../TESTING_PLAN.md)
+- [docs/TEST_REPORT_2026-01-04.md](../TEST_REPORT_2026-01-04.md)
+- [models/README.md](../../models/README.md)
 
 **Pagrindiniai Moduliai**:
-- [app.py](file:///Users/airidas/Documents/KTU/P170M109%20Computational%20Intelligence%20and%20Decision%20Making/project/app.py) - Entry point
-- [gradio_ui.py](file:///Users/airidas/Documents/KTU/P170M109%20Computational%20Intelligence%20and%20Decision%20Making/project/visualization/gradio_ui.py) - UI
-- [ocr_router.py](file:///Users/airidas/Documents/KTU/P170M109%20Computational%20Intelligence%20and%20Decision%20Making/project/extraction/ocr_router.py) - OCR routing
-- [text_comparison.py](file:///Users/airidas/Documents/KTU/P170M109%20Computational%20Intelligence%20and%20Decision%20Making/project/comparison/text_comparison.py) - Text comparison
+- [app.py](../../app.py) - Entry point
+- [visualization/gradio_ui.py](../../visualization/gradio_ui.py) - UI
+- [extraction/ocr_router.py](../../extraction/ocr_router.py) - OCR routing
+- [extraction/layout_analyzer.py](../../extraction/layout_analyzer.py) - Layout analyzer (DocLayout-YOLO)
+- [comparison/ocr_gating.py](../../comparison/ocr_gating.py) - MiniLM gating/similarity
+- [comparison/text_comparison.py](../../comparison/text_comparison.py) - Text comparison
 
 ---
 

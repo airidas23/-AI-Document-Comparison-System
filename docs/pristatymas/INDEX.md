@@ -33,7 +33,7 @@ graph TB
 
 ## 📄 1. Išsamus Pristatymas
 
-**Failas**: [`pristatymas_sistema.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/pristatymas_sistema.md)
+**Failas**: [`pristatymas_sistema.md`](pristatymas_sistema.md)
 
 ### Kam Skirtas?
 - Pilnas sistemos apra šymas
@@ -62,7 +62,7 @@ graph TB
 
 ## 🎯 2. Slide Deck
 
-**Failas**: [`pristatymas_slides.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/pristatymas_slides.md)
+**Failas**: [`pristatymas_slides.md`](pristatymas_slides.md)
 
 ### Kam Skirtas?
 - Pristatymo skaidrės
@@ -98,7 +98,7 @@ graph TB
 
 ## 📊 3. Visual Summary
 
-**Failas**: [`santrauka_visual.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/santrauka_visual.md)
+**Failas**: [`santrauka_visual.md`](santrauka_visual.md)
 
 ### Kam Skirtas?
 - Greita vizuali apžvalga
@@ -132,7 +132,7 @@ graph TB
 
 ## 🎬 4. Demo Scenarijus
 
-**Failas**: [`demo_scenarijus.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/demo_scenarijus.md)
+**Failas**: [`demo_scenarijus.md`](demo_scenarijus.md)
 
 ### Kam Skirtas?
 - Step-by-step demo instrukcijos
@@ -198,19 +198,19 @@ timeline
 ### Optimal Workflow
 
 1. **Dieną Prieš**
-   - [ ] Perskaityti [`pristatymas_sistema.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/pristatymas_sistema.md) (full understanding)
-   - [ ] Išmokti [`demo_scenarijus.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/demo_scenarijus.md) scenarios
+    - [ ] Perskaityti [`pristatymas_sistema.md`](pristatymas_sistema.md) (full understanding)
+    - [ ] Išmokti [`demo_scenarijus.md`](demo_scenarijus.md) scenarios
    - [ ] Practice demo 2-3 kartus
 
 2. **Prieš Pristatymą (30 min)**
-   - [ ] Review [`pristatymas_slides.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/pristatymas_slides.md)
-   - [ ] Atidaryti [`santrauka_visual.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/santrauka_visual.md) (reference)
+    - [ ] Review [`pristatymas_slides.md`](pristatymas_slides.md)
+    - [ ] Atidaryti [`santrauka_visual.md`](santrauka_visual.md) (reference)
    - [ ] Test run sistema
 
 3. **Pristatymo Metu**
-   - **Main screen**: [`pristatymas_slides.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/pristatymas_slides.md) + Live demo
-   - **Second screen/tab**: [`demo_scenarijus.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/demo_scenarijus.md) (cheat sheet)
-   - **Phone/tablet**: [`santrauka_visual.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/santrauka_visual.md) (quick ref)
+    - **Main screen**: [`pristatymas_slides.md`](pristatymas_slides.md) + Live demo
+    - **Second screen/tab**: [`demo_scenarijus.md`](demo_scenarijus.md) (cheat sheet)
+    - **Phone/tablet**: [`santrauka_visual.md`](santrauka_visual.md) (quick ref)
 
 ---
 
@@ -232,7 +232,7 @@ timeline
 ### Dokumentai Lokacijoje
 
 ```
-/Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/
+docs/pristatymas/
 ├── pristatymas_sistema.md      (Išsamus pristatymas)
 ├── pristatymas_slides.md        (Slide deck)
 ├── santrauka_visual.md          (Visual summary)
@@ -246,21 +246,21 @@ timeline
 ### Pagal Auditorijos Tipą
 
 #### Academic Presentation (University)
-1. Start: [`pristatymas_slides.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/pristatymas_slides.md) - Projekto tikslas
-2. Show: [`santrauka_visual.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/santrauka_visual.md) - Architektūra
-3. Demo: Live demo (su [`demo_scenarijus.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/demo_scenarijus.md))
-4. Discuss: [`pristatymas_slides.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/pristatymas_slides.md) - Results & Future Work
-5. Q&A: [`pristatymas_sistema.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/pristatymas_sistema.md) kaip reference
+1. Start: [`pristatymas_slides.md`](pristatymas_slides.md) - Projekto tikslas
+2. Show: [`santrauka_visual.md`](santrauka_visual.md) - Architektūra
+3. Demo: Live demo (su [`demo_scenarijus.md`](demo_scenarijus.md))
+4. Discuss: [`pristatymas_slides.md`](pristatymas_slides.md) - Results & Future Work
+5. Q&A: [`pristatymas_sistema.md`](pristatymas_sistema.md) kaip reference
 
 #### Technical Deep Dive
-1. Start: [`santrauka_visual.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/santrauka_visual.md) - System overview
-2. Deep dive: [`pristatymas_sistema.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/pristatymas_sistema.md) - Architecture
+1. Start: [`santrauka_visual.md`](santrauka_visual.md) - System overview
+2. Deep dive: [`pristatymas_sistema.md`](pristatymas_sistema.md) - Architecture
 3. Demo: Technical demo scenarios
 4. Code: Show actual code from project
 
 #### Quick Demo (10 min)
-1. Open: [`santrauka_visual.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/santrauka_visual.md) - 2 min overview
-2. Demo: Scenario 1 from [`demo_scenarijus.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/demo_scenarijus.md) - 5 min
+1. Open: [`santrauka_visual.md`](santrauka_visual.md) - 2 min overview
+2. Demo: Scenario 1 from [`demo_scenarijus.md`](demo_scenarijus.md) - 5 min
 3. Q&A: Quick answers - 3 min
 
 ---
@@ -271,9 +271,10 @@ timeline
 
 | Dokumentas | Paskirtis | Lokacija |
 |-----------|----------|----------|
-| **README.md** | Setup guide | [Link](file:///Users/airidas/Documents/KTU/P170M109%20Computational%20Intelligence%20and%20Decision%20Making/project/README.md) |
-| **TEST_RESULTS.md** | Testing results | [Link](file:///Users/airidas/Documents/KTU/P170M109%20Computational%20Intelligence%20and%20Decision%20Making/project/TEST_RESULTS.md) |
-| **models/README.md** | Model docs | [Link](file:///Users/airidas/Documents/KTU/P170M109%20Computational%20Intelligence%20and%20Decision%20Making/project/models/README.md) |
+| **README.md** | Setup guide | [Link](../../README.md) |
+| **docs/TESTING_PLAN.md** | Testing plan | [Link](../TESTING_PLAN.md) |
+| **docs/TEST_REPORT_2026-01-04.md** | Testing report | [Link](../TEST_REPORT_2026-01-04.md) |
+| **models/README.md** | Model docs | [Link](../../models/README.md) |
 | **.env.example** | Configuration | Project root |
 
 ### Kodo Failai
@@ -297,13 +298,13 @@ timeline
 - [ ] Browser clean, tabs organized
 
 ### Dokumentai
-- [ ] [`pristatymas_slides.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/pristatymas_slides.md) atidarytas
-- [ ] [`demo_scenarijus.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/demo_scenarijus.md) atidarytas
-- [ ] [`santrauka_visual.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/santrauka_visual.md) accessible
+- [ ] [`pristatymas_slides.md`](pristatymas_slides.md) atidarytas
+- [ ] [`demo_scenarijus.md`](demo_scenarijus.md) atidarytas
+- [ ] [`santrauka_visual.md`](santrauka_visual.md) accessible
 - [ ] This INDEX open (navigation)
 
 ### Knowledge
-- [ ] Perskaitytas [`pristatymas_sistema.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/pristatymas_sistema.md)
+- [ ] Perskaitytas [`pristatymas_sistema.md`](pristatymas_sistema.md)
 - [ ] Išmokti demo scenarios
 - [ ] Practice run completed
 - [ ] Q&A answers reviewed
@@ -335,17 +336,17 @@ timeline
 - Live demo (Gradio UI)
 
 **Secondary Screen** (only you see):
-- [`demo_scenarijus.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/demo_scenarijus.md) - Demo script
+- [`demo_scenarijus.md`](demo_scenarijus.md) - Demo script
 - Timer
 - Notes
 
 ### Navigation Shortcuts
 
 **Quick Jump**:
-- Overview → [`santrauka_visual.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/santrauka_visual.md)
-- Details → [`pristatymas_sistema.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/pristatymas_sistema.md)
-- Slides → [`pristatymas_slides.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/pristatymas_slides.md)
-- Demo → [`demo_scenarijus.md`](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/demo_scenarijus.md)
+- Overview → [`santrauka_visual.md`](santrauka_visual.md)
+- Details → [`pristatymas_sistema.md`](pristatymas_sistema.md)
+- Slides → [`pristatymas_slides.md`](pristatymas_slides.md)
+- Demo → [`demo_scenarijus.md`](demo_scenarijus.md)
 
 ---
 
@@ -366,15 +367,16 @@ Turite **pilną pristatymo paketą**:
 ## 📞 Quick Links
 
 **Dokumentacijos Failai**:
-- 📄 [Išsamus Pristatymas](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/pristatymas_sistema.md)
-- 🎯 [Slide Deck](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/pristatymas_slides.md)
-- 📊 [Visual Summary](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/santrauka_visual.md)
-- 🎬 [Demo Script](file:///Users/airidas/.gemini/antigravity/brain/7738b51e-dcf9-4b37-bfd9-1592637762ba/demo_scenarijus.md)
+- 📄 [Išsamus Pristatymas](pristatymas_sistema.md)
+- 🎯 [Slide Deck](pristatymas_slides.md)
+- 📊 [Visual Summary](santrauka_visual.md)
+- 🎬 [Demo Script](demo_scenarijus.md)
 
 **Projekto Dokumentai**:
-- 📘 [README.md](file:///Users/airidas/Documents/KTU/P170M109%20Computational%20Intelligence%20and%20Decision%20Making/project/README.md)
-- 📗 [models/README.md](file:///Users/airidas/Documents/KTU/P170M109%20Computational%20Intelligence%20and%20Decision%20Making/project/models/README.md)
-- 📙 [TEST_RESULTS.md](file:///Users/airidas/Documents/KTU/P170M109%20Computational%20Intelligence%20and%20Decision%20Making/project/TEST_RESULTS.md)
+- 📘 [README.md](../../README.md)
+- 📗 [models/README.md](../../models/README.md)
+- 📒 [docs/TESTING_PLAN.md](../TESTING_PLAN.md)
+- 📙 [docs/TEST_REPORT_2026-01-04.md](../TEST_REPORT_2026-01-04.md)
 
 **Sistema**: http://localhost:7860
 

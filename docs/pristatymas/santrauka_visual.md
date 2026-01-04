@@ -16,9 +16,9 @@ graph TB
     subgraph Stage1["1️⃣ IŠGAVIMAS"]
         Route{Scanned?}
         Digital[PyMuPDF]
-        OCR_GPU[DeepSeek-OCR<br/>GPU]
-        OCR_CPU[PaddleOCR<br/>CPU/Mac]
-        OCR_Fall[Tesseract<br/>Fallback]
+      OCR_CPU[PaddleOCR<br/>Default (CPU/Mac)]
+      OCR_Fall[Tesseract<br/>Fallback]
+      OCR_GPU[DeepSeek-OCR<br/>Optional (GPU)]
         Layout[DocLayout-YOLO<br/>Layout Analysis]
     end
     
@@ -45,8 +45,8 @@ graph TB
     PDF_B --> Route
     
     Route -->|Digital| Digital
-    Route -->|Scanned| OCR_GPU
-    Route -->|No GPU| OCR_CPU
+    Route -->|Scanned (default)| OCR_CPU
+    OCR_CPU -->|Optional: RUN_DEEPSEEK_OCR=1 + GPU| OCR_GPU
     Route -->|Fallback| OCR_Fall
     
     Digital --> Layout
@@ -87,9 +87,9 @@ mindmap
         PyMuPDF
         Digital PDFs
       OCR Engines
-        DeepSeek GPU
-        PaddleOCR CPU
-        Tesseract
+        PaddleOCR (default)
+        Tesseract (fallback)
+        DeepSeek (optional)
       Layout Analysis
         DocLayout YOLO
         10 Classes
@@ -118,7 +118,9 @@ mindmap
         JSON
         PDF Report
     [AI MODELS]
-      DeepSeek-OCR
+      Sentence Transformer
+      DocLayout-YOLO
+      DeepSeek-OCR (optional)
         500MB
         CUDA
       MiniLM-L6-v2
@@ -190,24 +192,24 @@ graph LR
 ```mermaid
 graph TD
     subgraph Metrics["📊 PERFORMANCE METRICS"]
-        M1[Similarity Computation<br/>✅ 0.037s / target: <0.1s]
-        M2[Layout Detection<br/>✅ 120-160ms / target: <200ms]
-        M3[Model Loading First<br/>✅ 2-3s / one-time]
-        M4[Model Loading Cached<br/>✅ Instant / cached]
+    M1[Golden F1<br/>✅ 0.9227]
+    M2[Latency p95 (golden)<br/>✅ 1.9355 s/page]
+    M3[Latency avg (golden)<br/>✅ 1.8525 s/page]
+    M4[Coverage (comparison+extraction)<br/>✅ 80%]
     end
     
     subgraph Tests["🧪 TEST RESULTS"]
-        T1[Model Tests<br/>✅ 100% Pass]
-        T2[Extraction Tests<br/>✅ 100% Pass]
-        T3[Comparison Tests<br/>✅ 100% Pass]
-        T4[Pipeline Tests<br/>✅ 100% Pass]
-        T5[App Startup<br/>✅ 100% Pass]
+    T1[pytest<br/>487 passed / 17 skipped / 0 failed]
+    T2[Golden P/R/F1<br/>0.9714 / 0.8848 / 0.9227]
+    T3[Formatting F1<br/>0.75 (MIN ONLY; target 0.80)]
+    T4[Coverage<br/>comparison+extraction: 80%]
+    T5[hierarchical_alignment<br/>coverage: 82%]
     end
     
     subgraph Status["📈 OVERALL STATUS"]
         S1[Functionality<br/>✅ ALL WORKING]
-        S2[Integration<br/>✅ COMPLETE]
-        S3[Demo Ready<br/>✅ YES]
+      S2[Integration<br/>N/A (guarded)]
+      S3[DoD (MUST)<br/>❌ NOT MET<br/>(formatting F1)]
     end
     
     style M1 fill:#c8e6c9
@@ -216,7 +218,7 @@ graph TD
     style M4 fill:#c8e6c9
     style T1 fill:#b3e5fc
     style T2 fill:#b3e5fc
-    style T3 fill:#b3e5fc
+    style T3 fill:#ffccbc
     style T4 fill:#b3e5fc
     style T5 fill:#b3e5fc
     style S1 fill:#fff9c4
@@ -306,7 +308,7 @@ graph TB
         S3[Multi-OCR Support<br/>Veikia Bet Kokiam HW]
         S4[AI Modelių Integracija<br/>3 Pagrindiniai Modeliai]
         S5[Interaktyvi UI<br/>Real-time Results]
-        S6[100% Test Pass<br/>Visas Funkcionalumas]
+      S6[Stabilus testavimas<br/>487 passed (0 failed)]
     end
     
     subgraph Weaknesses["🚧 SILPNOSIOS"]
@@ -346,7 +348,10 @@ graph TB
 | **Python Failai** | ~30 |
 | **AI Modeliai** | 5 (3 pagrindiniai) |
 | **Total Model Size** | ~620MB |
-| **Test Pass Rate** | 100% ✅ |
+| **pytest** | 487 passed / 17 skipped / 0 failed |
+| **Golden P/R/F1** | 0.9714 / 0.8848 / 0.9227 |
+| **Latency p95 (golden)** | 1.9355 s/page |
+| **Coverage (comparison+extraction)** | 80% |
 | **Moduliai** | 3 (extraction, comparison, viz) |
 | **Dependencies** | ~15 core libraries |
 | **UI Framework** | Gradio 6.0.2 |
@@ -358,7 +363,8 @@ graph TB
 - ✅ 3 OCR varikliai su auto-fallback
 - ✅ Real-time interactive UI
 - ✅ 100% local processing
-- ✅ Visi testai praeity
+- ✅ `pytest`: 487 passed / 17 skipped / 0 failed
+- ⚠️ Formatting F1: 0.75 (MIN ONLY)
 - ✅ Ready for demo
 
 ### 🚀 Next Steps Priority

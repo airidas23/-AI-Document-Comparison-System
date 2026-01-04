@@ -45,9 +45,9 @@ flowchart TD
     C --> D[Tekstas + Formatavimas]
     
     B -->|TAIP| E[OCR Variklis]
-    E --> F[DeepSeek-OCR GPU]
-    E --> G[PaddleOCR CPU]
-    E --> H[Tesseract Atsarginis]
+   E --> G[PaddleOCR (default)]
+   E --> H[Tesseract (fallback)]
+   E --> F[DeepSeek-OCR (optional)]
     
     F --> I[Tekstas + Bounding Boxes]
     G --> I
@@ -70,8 +70,9 @@ flowchart TD
 | Komponentas | Technologija | Paskirtis |
 |------------|--------------|-----------|
 | **Skaitmeniniai PDF** | PyMuPDF | Greitas teksto išgavimas |
-| **OCR (GPU)** | DeepSeek-OCR | Geriausias tikslumas |
-| **OCR (CPU/Mac)** | PaddleOCR | Greitas CPU sprendimas |
+| **OCR (default)** | PaddleOCR | Stabilus CPU sprendimas (Mac/CI) |
+| **OCR (fallback)** | Tesseract | Atsarginis universalus OCR |
+| **OCR (optional)** | DeepSeek-OCR | Tik kai įjungta ir prieinama (GPU) |
 | **Layout** | DocLayout-YOLO | Dokumentų struktūra |
 
 ---
@@ -162,7 +163,7 @@ if similarity < 0.82:
 ### Pilnai Implementuoti Komponentai
 
 #### 🤖 AI Modeliai
-- ✅ DeepSeek-OCR (~500MB)
+- ⚠️ DeepSeek-OCR (~500MB; optional / requires GPU)
 - ✅ Sentence Transformer (~80MB)
 - ✅ DocLayout-YOLO (~39MB)
 - ✅ PaddleOCR (auto-download)
@@ -264,30 +265,61 @@ if similarity < 0.82:
 
 ## 📊 Rezultatai & Statistika
 
-### Performance Metrics
+### Test Results (2026-01-04)
 
-| Metrika | Rezultatas | Target | ✓ |
-|---------|------------|--------|---|
-| Similarity Computation | 0.037s | <0.1s | ✅ |
-| Layout Detection | 120-160ms | <200ms | ✅ |
-| Model Loading (first) | 2-3s | One-time | ✅ |
-| Model Loading (cached) | Instant | Cached | ✅ |
+- `pytest`: **487 passed**, **17 skipped**, **0 failed** (48.47s)
+- Coverage (comparison+extraction): **80%**; `comparison/hierarchical_alignment.py`: **82%**
+- Golden: **Precision 0.9714**, **Recall 0.8848**, **F1 0.9227**
+- Latency (golden): **avg 1.8525 s/page**, **p95 1.9355 s/page**
+- Category F1: Content 0.95; Layout 0.8333; Visual 1.0; **Formatting 0.75 (MIN ONLY; target 0.80)**
 
-### Test Coverage
+### OCR Benchmark (engine palyginimas)
 
-```
-┌─────────────────────────┬──────────┐
-│ Test Category           │ Status   │
-├─────────────────────────┼──────────┤
-│ Model Loading           │ ✅ 100%  │
-│ Extraction Modules      │ ✅ 100%  │
-│ Comparison Modules      │ ✅ 100%  │
-│ Full Pipeline          │ ✅ 100%  │
-│ App Startup            │ ✅ 100%  │
-└─────────────────────────┴──────────┘
-```
+- Digital PDF: PyMuPDF 0.005 s; Tesseract 0.876 s; Paddle 16.871 s
+- Scanned PDF: Tesseract 1.233 s; Paddle 9.388 s
 
-**Visi testai praeity sėkmingai! 🎉**
+---
+
+## 📈 Metrikų vizualizacijos (iš `TESTING_PLAN.md`)
+
+![Targets overview (F1 & latency)](../assets/threshold_overview.png)
+
+---
+
+## 📉 Kokybė: Precision / Recall / F1
+
+![Overall Precision/Recall/F1](../assets/metrics_prf1_overall.png)
+
+---
+
+## ⏱️ Našumas: end-to-end latency
+
+![End-to-end latency](../assets/latency_end_to_end.png)
+
+---
+
+## 🧩 F1 pagal pakeitimų tipą
+
+![F1 by change category](../assets/f1_by_change_type.png)
+
+---
+
+## 🔬 OCR micro-benchmark (OCR-only)
+
+![OCR benchmark latency (extraction-only)](../assets/ocr_benchmark_latency.png)
+
+---
+
+## ✅ Kas veikia / kas neveikia (pagal metrikas)
+
+### Kas veikia
+- ✅ Digital (PyMuPDF) pipeline: golden F1 **0.9227**, latency **p95 1.9355 s/page**
+- ✅ Stabilumas: `pytest` **487 passed / 0 failed**, coverage **80%**
+
+### Kas neveikia / ribota
+- ❌ Formatting kokybė: F1 **0.75 < 0.80 (MUST)**
+- ❌ Scanned performance: end-to-end > 3s/page (Tesseract ~5.96; Paddle ~28.43; imtis=1)
+- ⚠️ Scanned precision žema (Paddle ~0.4286) → FP rizika
 
 ---
 
@@ -305,7 +337,7 @@ if similarity < 0.82:
    - Formatavimo pakeitimus
 
 2. **Skenuoto PDF su OCR**
-   - Įjungti "Scanned Mode"
+   - Įjungti "Scanned Document Mode" (abi PDF laikomos skenuotomis; prioritetas OCR)
    - OCR automatiškai atpažįsta tekstą
    - Palygina su kitu dokumentu
 
@@ -333,10 +365,10 @@ sentence-transformers  # NLP
 opencv-python          # Image processing
 
 # AI Models
-deepseek-ocr           # OCR
+deepseek-ocr           # OCR (optional)
 all-MiniLM-L6-v2       # Embeddings
 DocLayout-YOLO         # Layout
-PaddleOCR              # OCR fallback
+PaddleOCR              # OCR (default)
 ```
 
 ### Modulinė Architektūra
@@ -385,8 +417,8 @@ project/
    - Reikėjo adaptuoti kodą
 
 2. 🔥 **GPU/CPU Compatibility**
-   - DeepSeek-OCR tik CUDA
-   - MPS (Mac M-series) su `infer()` metodu
+   - DeepSeek-OCR yra optional ir priklauso nuo GPU runtime (aplinkos/suderinamumo)
+   - Default kelias atsiskaitymui/CI: PaddleOCR (CPU), su Tesseract fallback
 
 3. 🔥 **UI Responsiveness**
    - Ilgi OCR procesai "užšaldo" UI
@@ -438,16 +470,17 @@ project/
 
 ### Prieinami Dokumentai
 
-- 📘 [README.md](file:///Users/airidas/Documents/KTU/P170M109%20Computational%20Intelligence%20and%20Decision%20Making/project/README.md) - Setup instrukcijos
-- 📗 [models/README.md](file:///Users/airidas/Documents/KTU/P170M109%20Computational%20Intelligence%20and%20Decision%20Making/project/models/README.md) - Modelių dokumentacija
-- 📙 [TEST_RESULTS.md](file:///Users/airidas/Documents/KTU/P170M109%20Computational%20Intelligence%20and%20Decision%20Making/project/TEST_RESULTS.md) - Testavimo rezultatai
-- 📕 `.env.example` - Konfigūracijos pavyzdys
+- 📘 [README.md](../../README.md) - Setup instrukcijos
+- 📗 [models/README.md](../../models/README.md) - Modelių dokumentacija
+- 📙 [TESTING_PLAN.md](../TESTING_PLAN.md) - Testavimo planas
+- 📙 [TEST_REPORT_2026-01-04.md](../TEST_REPORT_2026-01-04.md) - Testavimo rezultatai
+- 📕 [.env.example](../../.env.example) - Konfigūracijos pavyzdys
 
 ### Kodas
 
-- 🔗 [app.py](file:///Users/airidas/Documents/KTU/P170M109%20Computational%20Intelligence%20and%20Decision%20Making/project/app.py) - Entry point
-- 🔗 [gradio_ui.py](file:///Users/airidas/Documents/KTU/P170M109%20Computational%20Intelligence%20and%20Decision%20Making/project/visualization/gradio_ui.py) - UI (~2000 eilučių)
-- 🔗 [ocr_router.py](file:///Users/airidas/Documents/KTU/P170M109%20Computational%20Intelligence%20and%20Decision%20Making/project/extraction/ocr_router.py) - OCR routing logika
+- 🔗 [app.py](../../app.py) - Entry point
+- 🔗 [gradio_ui.py](../../visualization/gradio_ui.py) - UI (~2000 eilučių)
+- 🔗 [ocr_router.py](../../extraction/ocr_router.py) - OCR routing logika
 
 ---
 
@@ -457,10 +490,10 @@ project/
 > **Privatumas!** Medicininiai, teisiniai dokumentai negali būti siunčiami į cloud.
 
 ### 2. Kodėl keli OCR varikliai?
-> **Compatibility!** DeepSeek reikia GPU, bet sistema veikia ir CPU (Mac).
+> **Compatibility!** Default režime veikia su CPU (PaddleOCR), o Tesseract yra fallback. DeepSeek-OCR yra optional ir reikalauja GPU.
 
 ### 3. Kiek greitai apdoroja?
-> **~3s per puslapį** (target). Priklauso nuo hardware ir OCR mode.
+> Golden benchmark (digital): **avg 1.85 s/page, p95 1.94 s/page**. Su OCR (scanned) bus lėčiau ir priklauso nuo pasirinkto engine.
 
 ### 4. Ar veikia su non-English dokumentais?
 > **Taip!** Visi OCR varikliai palaiko multi-language.
@@ -477,7 +510,7 @@ project/
 #### Pasiekta
 - ✅ Pilnai funkcionuojanti sistema
 - ✅ Visi pagrindiniai komponentai implementuoti
-- ✅ Testavimas praeity sėkmingai
+- ✅ `pytest`: 487 passed / 17 skipped / 0 failed (Formatting F1: 0.75 — MIN ONLY)
 - ✅ Interaktyvi UI
 - ✅ Lokalus deployment
 

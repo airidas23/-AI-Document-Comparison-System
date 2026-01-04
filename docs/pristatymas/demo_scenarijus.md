@@ -58,12 +58,12 @@
 **Kas daryti**:
 1. Palikti default parametrus:
    - Sensitivity: 0.82
-   - Scanned Mode: OFF (skaitmeniniams PDF)
-   - Show Heatmap: ON (jei norite vizualinių diff)
+   - Scanned Document Mode: OFF (abi PDF laikomos skenuotomis; prioritetas OCR)
+   - Heatmap overlay: ON (vizualiniai skirtumai)
 2. Paspausti "Compare Documents"
 
 **Kas pasakyti**:
-> "Jautrumo threshold nustato, kaip griežtai sistema aptinka skirtumus. 0.82 reiškia, kad tekstai turi būti bent 82% panašūs, kad būtų laikomi vienodais. Scanned Mode įjungia OCR, bet mūsų atveju dokumentai skaitmeniniai, tai jo nereikia."
+> "Jautrumo threshold nustato, kaip griežtai sistema aptinka skirtumus. 0.82 reiškia, kad tekstai turi būti bent 82% panašūs, kad būtų laikomi vienodais. Scanned Document Mode (abi PDF laikomos skenuotomis; prioritetas OCR) naudojamas tik tada, kai abu dokumentai yra vaizdai. Mūsų atveju dokumentai skaitmeniniai, tai jo nereikia."
 
 ### Žingsnis 3: Rezultatų Peržiūra (2 min)
 
@@ -123,11 +123,11 @@
 
 **Kas daryti**:
 1. Įkelti skenuotą PDF arba PDF iš image
-2. Įjungti "Scanned Mode" ☑️
-3. (Optional) Parodyti "Force OCR for All Documents"
+2. Įjungti "Scanned Document Mode" ☑️
+3. (Optional) Parodyti "OCR Enhancement (Hybrid, safe for digital PDFs)" (native + OCR su saugikliu; neperrašo native teksto)
 
 **Kas pasakyti**:
-> "Kai turime skenuotą dokumentą, įjungiame Scanned Mode. Sistema automatiškai pasirinks geriausią OCR variklį. Mano atveju, kadangi turiu GPU, naudosis DeepSeek-OCR. Jei būtų Mac be GPU, automatiškai pasirinktų PaddleOCR."
+> "Kai turime skenuotą dokumentą, įjungiame Scanned Document Mode. Pagal nutylėjimą sistema naudoja **PaddleOCR** (veikia CPU/Mac), o **Tesseract** yra atsarginis variantas. **DeepSeek-OCR** yra optional/guarded (įjungiamas tik sąmoningai per nustatymus ir priklauso nuo aplinkos), bet UI jis specialiai neiškeliamas kaip default pasirinkimas."
 
 ### Žingsnis 2: OCR Apdorojimas (1 min)
 
@@ -136,12 +136,12 @@
 2. Parodyti, kad procesas vyksta (gali užtrukti ilgiau)
 3. (Optional) Parodyti console log su OCR engine info:
    ```
-   INFO: Using DeepSeek-OCR engine for scanned document
+   INFO: Using PaddleOCR engine for scanned document
    INFO: Processing page 1/5...
    ```
 
 **Kas pasakyti**:
-> "OCR procesas gali užtrukti šiek tiek ilgiau nei skaitmeninių dokumentų apdorojimas, nes sistema turi atpažinti tekstą iš paveikslėlių. Šiuo metu vyksta teksto atpažinimas su DeepSeek-OCR modeliu."
+> "OCR procesas gali užtrukti ilgiau nei skaitmeninių dokumentų apdorojimas, nes sistema turi atpažinti tekstą iš paveikslėlių. Šiuo metu vyksta teksto atpažinimas su pasirinktu OCR varikliu (dažniausiai PaddleOCR), tada tekstas lyginamas kaip įprastai."
 
 ### Žingsnis 3: OCR Rezultatai (2 min)
 
@@ -156,14 +156,13 @@
 ### Žingsnis 4: OCR Engine Selection (1.5 min)
 
 **Kas daryti**:
-1. Parodyti "OCR Engine Priority" dropdown:
-   - DeepSeek-first (GPU)
-   - PaddleOCR-first (CPU)
-   - Tesseract-only (fallback)
+1. Parodyti "OCR Engine" dropdown:
+   - paddle (default)
+   - tesseract (fallback)
 2. (Optional) Pakeisti priority ir palyginti greitį
 
 **Kas pasakyti**:
-> "Sistema palaiko kelis OCR variklius su automatine priority eile. Galime rankiniu būdu pasirinkti, kurį engine naudoti. DeepSeek-OCR yra tiksliausias, bet reikalauja GPU. PaddleOCR veikia CPU ir yra greitas. Tesseract yra universalus atsarginis variantas."
+> "Sistema palaiko kelis OCR variklius. UI leidžia pasirinkti tarp **PaddleOCR** (paddle) ir **Tesseract** (tesseract). DeepSeek-OCR projekte egzistuoja kaip optional/guarded variantas, bet nėra numatytas kaip standartinis UI pasirinkimas dėl suderinamumo tarp skirtingų mašinų."
 
 ---
 
@@ -183,10 +182,10 @@
 **Kas pasakyti**:
 > "Synchronized viewer yra premium režimas, kur galime matyti abu dokumentus synchronized būdu. Abu PDF viewers sinchronizuojasi - kai scroll vieną, kitas seka automatiškai. Page navigation mygtukai leidžia šokti tarp puslapių."
 
-### B. Heatmap Overlay (1 min)
+### B. Heatmap overlay (1 min)
 
 **Kas daryti**:
-1. Įjungti "Show Heatmap Overlays" ☑️
+1. Įjungti "Heatmap overlay" ☑️
 2. Palyginti dokumentus
 3. Parodyti vizualinius heatmap dengimus
 4. Paaiškinti spalvas (raudona = skirtumas)
@@ -237,9 +236,9 @@ if similarity < 0.82:
 **Q2: Kodėl naudojama keletas OCR variklių?**
 
 A: Skirtingi OCR varikliai turi skirtingus reikalavimus:
-- **DeepSeek-OCR**: Geriausias tikslumas, bet reikia CUDA GPU
-- **PaddleOCR**: Greitas CPU/Mac sprendimas
+- **PaddleOCR**: Default CPU/Mac sprendimas (stabilus atsiskaitymui)
 - **Tesseract**: Universalus fallback
+- **DeepSeek-OCR**: Optional (reikalauja suderinamos GPU aplinkos)
 
 Sistema automatiškai pasirenka optimaliausią variantą pagal hardware.
 
@@ -266,8 +265,8 @@ A: Taip! Visi komponentai palaiko multi-language:
 **Q5: Kiek laiko užtrunka palyginimas?**
 
 A: Priklauso nuo:
-- **Skaitmeniniai PDF**: ~3-5s per puslapį
-- **Skenuoti PDF su OCR**: ~10-30s per puslapį (priklausomai nuo GPU)
+- **Skaitmeniniai PDF**: golden benchmark ~1.85s/page avg (p95 ~1.94s/page)
+- **Skenuoti PDF su OCR**: priklauso nuo engine; OCR žingsnis yra brangiausias
 - **Document complexity**: lentelės, paveikslėliai prideda laiko
 
 Target yra <3s per puslapį (be OCR).
@@ -439,13 +438,13 @@ A: Lyginame:
              └─ Diff navigation
              
 07:00-11:00  Demo 2: OCR Funkcionalumas
-             ├─ Scanned mode
+             ├─ Scanned Document Mode
              ├─ OCR processing
              └─ Multi-engine support
              
 11:00-13:00  Demo 3: Advanced Features
              ├─ Synchronized viewer
-             ├─ Heatmap overlays
+             ├─ Heatmap overlay
              └─ Export features
              
 13:00-15:00  Q&A & Išvados
