@@ -68,6 +68,11 @@ def generate_heatmap(
             pix_b.height, pix_b.width, pix_b.n
         )
         
+        # Check for empty images
+        if img_a.size == 0 or img_b.size == 0:
+            logger.warning("Empty image for visual diff page %d", page_num + 1)
+            continue
+        
         # Resize to same dimensions if needed
         if img_a.shape != img_b.shape:
             target_h = max(img_a.shape[0], img_b.shape[0])

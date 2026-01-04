@@ -69,12 +69,16 @@ def segment_document(page: PageData) -> List[DocumentSegment]:
             # Finalize current paragraph if any
             if current_paragraph_blocks:
                 para_text = " ".join(b.text for b in current_paragraph_blocks)
+                seg_idx = len(segments)
                 segments.append(DocumentSegment(
                     block_type="paragraph",
                     text=para_text,
                     blocks=current_paragraph_blocks.copy(),
                     parent_index=heading_stack[-1] if heading_stack else None,
                 ))
+                if heading_stack:
+                    parent_idx = heading_stack[-1]
+                    segments[parent_idx].children_indices.append(seg_idx)
                 current_paragraph_blocks = []
             
             # Create heading segment
@@ -113,12 +117,16 @@ def segment_document(page: PageData) -> List[DocumentSegment]:
             # Finalize current paragraph
             if current_paragraph_blocks:
                 para_text = " ".join(b.text for b in current_paragraph_blocks)
+                seg_idx = len(segments)
                 segments.append(DocumentSegment(
                     block_type="paragraph",
                     text=para_text,
                     blocks=current_paragraph_blocks.copy(),
                     parent_index=heading_stack[-1] if heading_stack else None,
                 ))
+                if heading_stack:
+                    parent_idx = heading_stack[-1]
+                    segments[parent_idx].children_indices.append(seg_idx)
                 current_paragraph_blocks = []
             
             # Find or create table segment
@@ -152,12 +160,16 @@ def segment_document(page: PageData) -> List[DocumentSegment]:
             # Finalize current paragraph
             if current_paragraph_blocks:
                 para_text = " ".join(b.text for b in current_paragraph_blocks)
+                seg_idx = len(segments)
                 segments.append(DocumentSegment(
                     block_type="paragraph",
                     text=para_text,
                     blocks=current_paragraph_blocks.copy(),
                     parent_index=heading_stack[-1] if heading_stack else None,
                 ))
+                if heading_stack:
+                    parent_idx = heading_stack[-1]
+                    segments[parent_idx].children_indices.append(seg_idx)
                 current_paragraph_blocks = []
             
             # Create list item segment
@@ -181,12 +193,16 @@ def segment_document(page: PageData) -> List[DocumentSegment]:
     # Finalize last paragraph
     if current_paragraph_blocks:
         para_text = " ".join(b.text for b in current_paragraph_blocks)
+        seg_idx = len(segments)
         segments.append(DocumentSegment(
             block_type="paragraph",
             text=para_text,
             blocks=current_paragraph_blocks.copy(),
             parent_index=heading_stack[-1] if heading_stack else None,
         ))
+        if heading_stack:
+            parent_idx = heading_stack[-1]
+            segments[parent_idx].children_indices.append(seg_idx)
     
     logger.debug("Segmented page into %d logical blocks", len(segments))
     return segments
@@ -242,7 +258,7 @@ def hierarchical_align(
             alignment_map[seg_idx_a] = (seg_idx_b, min(confidence, conf))
     
     # Handle unmatched headings and segments
-    matched_b = set(seg_idx_b for _, (seg_idx_b, _) in alignment_map.values())
+    matched_b = set(seg_idx_b for (seg_idx_b, _) in alignment_map.values())
     for seg_idx_a, seg_a in enumerate(segments_a):
         if seg_idx_a not in alignment_map:
             # Try to find best match in unmatched segments_b

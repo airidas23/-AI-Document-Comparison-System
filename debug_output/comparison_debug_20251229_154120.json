@@ -1,0 +1,232 @@
+{
+  "timestamp": "20251229_154120",
+  "doc_a": "data/synthetic/test_scanned_dataset/variation_01/variation_01_original_scanned.pdf",
+  "doc_b": "data/synthetic/test_scanned_dataset/variation_01/variation_01_modified_scanned.pdf",
+  "metrics": {
+    "total_time": 68.67529392242432,
+    "extraction_time": 39.82464265823364,
+    "layout_time": 0.0,
+    "comparison_time": 0.0019290447235107422,
+    "classification_time": 0.00047898292541503906,
+    "fusion_time": 0.00011491775512695312,
+    "pages_processed": 1,
+    "diffs_found": 3,
+    "diffs_before_fusion": 8,
+    "diffs_after_fusion": 8
+  },
+  "config": {
+    "ocr_mode": "auto",
+    "ocr_engine": null,
+    "force_ocr": false,
+    "sensitivity_threshold": null,
+    "fusion_strategy": "triangulation"
+  },
+  "summary": {
+    "total": 3,
+    "by_type": {
+      "modified": 3
+    },
+    "by_change_type": {
+      "content": 1,
+      "layout": 1,
+      "visual": 1
+    },
+    "by_subtype": {
+      "character_change": 1,
+      "table:structure": 1,
+      "figure:numbering": 1
+    },
+    "ocr_stats": {
+      "ocr_diffs": 3,
+      "ocr_low_severity": 0,
+      "ocr_formatting_noise": 0
+    }
+  },
+  "diffs": [
+    {
+      "page_num": 1,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with known differences. The generator applies various modifications including text changes, formatting adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes.",
+      "new_text": "Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with known differences. The generator applies various modifications including text changes, formatting adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+      "old_text_normalized": "synthetic pdf dataset generation this document serves as a base template for generating synthetic pdf pairs with known differences. the generator applies various modifications including text changes, formatting adjustments, and structural alterations. text modifications the system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes.",
+      "new_text_normalized": "synthetic pdf dataset generation this document serves as a base template for generating synthetic pdf pairs with known differences. the generator applies various modifications including text changes, formatting adjustments, and structural alterations. text modifications the system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. these modifications test the ability to detect subtle content differences while maintaining document structure. formatting changes font size adjustments and spacing modifications are applied to test formatting-aware comparison. these changes simulate real-world scenarios where documents are reformatted without altering content.",
+      "bbox": {
+        "x": 0.0972549019607843,
+        "y": 0.10727272727272727,
+        "width": 0.7772549019607844,
+        "height": 0.06606060606060607
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "line_id",
+        "similarity": 1.0,
+        "line_id": "para_f6c3b8a1e730",
+        "line_id_base": "para_f6c3b8a1e730",
+        "line_id_mod": "para_f6c3b8a1e730",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": true,
+        "ocr_change_ratio": 0.47756874095513746,
+        "ocr_changed_chars": 330,
+        "word_ops": [
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "These modifications test the ability to detect subtle content differences while maintaining document structure.",
+              "Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware",
+              "comparison. These changes simulate real-world scenarios where documents are reformatted without altering",
+              "content."
+            ]
+          }
+        ],
+        "word_bboxes_a": [],
+        "word_bboxes_b": [
+          {
+            "x": 0.09411764705882351,
+            "y": 0.2012121212121212,
+            "width": 0.7788235294117647,
+            "height": 0.023636363636363636
+          },
+          {
+            "x": 0.09411764705882351,
+            "y": 0.21818181818181817,
+            "width": 0.7592156862745097,
+            "height": 0.023030303030303043
+          },
+          {
+            "x": 0.09411764705882351,
+            "y": 0.2333333333333333,
+            "width": 0.7788235294117647,
+            "height": 0.025454545454545452
+          },
+          {
+            "x": 0.09568627450980391,
+            "y": 0.2587878787878788,
+            "width": 0.06196078431372548,
+            "height": 0.014545454545454558
+          }
+        ],
+        "word_bboxes": [],
+        "highlight_mode": "line_fallback",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 1,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "layout",
+      "old_text": "Table (5x3)",
+      "new_text": "Table (5x4)",
+      "old_text_normalized": "table (5x3)",
+      "new_text_normalized": "table (5x4)",
+      "bbox": {
+        "x": 0.10138880112591911,
+        "y": 0.47024939334753785,
+        "width": 0.31773545209099274,
+        "height": 0.1509795217803031
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "table",
+        "table_change": "structure",
+        "old_structure": {
+          "rows": 5,
+          "cols": 3
+        },
+        "new_structure": {
+          "rows": 5,
+          "cols": 4
+        },
+        "fusion_modules": [
+          "table"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "is_ocr": true,
+        "subtype": "table:structure",
+        "description": "Table structure changed: 1 column added"
+      }
+    },
+    {
+      "page_num": 1,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "visual",
+      "old_text": "Figure 1. Baseline architecture illustration.",
+      "new_text": "Figure 2. Baseline architecture illustration.",
+      "old_text_normalized": "figure 1. baseline architecture illustration.",
+      "new_text_normalized": "figure 2. baseline architecture illustration.",
+      "bbox": {
+        "x": 0.10362480612362132,
+        "y": 0.638090450402462,
+        "width": 0.45234146417356,
+        "height": 0.15241529060132575
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "figure",
+        "figure_change": "numbering",
+        "old_number": 1,
+        "new_number": 2,
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "fusion_modules": [
+          "figure"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "is_ocr": true,
+        "subtype": "figure:numbering",
+        "description": "Figure numbering changed from 1 to 2"
+      }
+    }
+  ],
+  "comparison_report": {
+    "text_diffs_count": 1,
+    "table_diffs_count": 1,
+    "figure_diffs_count": 1,
+    "formula_diffs_count": 0,
+    "layout_diffs_count": 1,
+    "total_diffs": 3,
+    "diffs_before_fusion": 8,
+    "diffs_after_fusion": 8,
+    "fusion_reduction_percent": 0.0,
+    "by_change_type": {
+      "content": 1,
+      "visual": 1,
+      "layout": 1,
+      "formatting": 0
+    },
+    "by_diff_type": {
+      "added": 0,
+      "deleted": 0,
+      "modified": 3
+    }
+  }
+}

@@ -59,16 +59,51 @@ class TextBlock:
 
 
 @dataclass
+class Token:
+    token_id: str
+    bbox: Dict[str, float]  # {"x": x, "y": y, "width": w, "height": h} in absolute coordinates
+    text: str
+    confidence: float = 1.0
+    style: Optional[Style] = None  # Style info from span lookup
+    span_index: int = -1  # PyMuPDF span index for style lookup
+
+
+@dataclass
+class WordDiff:
+    """Word-level diff information with optional character details."""
+    word_a: str
+    word_b: str
+    bbox_a: Optional[Dict[str, float]] = None
+    bbox_b: Optional[Dict[str, float]] = None
+    change_type: Literal["same", "modified", "added", "deleted"] = "same"
+    char_diffs: List[Tuple[str, int, int, str]] = field(default_factory=list)  # (op, i1, i2, text)
+
+
+@dataclass
+class Line:
+    line_id: str
+    bbox: Dict[str, float]  # {"x": x, "y": y, "width": w, "height": h} in absolute coordinates
+    text: str
+    confidence: float = 1.0
+    reading_order: int = 0
+    tokens: List[Token] = field(default_factory=list)
+    metadata: dict = field(default_factory=dict)  # For word-level data, granularity info, etc.
+
+
+@dataclass
 class PageData:
     page_num: int
     width: float
     height: float
     blocks: List[TextBlock] = field(default_factory=list)
+    lines: List[Line] = field(default_factory=list)
     metadata: dict = field(default_factory=dict)
 
 
 DiffType = Literal["added", "deleted", "modified"]
 ChangeType = Literal["content", "formatting", "layout", "visual"]
+LayoutChangeType = Literal["none", "reflow", "move", "resize", "reorder"]
+ElementType = Literal["text", "table", "figure", "formula", "header", "footer"]
 
 
 @dataclass
@@ -81,6 +116,15 @@ class Diff:
     bbox: Optional[Dict[str, float]] = None  # {"x": x, "y": y, "width": w, "height": h} in normalized coordinates
     confidence: float = 0.0
     metadata: dict = field(default_factory=dict)
+    # Enhanced fields for academic comparison
+    page_num_b: Optional[int] = None  # Page number in doc B (if different from A)
+    bbox_b: Optional[Dict[str, float]] = None  # Bbox in doc B
+    word_diffs: List[WordDiff] = field(default_factory=list)  # Word-level details
+    style_a: Optional[Style] = None  # Style in doc A
+    style_b: Optional[Style] = None  # Style in doc B
+    element_type: ElementType = "text"  # Type of element
+    layout_change_type: Optional[LayoutChangeType] = None  # For layout changes
+    sources: List[str] = field(default_factory=list)  # Which modules detected this diff
     
     def normalize_bbox(self, page_width: float, page_height: float) -> Optional[Dict[str, float]]:
         """Convert bbox to normalized coordinates (0-1). Returns None if bbox is None."""
@@ -142,3 +186,100 @@ class ComparisonResult:
     pages: List[PageData] = field(default_factory=list)
     diffs: List[Diff] = field(default_factory=list)
     summary: dict = field(default_factory=dict)
+
+
+# === Table Comparison Structures ===
+
+@dataclass
+class TableCell:
+    """Single cell in a table."""
+    row: int
+    col: int
+    text: str
+    bbox: Dict[str, float]
+    rowspan: int = 1
+    colspan: int = 1
+    style: Optional[Style] = None
+    confidence: float = 1.0
+
+
+@dataclass
+class CellDiff:
+    """Difference between two table cells."""
+    row: int
+    col: int
+    cell_a: Optional[TableCell]
+    cell_b: Optional[TableCell]
+    change_type: Literal["same", "modified", "added", "deleted"]
+    text_similarity: float = 0.0
+    style_changed: bool = False
+
+
+@dataclass
+class TableDiff:
+    """Complete table comparison result."""
+    table_id: str
+    bbox_a: Optional[Dict[str, float]]
+    bbox_b: Optional[Dict[str, float]]
+    cell_diffs: List[CellDiff] = field(default_factory=list)
+    rows_a: int = 0
+    rows_b: int = 0
+    cols_a: int = 0
+    cols_b: int = 0
+    structure_changed: bool = False
+    border_changed: bool = False
+
+
+# === Figure/Formula Comparison Structures ===
+
+@dataclass
+class FormulaRegion:
+    """Formula region with optional LaTeX OCR."""
+    bbox: Dict[str, float]
+    latex: Optional[str] = None
+    image_bytes: Optional[bytes] = None
+    confidence: float = 0.0
+
+
+@dataclass
+class FigureRegion:
+    """Figure region with image data and caption."""
+    bbox: Dict[str, float]
+    caption: Optional[str] = None
+    image_bytes: Optional[bytes] = None
+    figure_id: Optional[str] = None
+
+
+# === Report Structures ===
+
+@dataclass
+class ComparisonReport:
+    """Full comparison report for export."""
+    doc_a_path: str
+    doc_b_path: str
+    timestamp: str
+    
+    # Summary
+    total_pages_a: int = 0
+    total_pages_b: int = 0
+    pages_compared: int = 0
+    
+    # Diff counts by category
+    content_changes: int = 0
+    formatting_changes: int = 0
+    layout_changes: int = 0
+    visual_changes: int = 0
+    
+    # Table-specific
+    table_cell_changes: int = 0
+    
+    # All diffs
+    diffs: List[Diff] = field(default_factory=list)
+    table_diffs: List[TableDiff] = field(default_factory=list)
+    
+    # Debug info (when enabled)
+    debug: Optional[dict] = None
+    
+    # Metrics
+    comparison_time_seconds: float = 0.0
+    extraction_method: str = "auto"

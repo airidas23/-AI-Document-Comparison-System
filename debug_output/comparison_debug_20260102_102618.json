@@ -1,0 +1,742 @@
+{
+  "timestamp": "20260102_102618",
+  "doc_a": "data/synthetic/test_scanned_dataset/variation_01/variation_01_original_scanned.pdf",
+  "doc_b": "data/synthetic/test_scanned_dataset/variation_01/variation_01_modified_scanned.pdf",
+  "metrics": {
+    "total_time": 4.4832940101623535,
+    "extraction_time": 4.476543664932251,
+    "layout_time": 0.0,
+    "comparison_time": 0.004034996032714844,
+    "classification_time": 0.0003619194030761719,
+    "fusion_time": 0.00010228157043457031,
+    "timing_breakdown": {
+      "extraction_a": 2.2852659225463867,
+      "line_extraction_a": 0.00044918060302734375,
+      "layout_a": 2.1457672119140625e-06,
+      "extraction_b": 2.1912777423858643,
+      "line_extraction_b": 0.0007548332214355469,
+      "layout_b": 6.9141387939453125e-06,
+      "line_comparison": 0.0009495839767623693,
+      "text_comparison": 7.916009053587914e-06,
+      "formatting_comparison": 3.3329997677356005e-06,
+      "table_comparison": 0.0001227910106536001,
+      "header_footer_comparison": 1.2920063454657793e-06,
+      "figure_comparison": 0.00025512499269098043,
+      "diff_fusion": 9.708298603072762e-05
+    },
+    "pages_processed": 1,
+    "diffs_found": 4,
+    "diffs_before_fusion": 6,
+    "diffs_after_fusion": 4,
+    "time_per_page": 4.4832940101623535,
+    "fusion_reduction_percent": 33.333333333333336,
+    "quality_metrics": {
+      "ocr_quality": {
+        "total_diffs": 4,
+        "content_diffs": 2,
+        "formatting_diffs": 1,
+        "layout_diffs": 1,
+        "visual_diffs": 0,
+        "phantom_diffs_detected": 0,
+        "phantom_diff_total": 0,
+        "whitespace_only_diffs": 0,
+        "punctuation_only_diffs": 0,
+        "case_only_diffs": 0,
+        "diacritics_only_diffs": 0,
+        "ocr_noise_diffs": 0,
+        "precision_proxy": 1.0,
+        "phantom_diff_ratio": 0.0,
+        "whitespace_only_ratio": 0.0,
+        "quality_score": 85.0,
+        "severity": {
+          "none": 0,
+          "low": 2,
+          "medium": 2,
+          "high": 0,
+          "critical": 0,
+          "total": 4,
+          "real_diffs": 4,
+          "significant_diffs": 2
+        },
+        "low_confidence_diffs": 0,
+        "high_confidence_diffs": 0,
+        "avg_diff_confidence": 0.775,
+        "pairs_checked": 0,
+        "pairs_skipped_by_gating": 0,
+        "pairs_semantic_checked": 0,
+        "gating_skip_rate": 0.0,
+        "unmatched_blocks_a": 0,
+        "unmatched_blocks_b": 0,
+        "pages_skipped_identical": 0,
+        "blocks_skipped_identical": 0,
+        "engine_used": "tesseract",
+        "engine_profile_applied": false
+      },
+      "precision_proxy": 1.0,
+      "phantom_diff_ratio": 0.0,
+      "quality_score": 85.0,
+      "severity_breakdown": {
+        "none": 0,
+        "low": 2,
+        "medium": 2,
+        "high": 0,
+        "critical": 0,
+        "total": 4,
+        "real_diffs": 4,
+        "significant_diffs": 2
+      }
+    }
+  },
+  "quality_metrics": {
+    "content_diffs": 2,
+    "formatting_diffs": 1,
+    "layout_diffs": 1,
+    "visual_diffs": 0,
+    "whitespace_only_diffs": 0,
+    "formatting_only_diffs": 1,
+    "low_confidence_diffs": 0,
+    "unmatched_blocks_a": 0,
+    "unmatched_blocks_b": 0,
+    "pages_skipped_identical": 0,
+    "blocks_skipped_identical": 0,
+    "skipped_candidates_count": 0,
+    "fallback_relaxations_count": 0,
+    "whitespace_only_ratio": 0.0,
+    "phantom_diff_proxy": 0.25
+  },
+  "config": {
+    "ocr_mode": "auto",
+    "ocr_engine": "tesseract",
+    "force_ocr": false,
+    "sensitivity_threshold": null,
+    "fusion_strategy": "triangulation"
+  },
+  "extraction_manifest_a": {
+    "input_path": "",
+    "input_hash": "7067f83ca024db9b",
+    "input_type_detected": "scanned",
+    "engine_used": "tesseract",
+    "force_ocr": false,
+    "render_dpi": 0,
+    "granularity": "word",
+    "page_count": 1,
+    "blocks_count_total": 203,
+    "lines_count_total": 29,
+    "chars_count_total": 1300,
+    "avg_conf": 0.9258128078817733,
+    "conf_p10": 0.92,
+    "conf_p50": 0.96,
+    "conf_p90": 0.96,
+    "page_manifests": [
+      {
+        "page_num": 1,
+        "width": 612.0,
+        "height": 792.0,
+        "blocks_count": 203,
+        "lines_count": 29,
+        "chars_count": 1300,
+        "extraction_method": "ocr_tesseract",
+        "ocr_engine": "tesseract",
+        "ocr_policy": "auto_fallback",
+        "ocr_engine_selected": "tesseract",
+        "ocr_status": "ok",
+        "ocr_failure_reason": "",
+        "ocr_attempts": [
+          {
+            "engine": "tesseract",
+            "outcome": "success",
+            "elapsed_sec": 1.162
+          }
+        ]
+      }
+    ]
+  },
+  "extraction_manifest_b": {
+    "input_path": "",
+    "input_hash": "b785c06e180470c3",
+    "input_type_detected": "scanned",
+    "engine_used": "tesseract",
+    "force_ocr": false,
+    "render_dpi": 0,
+    "granularity": "word",
+    "page_count": 1,
+    "blocks_count_total": 218,
+    "lines_count_total": 29,
+    "chars_count_total": 1330,
+    "avg_conf": 0.925906976744186,
+    "conf_p10": 0.92,
+    "conf_p50": 0.96,
+    "conf_p90": 0.96,
+    "page_manifests": [
+      {
+        "page_num": 1,
+        "width": 612.0,
+        "height": 792.0,
+        "blocks_count": 218,
+        "lines_count": 29,
+        "chars_count": 1330,
+        "extraction_method": "ocr_tesseract",
+        "ocr_engine": "tesseract",
+        "ocr_policy": "auto_fallback",
+        "ocr_engine_selected": "tesseract",
+        "ocr_status": "ok",
+        "ocr_failure_reason": "",
+        "ocr_attempts": [
+          {
+            "engine": "tesseract",
+            "outcome": "success",
+            "elapsed_sec": 1.159
+          }
+        ]
+      }
+    ]
+  },
+  "normalization_config": {
+    "lowercase": true,
+    "nfc_normalize": true,
+    "collapse_whitespace": true,
+    "normalize_special_spaces": true,
+    "strip_zero_width": true,
+    "normalize_quotes": true,
+    "normalize_dashes": true,
+    "join_hyphenation": true,
+    "ocr_mode": false
+  },
+  "summary": {
+    "total": 4,
+    "by_type": {
+      "modified": 4
+    },
+    "by_change_type": {
+      "layout": 1,
+      "formatting": 1,
+      "content": 2
+    },
+    "by_subtype": {
+      "layout_drift": 1,
+      "punctuation": 1,
+      "character_change": 2
+    },
+    "ocr_stats": {
+      "ocr_diffs": 0,
+      "ocr_low_severity": 0,
+      "ocr_formatting_noise": 0
+    }
+  },
+  "diffs": [
+    {
+      "page_num": 1,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "layout",
+      "old_text": "a | \"Metric Original | Revised | Precision 092 090 | | | Recall 0.88 0.90 | a8 Hee (ms) 129 124 ES | | Throughput (docs/min) 38 33",
+      "new_text": "Table (6x8)",
+      "old_text_normalized": "a | \"metric original | revised | precision 092 090 | | | recall 0.88 0.90 | a8 hee (ms) 129 124 es | | throughput (docs/min) 38 33",
+      "new_text_normalized": "table (6x8)",
+      "bbox": {
+        "x": 0.1007843137254902,
+        "y": 0.1106060606060606,
+        "width": 0.7929411764705883,
+        "height": 0.6060606060606061
+      },
+      "bbox_b": null,
+      "confidence": 0.85,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "table",
+        "alignment_reason": "deleted",
+        "line_id": "para_bf3632e3f834",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "subtype": "layout_drift",
+        "highlight_mode": "region",
+        "table_change": "structure",
+        "old_structure": {
+          "rows": 6,
+          "cols": 4
+        },
+        "new_structure": {
+          "rows": 6,
+          "cols": 8
+        },
+        "absorbed_line_diffs": 2,
+        "fusion_modules": [
+          "table",
+          "line"
+        ],
+        "fusion_count": 2,
+        "fusion_diff_count": 3,
+        "description": "Table structure changed: 4 columns added"
+      }
+    },
+    {
+      "page_num": 1,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "formatting",
+      "old_text": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+      "new_text": "Structural Modifications Table structure changes figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+      "old_text_normalized": "structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. each variation includes ground truth annotations.",
+      "new_text_normalized": "structural modifications table structure changes figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. each variation includes ground truth annotations.",
+      "bbox": {
+        "x": 0.38509803921568625,
+        "y": 0.30575757575757573,
+        "width": 0.0650980392156863,
+        "height": 0.012424242424242449
+      },
+      "bbox_b": {
+        "x": 0.38392156862745097,
+        "y": 0.31666666666666665,
+        "width": 0.0607843137254902,
+        "height": 0.012424242424242449
+      },
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "line_id",
+        "similarity": 1.0,
+        "line_id": "para_a2d26f0d504d",
+        "line_id_base": "para_a2d26f0d504d",
+        "line_id_mod": "para_a2d26f0d504d",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "replace",
+            "a_tokens": [
+              "changes,"
+            ],
+            "b_tokens": [
+              "changes"
+            ]
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.38509803921568625,
+            "y": 0.30575757575757573,
+            "width": 0.06509803921568628,
+            "height": 0.012424242424242428
+          }
+        ],
+        "word_bboxes_b": [
+          {
+            "x": 0.38392156862745097,
+            "y": 0.31666666666666665,
+            "width": 0.060784313725490174,
+            "height": 0.012424242424242428
+          }
+        ],
+        "word_bboxes": [
+          {
+            "x": 0.38509803921568625,
+            "y": 0.30575757575757573,
+            "width": 0.06509803921568628,
+            "height": 0.012424242424242428
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "punctuation",
+        "description": "Punctuation changed"
+      }
+    },
+    {
+      "page_num": 1,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+      "new_text": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive raates, and the ability to correctly classify different types of changes. | | | Metric | Original Revised | Delta : 4 E | | eraes 0.92 0.90 0.02 | | £0.02 | Recall | 0.88 0.90 sa | | | feery (cis) 129 124 | 5.00 - | Throughput (oce/min) | 38 33 5.00",
+      "old_text_normalized": "extended content section this page demonstrates how the generator handles multi-page documents. paragraphs are distributed across pages, and modifications can occur on any page. the evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+      "new_text_normalized": "extended content section this page demonstrates how the generator handles multi-page documents. paragraphs are distributed across pages, and modifications can occur on any page. the evaluation framework uses these synthetic pairs to measure detection accuracy, false positive raates, and the ability to correctly classify different types of changes. | | | metric | original revised | delta : 4 e | | eraes 0.92 0.90 0.02 | | £0.02 | recall | 0.88 0.90 sa | | | feery (cis) 129 124 | 5.00-| throughput (oce/min) | 38 33 5.00",
+      "bbox": {
+        "x": 0.6196078431372549,
+        "y": 0.42121212121212115,
+        "width": 0.039215686274509776,
+        "height": 0.010303030303030314
+      },
+      "bbox_b": {
+        "x": 0.11254901960784312,
+        "y": 0.42787878787878786,
+        "width": 0.5525490196078432,
+        "height": 0.20121212121212118
+      },
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "line_id",
+        "similarity": 1.0,
+        "line_id": "para_23bf553c7b66",
+        "line_id_base": "para_23bf553c7b66",
+        "line_id_mod": "para_23bf553c7b66",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "replace",
+            "a_tokens": [
+              "rates,"
+            ],
+            "b_tokens": [
+              "raates,"
+            ]
+          },
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "|",
+              "|",
+              "|",
+              "Metric",
+              "|",
+              "Original",
+              "Revised",
+              "|",
+              "Delta",
+              ":",
+              "4",
+              "E",
+              "|",
+              "|",
+              "eraes",
+              "0.92",
+              "0.90",
+              "0.02",
+              "|",
+              "|",
+              "£0.02",
+              "|",
+              "Recall",
+              "|",
+              "0.88",
+              "0.90",
+              "sa",
+              "|",
+              "|",
+              "|",
+              "feery",
+              "(cis)",
+              "129",
+              "124",
+              "|",
+              "5.00",
+              "-",
+              "|",
+              "Throughput",
+              "(oce/min)",
+              "|",
+              "38",
+              "33",
+              "5.00"
+            ]
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.6196078431372549,
+            "y": 0.42121212121212115,
+            "width": 0.0392156862745098,
+            "height": 0.010303030303030335
+          }
+        ],
+        "word_bboxes_b": [
+          {
+            "x": 0.6176470588235294,
+            "y": 0.42787878787878786,
+            "width": 0.047450980392156894,
+            "height": 0.01000000000000002
+          },
+          {
+            "x": 0.11254901960784312,
+            "y": 0.48727272727272725,
+            "width": 0.049019607843137254,
+            "height": 0.020909090909090912
+          },
+          {
+            "x": 0.2784313725490196,
+            "y": 0.4951515151515151,
+            "width": 0.0545098039215686,
+            "height": 0.012424242424242393
+          },
+          {
+            "x": 0.35294117647058826,
+            "y": 0.49454545454545457,
+            "width": 0.051764705882352956,
+            "height": 0.009696969696969706
+          },
+          {
+            "x": 0.4274509803921568,
+            "y": 0.4933333333333333,
+            "width": 0.03490196078431375,
+            "height": 0.01000000000000002
+          },
+          {
+            "x": 0.24941176470588233,
+            "y": 0.5157575757575757,
+            "width": 0.020392156862745082,
+            "height": 0.0015151515151515008
+          },
+          {
+            "x": 0.3419607843137255,
+            "y": 0.5142424242424242,
+            "width": 0.010980392156862744,
+            "height": 0.0018181818181818154
+          },
+          {
+            "x": 0.11254901960784312,
+            "y": 0.5172727272727273,
+            "width": 0.060784313725490174,
+            "height": 0.020303030303030285
+          },
+          {
+            "x": 0.29254901960784313,
+            "y": 0.5257575757575758,
+            "width": 0.027843137254901947,
+            "height": 0.00939393939393939
+          },
+          {
+            "x": 0.3666666666666667,
+            "y": 0.5248484848484849,
+            "width": 0.027843137254901947,
+            "height": 0.009090909090909077
+          },
+          {
+            "x": 0.4298039215686274,
+            "y": 0.5130303030303031,
+            "width": 0.03254901960784316,
+            "height": 0.01999999999999997
+          },
+          {
+            "x": 0.42823529411764705,
+            "y": 0.543030303030303,
+            "width": 0.03647058823529411,
+            "height": 0.01999999999999997
+          },
+          {
+            "x": 0.11568627450980391,
+            "y": 0.546969696969697,
+            "width": 0.04784313725490196,
+            "height": 0.021212121212121227
+          },
+          {
+            "x": 0.29294117647058826,
+            "y": 0.5557575757575757,
+            "width": 0.02823529411764706,
+            "height": 0.00939393939393939
+          },
+          {
+            "x": 0.3670588235294117,
+            "y": 0.5545454545454546,
+            "width": 0.02823529411764706,
+            "height": 0.009696969696969706
+          },
+          {
+            "x": 0.2403921568627451,
+            "y": 0.5754545454545454,
+            "width": 0.030980392156862758,
+            "height": 0.0015151515151515008
+          },
+          {
+            "x": 0.116078431372549,
+            "y": 0.5769696969696969,
+            "width": 0.048627450980392145,
+            "height": 0.021818181818181855
+          },
+          {
+            "x": 0.16862745098039217,
+            "y": 0.5763636363636363,
+            "width": 0.030196078431372557,
+            "height": 0.022424242424242413
+          },
+          {
+            "x": 0.2968627450980392,
+            "y": 0.5851515151515152,
+            "width": 0.022745098039215667,
+            "height": 0.009090909090909077
+          },
+          {
+            "x": 0.3705882352941176,
+            "y": 0.5842424242424242,
+            "width": 0.02313725490196078,
+            "height": 0.009090909090909077
+          },
+          {
+            "x": 0.4298039215686274,
+            "y": 0.573030303030303,
+            "width": 0.0333333333333333,
+            "height": 0.019696969696969727
+          },
+          {
+            "x": 0.1188235294117647,
+            "y": 0.6069696969696969,
+            "width": 0.07098039215686275,
+            "height": 0.022121212121212097
+          },
+          {
+            "x": 0.19490196078431374,
+            "y": 0.6054545454545455,
+            "width": 0.06627450980392158,
+            "height": 0.022727272727272728
+          },
+          {
+            "x": 0.3003921568627451,
+            "y": 0.6151515151515151,
+            "width": 0.01568627450980391,
+            "height": 0.00939393939393939
+          },
+          {
+            "x": 0.3741176470588235,
+            "y": 0.6033333333333333,
+            "width": 0.01764705882352943,
+            "height": 0.01999999999999997
+          },
+          {
+            "x": 0.4180392156862745,
+            "y": 0.6027272727272727,
+            "width": 0.045490196078431376,
+            "height": 0.019696969696969727
+          }
+        ],
+        "word_bboxes": [
+          {
+            "x": 0.6196078431372549,
+            "y": 0.42121212121212115,
+            "width": 0.0392156862745098,
+            "height": 0.010303030303030335
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 1,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Figure 1. Baseline architecture illustration.",
+      "new_text": "Figure 2. Baseline architecture illustration.",
+      "old_text_normalized": "figure 1. baseline architecture illustration.",
+      "new_text_normalized": "figure 2. baseline architecture illustration.",
+      "bbox": {
+        "x": 0.15725490196078432,
+        "y": 0.803939393939394,
+        "width": 0.00941176470588237,
+        "height": 0.009999999999999898
+      },
+      "bbox_b": {
+        "x": 0.16117647058823528,
+        "y": 0.8230303030303031,
+        "width": 0.012549019607843132,
+        "height": 0.009999999999999898
+      },
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "fuzzy",
+        "similarity": 0.8071111111111103,
+        "line_id": "853fbf1af103",
+        "line_id_base": "853fbf1af103",
+        "line_id_mod": "708229db6cba",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "replace",
+            "a_tokens": [
+              "1."
+            ],
+            "b_tokens": [
+              "2."
+            ]
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.15725490196078432,
+            "y": 0.803939393939394,
+            "width": 0.00941176470588236,
+            "height": 0.009999999999999948
+          }
+        ],
+        "word_bboxes_b": [
+          {
+            "x": 0.16117647058823528,
+            "y": 0.8230303030303031,
+            "width": 0.012549019607843125,
+            "height": 0.009999999999999948
+          }
+        ],
+        "word_bboxes": [
+          {
+            "x": 0.15725490196078432,
+            "y": 0.803939393939394,
+            "width": 0.00941176470588236,
+            "height": 0.009999999999999948
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    }
+  ],
+  "comparison_report": {
+    "text_diffs_count": 3,
+    "table_diffs_count": 1,
+    "figure_diffs_count": 0,
+    "formula_diffs_count": 0,
+    "layout_diffs_count": 1,
+    "total_diffs": 4,
+    "diffs_before_fusion": 6,
+    "diffs_after_fusion": 4,
+    "fusion_reduction_percent": 33.333333333333336,
+    "by_change_type": {
+      "content": 2,
+      "visual": 0,
+      "layout": 1,
+      "formatting": 1
+    },
+    "by_diff_type": {
+      "added": 0,
+      "deleted": 0,
+      "modified": 4
+    }
+  }
+}

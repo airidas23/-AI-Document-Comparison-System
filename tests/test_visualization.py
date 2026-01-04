@@ -104,6 +104,92 @@ def test_create_diff_summary_image():
     assert img.dtype == np.uint8
 
 
+def test_overlay_diffs_with_word_bboxes():
+    """Test overlay_diffs with word-level bboxes in metadata."""
+    image = np.ones((100, 100, 3), dtype=np.uint8) * 255
+    
+    # Diff with word-level bboxes in metadata (side-specific)
+    diffs = [
+        Diff(
+            page_num=1,
+            diff_type="modified",
+            change_type="content",
+            old_text="Hello world",
+            new_text="Hello universe",
+            bbox={"x": 0.1, "y": 0.1, "width": 0.6, "height": 0.1},  # Line-level bbox
+            bbox_b={"x": 0.1, "y": 0.2, "width": 0.6, "height": 0.1},
+            confidence=0.9,
+            metadata={
+                "word_bboxes_a": [
+                    {"x": 0.4, "y": 0.1, "width": 0.15, "height": 0.1},
+                ],
+                "word_bboxes_b": [
+                    {"x": 0.42, "y": 0.2, "width": 0.18, "height": 0.1},
+                ],
+            },
+        ),
+    ]
+    
+    # With word_bboxes enabled (default) on doc A
+    result_word = overlay_diffs(
+        image.copy(),
+        diffs,
+        page_width=100,
+        page_height=100,
+        use_normalized=True,
+        use_word_bboxes=True,
+        doc_side="a",
+    )
+    
+    # With word_bboxes disabled (use line bbox)
+    result_line = overlay_diffs(
+        image.copy(),
+        diffs,
+        page_width=100,
+        page_height=100,
+        use_normalized=True,
+        use_word_bboxes=False,
+        doc_side="a",
+    )
+    
+    # Both should modify the image
+    assert not np.array_equal(result_word, image)
+    assert not np.array_equal(result_line, image)
+    
+    # Word-level and line-level results should be different
+    assert not np.array_equal(result_word, result_line)
+
+
+def test_overlay_diffs_uses_doc_side_b_word_bboxes_and_bbox_b():
+    """Doc B overlay should use `word_bboxes_b` (or `bbox_b`) instead of doc A boxes."""
+    image = np.ones((100, 100, 3), dtype=np.uint8) * 255
+
+    diffs = [
+        Diff(
+            page_num=1,
+            diff_type="modified",
+            change_type="content",
+            old_text="A",
+            new_text="B",
+            bbox={"x": 0.1, "y": 0.1, "width": 0.2, "height": 0.2},
+            bbox_b={"x": 0.7, "y": 0.7, "width": 0.2, "height": 0.2},
+            confidence=0.9,
+            metadata={
+                "word_bboxes_a": [{"x": 0.1, "y": 0.1, "width": 0.1, "height": 0.1}],
+                "word_bboxes_b": [{"x": 0.7, "y": 0.7, "width": 0.1, "height": 0.1}],
+            },
+        ),
+    ]
+
+    a_img = overlay_diffs(image.copy(), diffs, page_width=100, page_height=100, use_normalized=True, doc_side="a")
+    b_img = overlay_diffs(image.copy(), diffs, page_width=100, page_height=100, use_normalized=True, doc_side="b")
+
+    assert not np.array_equal(a_img, image)
+    assert not np.array_equal(b_img, image)
+    # The overlays should differ because they highlight different regions.
+    assert not np.array_equal(a_img, b_img)
+
+
 def test_normalize_bbox():
     """Test bbox coordinate normalization."""
     bbox = (100, 50, 200, 150)

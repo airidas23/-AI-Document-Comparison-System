@@ -17,4 +17,5 @@ fi
 
 # Run the app
 echo "Starting app..."
+export DOC_DIFF_ALLOW_LOCAL_GRADIO_FILE_URLS=1
 "$PYTHON" "$PROJECT_ROOT/app.py"

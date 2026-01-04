@@ -1,23 +1,30 @@
-"""Test script for OCR bounding box visualization."""
+"""Test script for OCR bounding box visualization.
+
+Note: This is a runnable script (not a pytest test). It must add the repository
+root (parent of `tests/`) to `sys.path` so imports like `extraction.*` work when
+executed directly.
+"""
+
 import sys
 from pathlib import Path
 
-# Add project root to path
-project_root = Path(__file__).parent
-sys.path.insert(0, str(project_root))
+
+repo_root = Path(__file__).resolve().parents[1]
+tests_dir = Path(__file__).resolve().parent
+sys.path.insert(0, str(repo_root))
 
 from extraction.ocr_visualizer import visualize_ocr_on_pdf_page
 
 
 def main():
     # Use a sample PDF from the dataset
-    pdf_path = project_root / "data/synthetic/dataset/base_document.pdf"
+    pdf_path = repo_root / "data/synthetic/dataset/base_document.pdf"
     
     if not pdf_path.exists():
         print(f"[ERROR] Sample PDF not found at: {pdf_path}")
         sys.exit(1)
     
-    output_path = project_root / "ocr_viz_output.png"
+    output_path = tests_dir / "ocr_viz_output.png"
     
     print(f"[INFO] Running OCR visualization on: {pdf_path}")
     print(f"[INFO] Using OCR engine: tesseract")

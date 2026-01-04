@@ -1,0 +1,5 @@
+# Separate requirements for the optional local Gradio MCP demo
+# Keeps the main app (requirements.txt) unchanged to avoid breaking changes
+# Gradio 5+ adds MCP support via `mcp_server=True`
+
+gradio[mcp]>=5.32.0

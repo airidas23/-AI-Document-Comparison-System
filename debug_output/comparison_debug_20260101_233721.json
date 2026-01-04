@@ -1,0 +1,592 @@
+{
+  "timestamp": "20260101_233721",
+  "doc_a": "data/synthetic/test_scanned_dataset/variation_01/variation_01_original_scanned.pdf",
+  "doc_b": "data/synthetic/test_scanned_dataset/variation_01/variation_01_modified_scanned.pdf",
+  "metrics": {
+    "total_time": 4.389791965484619,
+    "extraction_time": 4.383976936340332,
+    "layout_time": 0.0,
+    "comparison_time": 0.003576993942260742,
+    "classification_time": 0.00022172927856445312,
+    "fusion_time": 8.7738037109375e-05,
+    "timing_breakdown": {
+      "extraction_a": 2.2588720321655273,
+      "line_extraction_a": 0.0004799365997314453,
+      "layout_a": 3.0994415283203125e-06,
+      "extraction_b": 2.1251049041748047,
+      "line_extraction_b": 0.0006890296936035156,
+      "layout_b": 5.0067901611328125e-06,
+      "line_comparison": 0.0008740840130485594,
+      "text_comparison": 1.0332994861528277e-05,
+      "formatting_comparison": 8.330098353326321e-07,
+      "table_comparison": 9.358298848383129e-05,
+      "header_footer_comparison": 7.919734343886375e-07,
+      "figure_comparison": 0.00020000000949949026,
+      "diff_fusion": 8.591599180363119e-05
+    },
+    "pages_processed": 1,
+    "diffs_found": 5,
+    "diffs_before_fusion": 12,
+    "diffs_after_fusion": 5,
+    "time_per_page": 4.389791965484619,
+    "fusion_reduction_percent": 58.33333333333333,
+    "quality_metrics": {
+      "ocr_quality": {
+        "total_diffs": 5,
+        "content_diffs": 3,
+        "formatting_diffs": 1,
+        "layout_diffs": 1,
+        "visual_diffs": 0,
+        "phantom_diffs_detected": 1,
+        "phantom_diff_total": 0,
+        "whitespace_only_diffs": 0,
+        "punctuation_only_diffs": 0,
+        "case_only_diffs": 0,
+        "diacritics_only_diffs": 0,
+        "ocr_noise_diffs": 0,
+        "precision_proxy": 1.0,
+        "phantom_diff_ratio": 0.0,
+        "whitespace_only_ratio": 0.0,
+        "quality_score": 76.0,
+        "severity": {
+          "none": 1,
+          "low": 3,
+          "medium": 0,
+          "high": 0,
+          "critical": 1,
+          "total": 5,
+          "real_diffs": 4,
+          "significant_diffs": 1
+        },
+        "low_confidence_diffs": 0,
+        "high_confidence_diffs": 0,
+        "avg_diff_confidence": 0.77,
+        "pairs_checked": 0,
+        "pairs_skipped_by_gating": 0,
+        "pairs_semantic_checked": 0,
+        "gating_skip_rate": 0.0,
+        "unmatched_blocks_a": 0,
+        "unmatched_blocks_b": 0,
+        "pages_skipped_identical": 0,
+        "blocks_skipped_identical": 0,
+        "engine_used": "",
+        "engine_profile_applied": false
+      },
+      "precision_proxy": 1.0,
+      "phantom_diff_ratio": 0.0,
+      "quality_score": 76.0,
+      "severity_breakdown": {
+        "none": 1,
+        "low": 3,
+        "medium": 0,
+        "high": 0,
+        "critical": 1,
+        "total": 5,
+        "real_diffs": 4,
+        "significant_diffs": 1
+      }
+    }
+  },
+  "quality_metrics": {
+    "content_diffs": 3,
+    "formatting_diffs": 1,
+    "layout_diffs": 1,
+    "visual_diffs": 0,
+    "whitespace_only_diffs": 0,
+    "formatting_only_diffs": 1,
+    "low_confidence_diffs": 0,
+    "unmatched_blocks_a": 0,
+    "unmatched_blocks_b": 0,
+    "pages_skipped_identical": 0,
+    "blocks_skipped_identical": 0,
+    "skipped_candidates_count": 0,
+    "fallback_relaxations_count": 0,
+    "whitespace_only_ratio": 0.0,
+    "phantom_diff_proxy": 0.2
+  },
+  "config": {
+    "ocr_mode": "ocr_only",
+    "ocr_engine": null,
+    "force_ocr": false,
+    "sensitivity_threshold": null,
+    "fusion_strategy": "triangulation"
+  },
+  "extraction_manifest_a": {
+    "input_path": "",
+    "input_hash": "7067f83ca024db9b",
+    "input_type_detected": "scanned",
+    "engine_used": "native",
+    "force_ocr": false,
+    "render_dpi": 0,
+    "granularity": "word",
+    "page_count": 1,
+    "blocks_count_total": 201,
+    "lines_count_total": 29,
+    "chars_count_total": 1293,
+    "avg_conf": 0.9543781094527363,
+    "conf_p10": 0.93,
+    "conf_p50": 0.96,
+    "conf_p90": 0.96,
+    "page_manifests": [
+      {
+        "page_num": 1,
+        "width": 612.0,
+        "height": 792.0,
+        "blocks_count": 201,
+        "lines_count": 29,
+        "chars_count": 1293,
+        "extraction_method": "ocr_tesseract",
+        "ocr_engine": "tesseract",
+        "ocr_policy": "auto_fallback",
+        "ocr_engine_selected": "tesseract",
+        "ocr_status": "ok",
+        "ocr_failure_reason": "",
+        "ocr_attempts": [
+          {
+            "engine": "tesseract",
+            "outcome": "success",
+            "elapsed_sec": 1.142
+          }
+        ]
+      }
+    ]
+  },
+  "extraction_manifest_b": {
+    "input_path": "",
+    "input_hash": "b785c06e180470c3",
+    "input_type_detected": "scanned",
+    "engine_used": "native",
+    "force_ocr": false,
+    "render_dpi": 0,
+    "granularity": "word",
+    "page_count": 1,
+    "blocks_count_total": 209,
+    "lines_count_total": 29,
+    "chars_count_total": 1321,
+    "avg_conf": 0.945933014354067,
+    "conf_p10": 0.93,
+    "conf_p50": 0.96,
+    "conf_p90": 0.96,
+    "page_manifests": [
+      {
+        "page_num": 1,
+        "width": 612.0,
+        "height": 792.0,
+        "blocks_count": 209,
+        "lines_count": 29,
+        "chars_count": 1321,
+        "extraction_method": "ocr_tesseract",
+        "ocr_engine": "tesseract",
+        "ocr_policy": "auto_fallback",
+        "ocr_engine_selected": "tesseract",
+        "ocr_status": "ok",
+        "ocr_failure_reason": "",
+        "ocr_attempts": [
+          {
+            "engine": "tesseract",
+            "outcome": "success",
+            "elapsed_sec": 1.108
+          }
+        ]
+      }
+    ]
+  },
+  "normalization_config": {
+    "lowercase": true,
+    "nfc_normalize": true,
+    "collapse_whitespace": true,
+    "normalize_special_spaces": true,
+    "strip_zero_width": true,
+    "normalize_quotes": true,
+    "normalize_dashes": true,
+    "join_hyphenation": true,
+    "ocr_mode": false
+  },
+  "summary": {
+    "total": 5,
+    "by_type": {
+      "modified": 4,
+      "deleted": 1
+    },
+    "by_change_type": {
+      "layout": 1,
+      "formatting": 1,
+      "content": 3
+    },
+    "by_subtype": {
+      "layout_drift": 2,
+      "punctuation": 1,
+      "character_change": 2
+    },
+    "ocr_stats": {
+      "ocr_diffs": 0,
+      "ocr_low_severity": 0,
+      "ocr_formatting_noise": 0
+    }
+  },
+  "diffs": [
+    {
+      "page_num": 1,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "layout",
+      "old_text": null,
+      "new_text": null,
+      "old_text_normalized": null,
+      "new_text_normalized": null,
+      "bbox": {
+        "x": 0.1007843137254902,
+        "y": 0.1106060606060606,
+        "width": 0.7807843137254902,
+        "height": 0.2363636363636364
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "region",
+        "subtype": "layout_drift",
+        "highlight_mode": "region",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "description": "Text modified"
+      }
+    },
+    {
+      "page_num": 1,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "formatting",
+      "old_text": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+      "new_text": "Structural Modifications Table structure changes figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+      "old_text_normalized": "structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. each variation includes ground truth annotations.",
+      "new_text_normalized": "structural modifications table structure changes figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. each variation includes ground truth annotations.",
+      "bbox": {
+        "x": 0.38509803921568625,
+        "y": 0.30575757575757573,
+        "width": 0.0650980392156863,
+        "height": 0.012727272727272754
+      },
+      "bbox_b": {
+        "x": 0.38392156862745097,
+        "y": 0.31666666666666665,
+        "width": 0.0607843137254902,
+        "height": 0.012424242424242449
+      },
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "line_id",
+        "similarity": 1.0,
+        "line_id": "para_a2d26f0d504d",
+        "line_id_base": "para_a2d26f0d504d",
+        "line_id_mod": "para_a2d26f0d504d",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "replace",
+            "a_tokens": [
+              "changes,"
+            ],
+            "b_tokens": [
+              "changes"
+            ]
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.38509803921568625,
+            "y": 0.30575757575757573,
+            "width": 0.06509803921568628,
+            "height": 0.012727272727272743
+          }
+        ],
+        "word_bboxes_b": [
+          {
+            "x": 0.38392156862745097,
+            "y": 0.31666666666666665,
+            "width": 0.060784313725490174,
+            "height": 0.012424242424242428
+          }
+        ],
+        "word_bboxes": [
+          {
+            "x": 0.38509803921568625,
+            "y": 0.30575757575757573,
+            "width": 0.06509803921568628,
+            "height": 0.012727272727272743
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "punctuation",
+        "description": "Punctuation changed"
+      }
+    },
+    {
+      "page_num": 1,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly Classify different types of changes.",
+      "new_text": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive raates, and the ability to correctly classify different types of changes. |",
+      "old_text_normalized": "extended content section this page demonstrates how the generator handles multi-page documents. paragraphs are distributed across pages, and modifications can occur on any page. the evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+      "new_text_normalized": "extended content section this page demonstrates how the generator handles multi-page documents. paragraphs are distributed across pages, and modifications can occur on any page. the evaluation framework uses these synthetic pairs to measure detection accuracy, false positive raates, and the ability to correctly classify different types of changes. |",
+      "bbox": {
+        "x": 0.6196078431372549,
+        "y": 0.42121212121212115,
+        "width": 0.039215686274509776,
+        "height": 0.010303030303030314
+      },
+      "bbox_b": {
+        "x": 0.4164705882352941,
+        "y": 0.42787878787878786,
+        "width": 0.24862745098039213,
+        "height": 0.0572727272727272
+      },
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "line_id",
+        "similarity": 1.0,
+        "line_id": "para_23bf553c7b66",
+        "line_id_base": "para_23bf553c7b66",
+        "line_id_mod": "para_23bf553c7b66",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "replace",
+            "a_tokens": [
+              "rates,"
+            ],
+            "b_tokens": [
+              "raates,"
+            ]
+          },
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "|"
+            ]
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.6196078431372549,
+            "y": 0.42121212121212115,
+            "width": 0.0392156862745098,
+            "height": 0.010303030303030335
+          }
+        ],
+        "word_bboxes_b": [
+          {
+            "x": 0.6172549019607843,
+            "y": 0.42787878787878786,
+            "width": 0.04784313725490191,
+            "height": 0.01000000000000002
+          },
+          {
+            "x": 0.4164705882352941,
+            "y": 0.4839393939393939,
+            "width": 0.001568627450980405,
+            "height": 0.0012121212121211863
+          }
+        ],
+        "word_bboxes": [
+          {
+            "x": 0.6196078431372549,
+            "y": 0.42121212121212115,
+            "width": 0.0392156862745098,
+            "height": 0.010303030303030335
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 1,
+      "page_num_b": null,
+      "diff_type": "deleted",
+      "change_type": "content",
+      "old_text": "| | Metric Original Revised | |",
+      "new_text": "| Metric Original Revised Delta | | | Precision 0.92 0.90 -0.02 | | £0.02 Recall 0.88 0.90 | | | | | (ms) 129 124 5.00 | | Throughput (docs/min) 38 33 5,00",
+      "old_text_normalized": "| | metric original revised | |",
+      "new_text_normalized": "| metric original revised delta | | | precision 0.92 0.90-0.02 | | £0.02 recall 0.88 0.90 | | | | | (ms) 129 124 5.00 | | throughput (docs/min) 38 33 5,00",
+      "bbox": {
+        "x": 0.10138880112591911,
+        "y": 0.47024939334753785,
+        "width": 0.363317081227022,
+        "height": 0.1588415157433713
+      },
+      "bbox_b": null,
+      "confidence": 0.85,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "table",
+        "alignment_reason": "added",
+        "line_id": "para_726aa2d468b6",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "subtype": "layout_drift",
+        "highlight_mode": "region",
+        "table_change": "structure",
+        "old_structure": {
+          "rows": 6,
+          "cols": 6
+        },
+        "new_structure": {
+          "rows": 7,
+          "cols": 8
+        },
+        "absorbed_line_diffs": 7,
+        "fusion_modules": [
+          "table",
+          "line"
+        ],
+        "fusion_count": 2,
+        "fusion_diff_count": 8,
+        "description": "Table structure changed: 1 row added, 2 columns added"
+      }
+    },
+    {
+      "page_num": 1,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Figure 1. Baseline architecture illustration.",
+      "new_text": "Figure 2. Baseline architecture illustration.",
+      "old_text_normalized": "figure 1. baseline architecture illustration.",
+      "new_text_normalized": "figure 2. baseline architecture illustration.",
+      "bbox": {
+        "x": 0.15725490196078432,
+        "y": 0.803939393939394,
+        "width": 0.00941176470588237,
+        "height": 0.009999999999999898
+      },
+      "bbox_b": {
+        "x": 0.16117647058823528,
+        "y": 0.8230303030303031,
+        "width": 0.012549019607843132,
+        "height": 0.009999999999999898
+      },
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "fuzzy",
+        "similarity": 0.8087162891046386,
+        "line_id": "853fbf1af103",
+        "line_id_base": "853fbf1af103",
+        "line_id_mod": "708229db6cba",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "replace",
+            "a_tokens": [
+              "1."
+            ],
+            "b_tokens": [
+              "2."
+            ]
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.15725490196078432,
+            "y": 0.803939393939394,
+            "width": 0.00941176470588236,
+            "height": 0.009999999999999948
+          }
+        ],
+        "word_bboxes_b": [
+          {
+            "x": 0.16117647058823528,
+            "y": 0.8230303030303031,
+            "width": 0.012549019607843125,
+            "height": 0.009999999999999948
+          }
+        ],
+        "word_bboxes": [
+          {
+            "x": 0.15725490196078432,
+            "y": 0.803939393939394,
+            "width": 0.00941176470588236,
+            "height": 0.009999999999999948
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    }
+  ],
+  "comparison_report": {
+    "text_diffs_count": 4,
+    "table_diffs_count": 1,
+    "figure_diffs_count": 0,
+    "formula_diffs_count": 0,
+    "layout_diffs_count": 1,
+    "total_diffs": 5,
+    "diffs_before_fusion": 12,
+    "diffs_after_fusion": 5,
+    "fusion_reduction_percent": 58.33333333333333,
+    "by_change_type": {
+      "content": 3,
+      "visual": 0,
+      "layout": 1,
+      "formatting": 1
+    },
+    "by_diff_type": {
+      "added": 0,
+      "deleted": 1,
+      "modified": 4
+    }
+  }
+}

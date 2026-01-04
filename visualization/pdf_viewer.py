@@ -20,6 +20,7 @@ def render_pages(
     diffs: List[Diff] | None = None,
     page_data: PageData | None = None,
     scale_factor: float = 2.0,
+    doc_side: str = "a",
 ) -> List[Tuple[int, np.ndarray]]:
     """
     Render PDF pages to images for Gradio display with high-DPI support.
@@ -50,15 +51,22 @@ def render_pages(
     doc = fitz.open(pdf_path)
     rendered = []
     
-    # Group diffs by page and normalize coordinates
+    # Group diffs by page.
+    # Note: For Document B rendering we should prefer side-specific page numbering
+    # (page_num_b) when available.
     diffs_by_page: dict[int, List[Diff]] = {}
     page_dimensions: dict[int, Tuple[float, float]] = {}
     
     if diffs:
+        side = str(doc_side).lower()
+        use_b = side.startswith("b")
         for diff in diffs:
-            if diff.page_num not in diffs_by_page:
-                diffs_by_page[diff.page_num] = []
-            diffs_by_page[diff.page_num].append(diff)
+            key_page = diff.page_num
+            if use_b:
+                key_page = getattr(diff, "page_num_b", None) or diff.page_num
+            if key_page not in diffs_by_page:
+                diffs_by_page[key_page] = []
+            diffs_by_page[key_page].append(diff)
     
     for page in doc:
         page_num = page.number + 1
@@ -105,6 +113,7 @@ def render_pages(
                 page_width,
                 page_height,
                 use_normalized=True,
+                doc_side="b" if str(doc_side).lower().startswith("b") else "a",
             )
 
         rendered.append((page_num, img))

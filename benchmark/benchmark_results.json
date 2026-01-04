@@ -1,0 +1,31 @@
+{
+  "digital_pdf": {
+    "pymupdf": {
+      "time": 0.005,
+      "chars": 1482,
+      "blocks": 13
+    },
+    "tesseract": {
+      "time": 0.876,
+      "chars": 1292,
+      "blocks": 192
+    },
+    "paddle": {
+      "time": 16.871,
+      "chars": 1448,
+      "blocks": 34
+    }
+  },
+  "scanned_pdf": {
+    "tesseract": {
+      "time": 1.233,
+      "chars": 1300,
+      "blocks": 203
+    },
+    "paddle": {
+      "time": 9.388,
+      "chars": 1446,
+      "blocks": 34
+    }
+  }
+}

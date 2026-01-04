@@ -1,0 +1,17 @@
+[run]
+branch = True
+
+# These modules are integration-only (heavy models / external OCR engines).
+# Unit tests intentionally do not execute them for determinism and CI stability.
+omit =
+    extraction/deepseek_ocr_engine.py
+    extraction/deepseek_persistent_worker.py
+    extraction/paddle_ocr_engine.py
+    extraction/tesseract_ocr_engine.py
+    extraction/layout_analyzer.py
+
+[report]
+exclude_lines =
+    pragma: no cover
+    if TYPE_CHECKING:
+    if __name__ == .__main__.: 

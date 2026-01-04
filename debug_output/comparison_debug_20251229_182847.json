@@ -1,0 +1,1129 @@
+{
+  "timestamp": "20251229_182847",
+  "doc_a": "data/synthetic/test_output_20p/variation_01/variation_01_original.pdf",
+  "doc_b": "data/synthetic/test_output_20p/variation_01/variation_01_modified.pdf",
+  "metrics": {
+    "total_time": 31.58636713027954,
+    "extraction_time": 31.46964144706726,
+    "layout_time": 0.0,
+    "comparison_time": 0.03769874572753906,
+    "classification_time": 0.00032591819763183594,
+    "fusion_time": 0.0001590251922607422,
+    "pages_processed": 20,
+    "diffs_found": 14,
+    "diffs_before_fusion": 39,
+    "diffs_after_fusion": 14
+  },
+  "config": {
+    "ocr_mode": "auto",
+    "ocr_engine": null,
+    "force_ocr": false,
+    "sensitivity_threshold": null,
+    "fusion_strategy": "triangulation"
+  },
+  "summary": {
+    "total": 14,
+    "by_type": {
+      "modified": 14
+    },
+    "by_change_type": {
+      "content": 12,
+      "layout": 1,
+      "formatting": 1
+    },
+    "by_subtype": {
+      "table:structure": 5,
+      "layout": 1,
+      "character_change": 7,
+      "punctuation": 1
+    },
+    "ocr_stats": {
+      "ocr_diffs": 0,
+      "ocr_low_severity": 0,
+      "ocr_formatting_noise": 0
+    }
+  },
+  "diffs": [
+    {
+      "page_num": 3,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Throughput (docs/min) 32 31",
+      "new_text": "Throughput (docs/min) 32 31 -1.00",
+      "old_text_normalized": "throughput (docs/min) 32 31",
+      "new_text_normalized": "throughput (docs/min) 32 31-1.00",
+      "bbox": {
+        "x": 0.09651499430338542,
+        "y": 0.5876015403053977,
+        "width": 0.3223663629270067,
+        "height": 0.15397546016808716
+      },
+      "bbox_b": null,
+      "confidence": 0.85,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "table",
+        "alignment_reason": "fuzzy",
+        "similarity": 0.9088211740658689,
+        "line_id": "d3ace483aeb4",
+        "line_id_base": "d3ace483aeb4",
+        "line_id_mod": "00a7be9dd993",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "-1.00"
+            ]
+          }
+        ],
+        "word_bboxes_a": [],
+        "word_bboxes_b": [
+          {
+            "x": 0.4284093021567351,
+            "y": 0.7163194598573627,
+            "width": 0.03351468354268791,
+            "height": 0.015613594440498738
+          }
+        ],
+        "word_bboxes": [],
+        "highlight_mode": "line_fallback",
+        "table_change": "structure",
+        "old_structure": {
+          "rows": 5,
+          "cols": 3
+        },
+        "new_structure": {
+          "rows": 5,
+          "cols": 4
+        },
+        "absorbed_line_diffs": 5,
+        "fusion_modules": [
+          "table",
+          "line"
+        ],
+        "fusion_count": 2,
+        "fusion_diff_count": 6,
+        "subtype": "table:structure",
+        "description": "Table structure changed: 1 column added"
+      }
+    },
+    {
+      "page_num": 7,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Throughput (docs/min) 32 31",
+      "new_text": "Throughput (docs/min) 32 31 -1.00",
+      "old_text_normalized": "throughput (docs/min) 32 31",
+      "new_text_normalized": "throughput (docs/min) 32 31-1.00",
+      "bbox": {
+        "x": 0.0965144318225337,
+        "y": 0.5814933638139204,
+        "width": 0.3223242247338388,
+        "height": 0.1537734153053978
+      },
+      "bbox_b": null,
+      "confidence": 0.85,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "table",
+        "alignment_reason": "fuzzy",
+        "similarity": 0.9088211740658689,
+        "line_id": "fbf8d571b85d",
+        "line_id_base": "fbf8d571b85d",
+        "line_id_mod": "0c246ab4a18c",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "-1.00"
+            ]
+          }
+        ],
+        "word_bboxes_a": [],
+        "word_bboxes_b": [
+          {
+            "x": 0.4284093021567351,
+            "y": 0.7106376416755446,
+            "width": 0.03351468354268791,
+            "height": 0.015613594440498738
+          }
+        ],
+        "word_bboxes": [],
+        "highlight_mode": "line_fallback",
+        "table_change": "structure",
+        "old_structure": {
+          "rows": 5,
+          "cols": 3
+        },
+        "new_structure": {
+          "rows": 5,
+          "cols": 4
+        },
+        "absorbed_line_diffs": 5,
+        "fusion_modules": [
+          "table",
+          "line"
+        ],
+        "fusion_count": 2,
+        "fusion_diff_count": 6,
+        "subtype": "table:structure",
+        "description": "Table structure changed: 1 column added"
+      }
+    },
+    {
+      "page_num": 11,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "layout",
+      "old_text": null,
+      "new_text": null,
+      "old_text_normalized": null,
+      "new_text_normalized": null,
+      "bbox": null,
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "formatting_type": "spacing",
+        "old_spacing": 27.03418477376302,
+        "new_spacing": 34.23656336466471,
+        "fusion_modules": [
+          "formatting"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "is_ocr": false,
+        "subtype": "layout",
+        "description": "Spacing changed from 27.0pt to 34.2pt"
+      }
+    },
+    {
+      "page_num": 11,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed",
+      "new_text": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are",
+      "old_text_normalized": "extended content section this page demonstrates how the generator handles multi-page documents. paragraphs are distributed",
+      "new_text_normalized": "extended content section this page demonstrates how the generator handles multi-page documents. paragraphs are",
+      "bbox": {
+        "x": 0.09803921568627451,
+        "y": 0.3598440536344894,
+        "width": 0.79197682898029,
+        "height": 0.016001267866654845
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "fuzzy",
+        "similarity": 0.9543045461279713,
+        "line_id": "6a44763b7062",
+        "line_id_base": "6a44763b7062",
+        "line_id_mod": "cee3c5077b3b",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "delete",
+            "a_tokens": [
+              "distributed"
+            ],
+            "b_tokens": []
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.8236092960133272,
+            "y": 0.3598440536344894,
+            "width": 0.06640674865323734,
+            "height": 0.01600126786665483
+          }
+        ],
+        "word_bboxes_b": [],
+        "word_bboxes": [
+          {
+            "x": 0.8236092960133272,
+            "y": 0.3598440536344894,
+            "width": 0.06640674865323734,
+            "height": 0.01600126786665483
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 11,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection",
+      "new_text": "distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to",
+      "old_text_normalized": "across pages, and modifications can occur on any page. the evaluation framework uses these synthetic pairs to measure detection",
+      "new_text_normalized": "distributed across pages, and modifications can occur on any page. the evaluation framework uses these synthetic pairs to",
+      "bbox": {
+        "x": 0.09803921568627451,
+        "y": 0.376889508179944,
+        "width": 0.8039211697048612,
+        "height": 0.016001267866654845
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "fuzzy",
+        "similarity": 0.8859040640723514,
+        "line_id": "ead44b20e499",
+        "line_id_base": "ead44b20e499",
+        "line_id_mod": "7e797d1848fc",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "distributed"
+            ]
+          },
+          {
+            "tag": "delete",
+            "a_tokens": [
+              "measure",
+              "detection"
+            ],
+            "b_tokens": []
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.7895262475107231,
+            "y": 0.376889508179944,
+            "width": 0.051722208658854164,
+            "height": 0.01600126786665483
+          },
+          {
+            "x": 0.8450536790236928,
+            "y": 0.376889508179944,
+            "width": 0.056906706367442814,
+            "height": 0.01600126786665483
+          }
+        ],
+        "word_bboxes_b": [
+          {
+            "x": 0.09803921568627451,
+            "y": 0.3735164295543324,
+            "width": 0.06783823250165952,
+            "height": 0.015613632972794349
+          }
+        ],
+        "word_bboxes": [
+          {
+            "x": 0.7895262475107231,
+            "y": 0.376889508179944,
+            "width": 0.051722208658854164,
+            "height": 0.01600126786665483
+          },
+          {
+            "x": 0.8450536790236928,
+            "y": 0.376889508179944,
+            "width": 0.056906706367442814,
+            "height": 0.01600126786665483
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 11,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "accuracy, false positive rates, and the ability to correctly classify different types of changes. Constraint: preserve semantics while",
+      "new_text": "measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes. Constraint:",
+      "old_text_normalized": "accuracy, false positive rates, and the ability to correctly classify different types of changes. constraint: preserve semantics while",
+      "new_text_normalized": "measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes. constraint:",
+      "bbox": {
+        "x": 0.09803921568627451,
+        "y": 0.3939349627253985,
+        "width": 0.8027032590379902,
+        "height": 0.016001267866654845
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "fuzzy",
+        "similarity": 0.796282875143473,
+        "line_id": "29e36a3a4e66",
+        "line_id_base": "29e36a3a4e66",
+        "line_id_mod": "6d6e1ab29c7f",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "measure",
+              "detection"
+            ]
+          },
+          {
+            "tag": "delete",
+            "a_tokens": [
+              "preserve",
+              "semantics",
+              "while"
+            ],
+            "b_tokens": []
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.7446911381740197,
+            "y": 0.3939349627253985,
+            "width": 0.05257595286649816,
+            "height": 0.01600126786665483
+          },
+          {
+            "x": 0.8011478099947661,
+            "y": 0.3939349627253985,
+            "width": 0.06122210134867749,
+            "height": 0.01600126786665483
+          },
+          {
+            "x": 0.866250630297692,
+            "y": 0.3939349627253985,
+            "width": 0.034491844426572715,
+            "height": 0.01600126786665483
+          }
+        ],
+        "word_bboxes_b": [
+          {
+            "x": 0.09803921568627451,
+            "y": 0.3874053184432213,
+            "width": 0.05720588584351384,
+            "height": 0.015613632972794349
+          },
+          {
+            "x": 0.15933333502875435,
+            "y": 0.3874053184432213,
+            "width": 0.059676463307898026,
+            "height": 0.015613632972794349
+          }
+        ],
+        "word_bboxes": [
+          {
+            "x": 0.7446911381740197,
+            "y": 0.3939349627253985,
+            "width": 0.05257595286649816,
+            "height": 0.01600126786665483
+          },
+          {
+            "x": 0.8011478099947661,
+            "y": 0.3939349627253985,
+            "width": 0.06122210134867749,
+            "height": 0.01600126786665483
+          },
+          {
+            "x": 0.866250630297692,
+            "y": 0.3939349627253985,
+            "width": 0.034491844426572715,
+            "height": 0.01600126786665483
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 11,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "perturbing formatting.",
+      "new_text": "preserve semantics while perturbing formatting.",
+      "old_text_normalized": "perturbing formatting.",
+      "new_text_normalized": "preserve semantics while perturbing formatting.",
+      "bbox": {
+        "x": 0.09803921568627451,
+        "y": 0.41098041727085305,
+        "width": 0.1379673278409671,
+        "height": 0.016001267866654845
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "fuzzy",
+        "similarity": 0.6178704655961728,
+        "line_id": "68150fc3ccd0",
+        "line_id_base": "68150fc3ccd0",
+        "line_id_mod": "cd3aa3d215d8",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "preserve",
+              "semantics",
+              "while"
+            ]
+          }
+        ],
+        "word_bboxes_a": [],
+        "word_bboxes_b": [
+          {
+            "x": 0.09803921568627451,
+            "y": 0.4012942073321102,
+            "width": 0.05720588584351384,
+            "height": 0.015613632972794349
+          },
+          {
+            "x": 0.15933333502875435,
+            "y": 0.4012942073321102,
+            "width": 0.0661911683924058,
+            "height": 0.015613632972794349
+          },
+          {
+            "x": 0.22961276185278798,
+            "y": 0.4012942073321102,
+            "width": 0.03349997327218648,
+            "height": 0.015613632972794349
+          }
+        ],
+        "word_bboxes": [],
+        "highlight_mode": "line_fallback",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 11,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Throughput (docs/min) 32 31",
+      "new_text": "Throughput (docs/min) 32 31 -1.00",
+      "old_text_normalized": "throughput (docs/min) 32 31",
+      "new_text_normalized": "throughput (docs/min) 32 31-1.00",
+      "bbox": {
+        "x": 0.09636578129787071,
+        "y": 0.5956633226799242,
+        "width": 0.32252893186083026,
+        "height": 0.15380415482954546
+      },
+      "bbox_b": null,
+      "confidence": 0.85,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "table",
+        "alignment_reason": "fuzzy",
+        "similarity": 0.7852987623459247,
+        "line_id": "f2950b0b45d7",
+        "line_id_base": "f2950b0b45d7",
+        "line_id_mod": "b4506f14732d",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "-1.00"
+            ]
+          }
+        ],
+        "word_bboxes_a": [],
+        "word_bboxes_b": [
+          {
+            "x": 0.4284093021567351,
+            "y": 0.7125315810694839,
+            "width": 0.03351468354268791,
+            "height": 0.015613594440498738
+          }
+        ],
+        "word_bboxes": [],
+        "highlight_mode": "line_fallback",
+        "table_change": "structure",
+        "old_structure": {
+          "rows": 5,
+          "cols": 3
+        },
+        "new_structure": {
+          "rows": 5,
+          "cols": 4
+        },
+        "absorbed_line_diffs": 5,
+        "fusion_modules": [
+          "table",
+          "line"
+        ],
+        "fusion_count": 2,
+        "fusion_diff_count": 6,
+        "subtype": "table:structure",
+        "description": "Table structure changed: 1 column added"
+      }
+    },
+    {
+      "page_num": 14,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications",
+      "new_text": "Put differently, structural modifications table structure changes, figure caption updates, and header/footer",
+      "old_text_normalized": "structural modifications table structure changes, figure caption updates, and header/footer modifications",
+      "new_text_normalized": "put differently, structural modifications table structure changes, figure caption updates, and header/footer",
+      "bbox": {
+        "x": 0.09803921568627451,
+        "y": 0.14547033020944306,
+        "width": 0.7953070347605188,
+        "height": 0.0182159019239021
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "fuzzy",
+        "similarity": 0.9111447904687475,
+        "line_id": "92b0a29da1be",
+        "line_id_base": "92b0a29da1be",
+        "line_id_mod": "1acf0a8f0902",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "Put",
+              "differently,"
+            ]
+          },
+          {
+            "tag": "delete",
+            "a_tokens": [
+              "modifications"
+            ],
+            "b_tokens": []
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.7932358286739175,
+            "y": 0.14547033020944306,
+            "width": 0.10011042177287582,
+            "height": 0.018215901923902107
+          }
+        ],
+        "word_bboxes_b": [
+          {
+            "x": 0.09803921568627451,
+            "y": 0.14547033020944306,
+            "width": 0.025752447789011437,
+            "height": 0.018215901923902107
+          },
+          {
+            "x": 0.12856128169041053,
+            "y": 0.14547033020944306,
+            "width": 0.07914460874071308,
+            "height": 0.018215901923902107
+          }
+        ],
+        "word_bboxes": [
+          {
+            "x": 0.7932358286739175,
+            "y": 0.14547033020944306,
+            "width": 0.10011042177287582,
+            "height": 0.018215901923902107
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 14,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth",
+      "new_text": "modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes",
+      "old_text_normalized": "provide comprehensive test cases for layout-aware diff detection. each variation includes ground truth",
+      "new_text_normalized": "modifications provide comprehensive test cases for layout-aware diff detection. each variation includes",
+      "bbox": {
+        "x": 0.09803921568627451,
+        "y": 0.16251577512182372,
+        "width": 0.7724024953405841,
+        "height": 0.018215911556976022
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "fuzzy",
+        "similarity": 0.9068304621868604,
+        "line_id": "8ea29e73c89f",
+        "line_id_base": "8ea29e73c89f",
+        "line_id_mod": "f140f8d47201",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "modifications"
+            ]
+          },
+          {
+            "tag": "delete",
+            "a_tokens": [
+              "ground",
+              "truth"
+            ],
+            "b_tokens": []
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.7779317618974673,
+            "y": 0.16251577512182372,
+            "width": 0.05340940188738256,
+            "height": 0.018215911556976012
+          },
+          {
+            "x": 0.8361107819999745,
+            "y": 0.16251577512182372,
+            "width": 0.03433092902688419,
+            "height": 0.018215911556976012
+          }
+        ],
+        "word_bboxes_b": [
+          {
+            "x": 0.09803921568627451,
+            "y": 0.16251577512182372,
+            "width": 0.10011029710956648,
+            "height": 0.018215911556976012
+          }
+        ],
+        "word_bboxes": [
+          {
+            "x": 0.7779317618974673,
+            "y": 0.16251577512182372,
+            "width": 0.05340940188738256,
+            "height": 0.018215911556976012
+          },
+          {
+            "x": 0.8361107819999745,
+            "y": 0.16251577512182372,
+            "width": 0.03433092902688419,
+            "height": 0.018215911556976012
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 14,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "annotations.",
+      "new_text": "ground truth annotations.",
+      "old_text_normalized": "annotations.",
+      "new_text_normalized": "ground truth annotations.",
+      "bbox": {
+        "x": 0.09803921568627451,
+        "y": 0.17956122966727825,
+        "width": 0.09347059212478935,
+        "height": 0.018215911556976022
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "fuzzy",
+        "similarity": 0.7030556821603766,
+        "line_id": "5a42d14d0ae4",
+        "line_id_base": "5a42d14d0ae4",
+        "line_id_mod": "f2a376d3a6ed",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "ground",
+              "truth"
+            ]
+          }
+        ],
+        "word_bboxes_a": [],
+        "word_bboxes_b": [
+          {
+            "x": 0.09803921568627451,
+            "y": 0.17956122966727825,
+            "width": 0.05340931462306602,
+            "height": 0.018215911556976012
+          },
+          {
+            "x": 0.1562181360581342,
+            "y": 0.17956122966727825,
+            "width": 0.034330879161560454,
+            "height": 0.018215911556976012
+          }
+        ],
+        "word_bboxes": [],
+        "highlight_mode": "line_fallback",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 15,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Throughput (docs/min) 32 31",
+      "new_text": "Throughput (docs/min) 32 31 -1.00",
+      "old_text_normalized": "throughput (docs/min) 32 31",
+      "new_text_normalized": "throughput (docs/min) 32 31-1.00",
+      "bbox": {
+        "x": 0.09646491555606618,
+        "y": 0.5593693033854167,
+        "width": 0.32249892290900734,
+        "height": 0.15432809540719694
+      },
+      "bbox_b": null,
+      "confidence": 0.85,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "table",
+        "alignment_reason": "fuzzy",
+        "similarity": 0.9088211740658689,
+        "line_id": "ebf1a912f114",
+        "line_id_base": "ebf1a912f114",
+        "line_id_mod": "1cab86ff13ea",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "-1.00"
+            ]
+          }
+        ],
+        "word_bboxes_a": [],
+        "word_bboxes_b": [
+          {
+            "x": 0.4284093021567351,
+            "y": 0.6885416820795849,
+            "width": 0.03351468354268791,
+            "height": 0.015613594440498738
+          }
+        ],
+        "word_bboxes": [],
+        "highlight_mode": "line_fallback",
+        "table_change": "structure",
+        "old_structure": {
+          "rows": 5,
+          "cols": 3
+        },
+        "new_structure": {
+          "rows": 5,
+          "cols": 4
+        },
+        "absorbed_line_diffs": 5,
+        "fusion_modules": [
+          "table",
+          "line"
+        ],
+        "fusion_count": 2,
+        "fusion_diff_count": 6,
+        "subtype": "table:structure",
+        "description": "Table structure changed: 1 column added"
+      }
+    },
+    {
+      "page_num": 17,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "formatting",
+      "old_text": "across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection",
+      "new_text": "across pages and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection",
+      "old_text_normalized": "across pages, and modifications can occur on any page. the evaluation framework uses these synthetic pairs to measure detection",
+      "new_text_normalized": "across pages and modifications can occur on any page. the evaluation framework uses these synthetic pairs to measure detection",
+      "bbox": {
+        "x": 0.09803921568627451,
+        "y": 0.16287437593094026,
+        "width": 0.8039211697048612,
+        "height": 0.01600124860050703
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "line_id",
+        "similarity": 1.0,
+        "line_id": "fc85bc2e83bf",
+        "line_id_base": "fc85bc2e83bf",
+        "line_id_mod": "fc85bc2e83bf",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "replace",
+            "a_tokens": [
+              "pages,"
+            ],
+            "b_tokens": [
+              "pages"
+            ]
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.1406361199671926,
+            "y": 0.16287437593094026,
+            "width": 0.03922630758846507,
+            "height": 0.016001248600507022
+          }
+        ],
+        "word_bboxes_b": [
+          {
+            "x": 0.14071160360099444,
+            "y": 0.16287437593094026,
+            "width": 0.035345601100547644,
+            "height": 0.016001248600507022
+          }
+        ],
+        "word_bboxes": [
+          {
+            "x": 0.1406361199671926,
+            "y": 0.16287437593094026,
+            "width": 0.03922630758846507,
+            "height": 0.016001248600507022
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "punctuation",
+        "description": "Punctuation changed"
+      }
+    },
+    {
+      "page_num": 19,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Throughput (docs/min) 32 31",
+      "new_text": "Throughput (docs/min) 32 31 -1.00",
+      "old_text_normalized": "throughput (docs/min) 32 31",
+      "new_text_normalized": "throughput (docs/min) 32 31-1.00",
+      "bbox": {
+        "x": 0.0963708256740196,
+        "y": 0.582447509765625,
+        "width": 0.32246170343137254,
+        "height": 0.1535840213660038
+      },
+      "bbox_b": null,
+      "confidence": 0.85,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "table",
+        "alignment_reason": "fuzzy",
+        "similarity": 0.9088211740658689,
+        "line_id": "dfd4940bc271",
+        "line_id_base": "dfd4940bc271",
+        "line_id_mod": "2bc8e3db104a",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "-1.00"
+            ]
+          }
+        ],
+        "word_bboxes_a": [],
+        "word_bboxes_b": [
+          {
+            "x": 0.4284093021567351,
+            "y": 0.7112689548068576,
+            "width": 0.03351468354268791,
+            "height": 0.015613594440498738
+          }
+        ],
+        "word_bboxes": [],
+        "highlight_mode": "line_fallback",
+        "table_change": "structure",
+        "old_structure": {
+          "rows": 5,
+          "cols": 3
+        },
+        "new_structure": {
+          "rows": 5,
+          "cols": 4
+        },
+        "absorbed_line_diffs": 5,
+        "fusion_modules": [
+          "table",
+          "line"
+        ],
+        "fusion_count": 2,
+        "fusion_diff_count": 6,
+        "subtype": "table:structure",
+        "description": "Table structure changed: 1 column added"
+      }
+    }
+  ],
+  "comparison_report": {
+    "text_diffs_count": 9,
+    "table_diffs_count": 5,
+    "figure_diffs_count": 0,
+    "formula_diffs_count": 0,
+    "layout_diffs_count": 1,
+    "total_diffs": 14,
+    "diffs_before_fusion": 39,
+    "diffs_after_fusion": 14,
+    "fusion_reduction_percent": 64.1025641025641,
+    "by_change_type": {
+      "content": 12,
+      "visual": 0,
+      "layout": 1,
+      "formatting": 1
+    },
+    "by_diff_type": {
+      "added": 0,
+      "deleted": 0,
+      "modified": 14
+    }
+  }
+}

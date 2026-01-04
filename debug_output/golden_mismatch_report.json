@@ -1,0 +1,3971 @@
+{
+  "dataset_dir": "/Users/airidas/Documents/KTU/P170M109 Computational Intelligence and Decision Making/project/data/synthetic/dataset",
+  "generated_at": "2026-01-04T18:04:35",
+  "variations": [
+    {
+      "pair_id": "variation_01",
+      "gt_count": 5,
+      "pred_count": 5,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "matches": [
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "layout",
+            "old_text": null,
+            "new_text": null,
+            "bbox": {
+              "x": 0.09803921568627451,
+              "y": 0.3765782828282828,
+              "width": 0.7973853217230903,
+              "height": 0.45402781168619794
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "region",
+              "subtype": "layout_drift",
+              "highlight_mode": "region",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "description": "Text modified"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "layout",
+            "before": null,
+            "after": null,
+            "region": "paragraph_2",
+            "severity": "minor",
+            "description": "Changed paragraph spacing to 18pt to simulate layout drift."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "old_text": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "new_text": "Structural Modifications Table structure changes figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "bbox": {
+              "x": 0.3858986648858762,
+              "y": 0.29450757575757575,
+              "width": 0.06630716760174121,
+              "height": 0.017348491784298037
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "line",
+              "alignment_reason": "fuzzy",
+              "similarity": 0.9511450105275437,
+              "line_id": "para_264da37941a1",
+              "line_id_base": "para_264da37941a1",
+              "line_id_mod": "para_a2d26f0d504d",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "replace",
+                  "a_tokens": [
+                    "changes,"
+                  ],
+                  "b_tokens": [
+                    "changes"
+                  ]
+                }
+              ],
+              "word_bboxes_a": [
+                {
+                  "x": 0.3858986648858762,
+                  "y": 0.29450757575757575,
+                  "width": 0.06630716760174121,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "word_bboxes_b": [
+                {
+                  "x": 0.3858986648858762,
+                  "y": 0.30460858585858586,
+                  "width": 0.061764685936223446,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "word_bboxes": [
+                {
+                  "x": 0.3858986648858762,
+                  "y": 0.29450757575757575,
+                  "width": 0.06630716760174121,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "highlight_mode": "word",
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "subtype": "punctuation",
+              "description": "Punctuation changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "before": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "after": "Structural Modifications Table structure changes figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "region": "paragraph_3",
+            "severity": "minor",
+            "description": "Removed a comma to create a subtle punctuation change."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "old_text": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+            "new_text": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive raates, and the ability to correctly classify different types of changes.",
+            "bbox": {
+              "x": 0.6211437150543812,
+              "y": 0.40940656565656564,
+              "width": 0.04086597916347523,
+              "height": 0.01734847251815025
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "line",
+              "alignment_reason": "fuzzy",
+              "similarity": 0.9625414034956696,
+              "line_id": "para_95976d6cdadc",
+              "line_id_base": "para_95976d6cdadc",
+              "line_id_mod": "para_23bf553c7b66",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "replace",
+                  "a_tokens": [
+                    "rates,"
+                  ],
+                  "b_tokens": [
+                    "raates,"
+                  ]
+                }
+              ],
+              "word_bboxes_a": [
+                {
+                  "x": 0.6211437150543812,
+                  "y": 0.40940656565656564,
+                  "width": 0.040865979163475286,
+                  "height": 0.017348472518150252
+                }
+              ],
+              "word_bboxes_b": [
+                {
+                  "x": 0.6211437150543812,
+                  "y": 0.41950757575757575,
+                  "width": 0.049950942494510826,
+                  "height": 0.017348472518150252
+                }
+              ],
+              "word_bboxes": [
+                {
+                  "x": 0.6211437150543812,
+                  "y": 0.40940656565656564,
+                  "width": 0.040865979163475286,
+                  "height": 0.017348472518150252
+                }
+              ],
+              "highlight_mode": "word",
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "subtype": "character_change",
+              "description": "Character content changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "before": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+            "after": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive raates, and the ability to correctly classify different types of changes.",
+            "region": "paragraph_4",
+            "severity": "minor",
+            "description": "Inserted a character duplication typo inside a long word."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "old_text": "Metric Original Revised",
+            "new_text": "Metric Original Revised Delta",
+            "bbox": {
+              "x": 0.09677684110753676,
+              "y": 0.4776255104758523,
+              "width": 0.3219664091222426,
+              "height": 0.1536691006747159
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "table",
+              "table_change": "structure",
+              "old_structure": {
+                "rows": 5,
+                "cols": 3
+              },
+              "new_structure": {
+                "rows": 5,
+                "cols": 4
+              },
+              "fusion_modules": [
+                "table"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "is_ocr": false,
+              "subtype": "table:structure",
+              "description": "Table structure changed: 1 column added"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "before": "Metric Original Revised",
+            "after": "Metric Original Revised Delta",
+            "region": "table",
+            "severity": "moderate",
+            "description": "Added a derived delta column to the metrics table."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "visual",
+            "old_text": "Figure 1. Baseline architecture illustration.",
+            "new_text": "Figure 2. Baseline architecture illustration.",
+            "bbox": {
+              "x": 0.09706736845128676,
+              "y": 0.6456611032196969,
+              "width": 0.46035838407628665,
+              "height": 0.1849449912947838
+            },
+            "confidence": 0.85,
+            "metadata": {
+              "type": "figure",
+              "alignment_reason": "fuzzy",
+              "similarity": 0.8707748209270219,
+              "line_id": "0c222bb46a8d",
+              "line_id_base": "0c222bb46a8d",
+              "line_id_mod": "ca5330458543",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "replace",
+                  "a_tokens": [
+                    "1."
+                  ],
+                  "b_tokens": [
+                    "2."
+                  ]
+                }
+              ],
+              "word_bboxes_a": [
+                {
+                  "x": 0.14888889337676803,
+                  "y": 0.8135100855971827,
+                  "width": 0.01362744499655331,
+                  "height": 0.01709600891729798
+                }
+              ],
+              "word_bboxes_b": [
+                {
+                  "x": 0.14888889337676803,
+                  "y": 0.8236110956981929,
+                  "width": 0.01362744499655331,
+                  "height": 0.01709600891729798
+                }
+              ],
+              "word_bboxes": [
+                {
+                  "x": 0.14888889337676803,
+                  "y": 0.8135100855971827,
+                  "width": 0.01362744499655331,
+                  "height": 0.01709600891729798
+                }
+              ],
+              "highlight_mode": "word",
+              "figure_change": "numbering",
+              "old_number": 1,
+              "new_number": 2,
+              "fusion_modules": [
+                "line",
+                "figure"
+              ],
+              "fusion_count": 2,
+              "fusion_diff_count": 2,
+              "subtype": "figure:numbering",
+              "description": "Figure numbering changed from 1 to 2"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "visual",
+            "before": "Figure 1. Baseline architecture illustration.",
+            "after": "Figure 2. Baseline architecture illustration.",
+            "region": "figure_caption",
+            "severity": "minor",
+            "description": "Shifted figure numbering and caption wording."
+          }
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "pair_id": "variation_02",
+      "gt_count": 8,
+      "pred_count": 6,
+      "tp": 6,
+      "fp": 0,
+      "fn": 2,
+      "matches": [
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "layout",
+            "old_text": null,
+            "new_text": null,
+            "bbox": {
+              "x": 0.09803921568627451,
+              "y": 0.19602272727272727,
+              "width": 0.7973853217230903,
+              "height": 0.6345833672417535
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "region",
+              "subtype": "layout_drift",
+              "highlight_mode": "region",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 2,
+              "description": "Text modified"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "layout",
+            "before": null,
+            "after": null,
+            "region": "paragraph_4",
+            "severity": "minor",
+            "description": "Changed paragraph spacing to 6pt to simulate layout drift."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "old_text": "Synthetic PDF baseline",
+            "new_text": "PDF diff QA sprint",
+            "bbox": {
+              "x": 0.08823529411764706,
+              "y": 0.03323863732694375,
+              "width": 0.15283821455014296,
+              "height": 0.015613637789331301
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "header_footer_change": "header",
+              "is_page_number": false,
+              "is_repeating": false,
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "fusion_modules": [
+                "header_footer"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "is_ocr": false,
+              "subtype": "header_footer:header",
+              "description": "Header changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "before": "Synthetic PDF baseline",
+            "after": "PDF diff QA sprint",
+            "region": "header",
+            "severity": "minor",
+            "description": "Updated header text to simulate branding/layout change."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "old_text": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "new_text": "These modifications test the ability to detect subtle content differences while maintaining paper structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "bbox": {
+              "x": 0.7401305553959865,
+              "y": 0.19602272727272727,
+              "width": 0.071748322131587,
+              "height": 0.017348491784298065
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "line",
+              "alignment_reason": "fuzzy",
+              "similarity": 0.9342794365255586,
+              "line_id": "para_cf111437c626",
+              "line_id_base": "para_cf111437c626",
+              "line_id_mod": "para_b12867df27f8",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "replace",
+                  "a_tokens": [
+                    "document"
+                  ],
+                  "b_tokens": [
+                    "paper"
+                  ]
+                }
+              ],
+              "word_bboxes_a": [
+                {
+                  "x": 0.7401305553959865,
+                  "y": 0.19602272727272727,
+                  "width": 0.07174832213158701,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "word_bboxes_b": [
+                {
+                  "x": 0.6759214214250153,
+                  "y": 0.1961174203891947,
+                  "width": 0.03760294197431577,
+                  "height": 0.015613632972794349
+                }
+              ],
+              "word_bboxes": [
+                {
+                  "x": 0.7401305553959865,
+                  "y": 0.19602272727272727,
+                  "width": 0.07174832213158701,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "highlight_mode": "word",
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "subtype": "character_change",
+              "description": "Character content changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "before": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "after": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "region": "paragraph_2",
+            "severity": "minor",
+            "description": "Adjusted font size to 9pt for a single paragraph."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "old_text": "Metric Original Revised",
+            "new_text": "Metric Original Revised Delta",
+            "bbox": {
+              "x": 0.09677830714805453,
+              "y": 0.47762284712357955,
+              "width": 0.3219392843807445,
+              "height": 0.153689297762784
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "table",
+              "table_change": "structure",
+              "old_structure": {
+                "rows": 5,
+                "cols": 3
+              },
+              "new_structure": {
+                "rows": 5,
+                "cols": 4
+              },
+              "fusion_modules": [
+                "table"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "is_ocr": false,
+              "subtype": "table:structure",
+              "description": "Table structure changed: 1 column added"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "before": "Metric Original Revised",
+            "after": "Metric Original Revised Delta",
+            "region": "table",
+            "severity": "moderate",
+            "description": "Added a derived delta column to the metrics table."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "visual",
+            "old_text": "Figure 1. Baseline architecture illustration.",
+            "new_text": "Figure 2. Baseline architecture illustration.",
+            "bbox": {
+              "x": 0.0970699893727022,
+              "y": 0.6456653201941288,
+              "width": 0.4603571035347733,
+              "height": 0.18494077432035194
+            },
+            "confidence": 0.85,
+            "metadata": {
+              "type": "figure",
+              "alignment_reason": "fuzzy",
+              "similarity": 0.7712000641102696,
+              "line_id": "0c222bb46a8d",
+              "line_id_base": "0c222bb46a8d",
+              "line_id_mod": "49091d6047e3",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "replace",
+                  "a_tokens": [
+                    "1."
+                  ],
+                  "b_tokens": [
+                    "2."
+                  ]
+                }
+              ],
+              "word_bboxes_a": [
+                {
+                  "x": 0.14888889337676803,
+                  "y": 0.8135100855971827,
+                  "width": 0.01362744499655331,
+                  "height": 0.01709600891729798
+                }
+              ],
+              "word_bboxes_b": [
+                {
+                  "x": 0.14888889337676803,
+                  "y": 0.7844696815567788,
+                  "width": 0.01362744499655331,
+                  "height": 0.01709600891729798
+                }
+              ],
+              "word_bboxes": [
+                {
+                  "x": 0.14888889337676803,
+                  "y": 0.8135100855971827,
+                  "width": 0.01362744499655331,
+                  "height": 0.01709600891729798
+                }
+              ],
+              "highlight_mode": "word",
+              "figure_change": "numbering",
+              "old_number": 1,
+              "new_number": 2,
+              "fusion_modules": [
+                "line",
+                "figure"
+              ],
+              "fusion_count": 2,
+              "fusion_diff_count": 2,
+              "subtype": "figure:numbering",
+              "description": "Figure numbering changed from 1 to 2"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "visual",
+            "before": "Figure 1. Baseline architecture illustration.",
+            "after": "Figure 2. Baseline architecture illustration.",
+            "region": "figure_caption",
+            "severity": "minor",
+            "description": "Shifted figure numbering and caption wording."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "old_text": "Generated pair — page 1",
+            "new_text": "Prototype draft 1",
+            "bbox": {
+              "x": 0.08823529411764706,
+              "y": 0.9473800659179688,
+              "width": 0.16594112620634188,
+              "height": 0.015613594440498701
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "header_footer_change": "footer",
+              "is_page_number": false,
+              "is_repeating": false,
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "fusion_modules": [
+                "header_footer"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "is_ocr": false,
+              "subtype": "header_footer:footer",
+              "description": "Footer changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "before": "Generated pair — page 1",
+            "after": "Prototype draft 1",
+            "region": "footer",
+            "severity": "minor",
+            "description": "Updated footer text to simulate branding/layout change."
+          }
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "page": 1,
+          "diff_type": "modified",
+          "change_type": "formatting",
+          "before": null,
+          "after": null,
+          "region": "table",
+          "severity": "minor",
+          "description": "Tweaked table padding and border weight to alter structure visibility."
+        },
+        {
+          "page": 1,
+          "diff_type": "modified",
+          "change_type": "content",
+          "before": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+          "after": "These modifications test the ability to detect subtle content differences while maintaining paper structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+          "region": "paragraph_2",
+          "severity": "minor",
+          "description": "Replaced 'document' with synonym 'paper'."
+        }
+      ]
+    },
+    {
+      "pair_id": "variation_03",
+      "gt_count": 5,
+      "pred_count": 5,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "matches": [
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "layout",
+            "old_text": null,
+            "new_text": null,
+            "bbox": {
+              "x": 0.09803921568627451,
+              "y": 0.3765782828282828,
+              "width": 0.7973853217230903,
+              "height": 0.45402781168619794
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "region",
+              "subtype": "layout_drift",
+              "highlight_mode": "region",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "description": "Text modified"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "layout",
+            "before": null,
+            "after": null,
+            "region": "paragraph_2",
+            "severity": "minor",
+            "description": "Changed paragraph spacing to 18pt to simulate layout drift."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "old_text": null,
+            "new_text": null,
+            "bbox": {
+              "x": 0.09677302940219056,
+              "y": 0.4776237718986743,
+              "width": 0.32196308809168195,
+              "height": 0.15367705374053026
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "table",
+              "table_change": "style",
+              "fusion_modules": [
+                "table"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "is_ocr": false,
+              "subtype": "table:style",
+              "description": "Text modified"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "before": null,
+            "after": null,
+            "region": "table",
+            "severity": "minor",
+            "description": "Tweaked table padding and border weight to alter structure visibility."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "old_text": "Synthetic PDF baseline",
+            "new_text": "Comparison run — altered header",
+            "bbox": {
+              "x": 0.08823529411764706,
+              "y": 0.03323863732694375,
+              "width": 0.15283821455014296,
+              "height": 0.015613637789331301
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "header_footer_change": "header",
+              "is_page_number": false,
+              "is_repeating": false,
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "fusion_modules": [
+                "header_footer"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "is_ocr": false,
+              "subtype": "header_footer:header",
+              "description": "Header changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "before": "Synthetic PDF baseline",
+            "after": "Comparison run — altered header",
+            "region": "header",
+            "severity": "minor",
+            "description": "Updated header text to simulate branding/layout change."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "old_text": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "new_text": "Structural Modifications Table structure changes figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "bbox": {
+              "x": 0.3858986648858762,
+              "y": 0.29450757575757575,
+              "width": 0.06630716760174121,
+              "height": 0.017348491784298037
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "line",
+              "alignment_reason": "fuzzy",
+              "similarity": 0.9511450105275437,
+              "line_id": "para_264da37941a1",
+              "line_id_base": "para_264da37941a1",
+              "line_id_mod": "para_a2d26f0d504d",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "replace",
+                  "a_tokens": [
+                    "changes,"
+                  ],
+                  "b_tokens": [
+                    "changes"
+                  ]
+                }
+              ],
+              "word_bboxes_a": [
+                {
+                  "x": 0.3858986648858762,
+                  "y": 0.29450757575757575,
+                  "width": 0.06630716760174121,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "word_bboxes_b": [
+                {
+                  "x": 0.3858986648858762,
+                  "y": 0.30460858585858586,
+                  "width": 0.061764685936223446,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "word_bboxes": [
+                {
+                  "x": 0.3858986648858762,
+                  "y": 0.29450757575757575,
+                  "width": 0.06630716760174121,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "highlight_mode": "word",
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "subtype": "punctuation",
+              "description": "Punctuation changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "before": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "after": "Structural Modifications Table structure changes figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "region": "paragraph_3",
+            "severity": "minor",
+            "description": "Removed a comma to create a subtle punctuation change."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "old_text": "Generated pair — page 1",
+            "new_text": "Experimental footer 1",
+            "bbox": {
+              "x": 0.08823529411764706,
+              "y": 0.9473800659179688,
+              "width": 0.16594112620634188,
+              "height": 0.015613594440498701
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "header_footer_change": "footer",
+              "is_page_number": false,
+              "is_repeating": false,
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "fusion_modules": [
+                "header_footer"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "is_ocr": false,
+              "subtype": "header_footer:footer",
+              "description": "Footer changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "before": "Generated pair — page 1",
+            "after": "Experimental footer 1",
+            "region": "footer",
+            "severity": "minor",
+            "description": "Updated footer text to simulate branding/layout change."
+          }
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "pair_id": "variation_04",
+      "gt_count": 7,
+      "pred_count": 7,
+      "tp": 6,
+      "fp": 1,
+      "fn": 1,
+      "matches": [
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "old_text": "Synthetic PDF baseline",
+            "new_text": "Synthetic diff experiment",
+            "bbox": {
+              "x": 0.08823529411764706,
+              "y": 0.03323863732694375,
+              "width": 0.15283821455014296,
+              "height": 0.015613637789331301
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "header_footer_change": "header",
+              "is_page_number": false,
+              "is_repeating": false,
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "fusion_modules": [
+                "header_footer"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "is_ocr": false,
+              "subtype": "header_footer:header",
+              "description": "Header changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "before": "Synthetic PDF baseline",
+            "after": "Synthetic diff experiment",
+            "region": "header",
+            "severity": "minor",
+            "description": "Updated header text to simulate branding/layout change."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "deleted",
+            "change_type": "content",
+            "old_text": "adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes.",
+            "new_text": null,
+            "bbox": {
+              "x": 0.09803921568627451,
+              "y": 0.13036616161616163,
+              "width": 0.7056044036266851,
+              "height": 0.03376263319843947
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "line",
+              "alignment_reason": "deleted",
+              "line_id": "para_f4ee0df87bef",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "subtype": "character_change",
+              "description": "Character content changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "before": "Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with known differences. The generator applies various modifications including text changes, formatting adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes.",
+            "after": "Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with known differences. The generator applies various modifications including text changes, formatting adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes.",
+            "region": "paragraph_1",
+            "severity": "minor",
+            "description": "Adjusted font size to 12pt for a single paragraph."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "old_text": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "new_text": "synthetic PDF pairs with known differences. The generator applies various modifications including text changes, formatting adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. These modifications test the ability to detect subtle content differences while maintaining file structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simuulate real-world scenarios where documents are reformatted without altering content.",
+            "bbox": {
+              "x": 0.30782677145565257,
+              "y": 0.19602272727272727,
+              "width": 0.504052106071921,
+              "height": 0.05017677461258091
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "line",
+              "alignment_reason": "fuzzy",
+              "similarity": 0.7104171266994705,
+              "line_id": "para_cf111437c626",
+              "line_id_base": "para_cf111437c626",
+              "line_id_mod": "para_8b21000ed5c8",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "insert",
+                  "a_tokens": [],
+                  "b_tokens": [
+                    "synthetic",
+                    "PDF",
+                    "pairs",
+                    "with",
+                    "known",
+                    "differences.",
+                    "The",
+                    "generator",
+                    "applies",
+                    "various",
+                    "modifications",
+                    "including",
+                    "text",
+                    "changes,",
+                    "formatting",
+                    "adjustments,",
+                    "and",
+                    "structural",
+                    "alterations.",
+                    "Text",
+                    "Modifications",
+                    "The",
+                    "system",
+                    "can",
+                    "apply",
+                    "synonym",
+                    "swaps,",
+                    "paraphrasing,",
+                    "typo",
+                    "insertion,",
+                    "and",
+                    "punctuation",
+                    "changes."
+                  ]
+                },
+                {
+                  "tag": "replace",
+                  "a_tokens": [
+                    "document"
+                  ],
+                  "b_tokens": [
+                    "file"
+                  ]
+                },
+                {
+                  "tag": "replace",
+                  "a_tokens": [
+                    "simulate"
+                  ],
+                  "b_tokens": [
+                    "simuulate"
+                  ]
+                }
+              ],
+              "word_bboxes_a": [
+                {
+                  "x": 0.7401305553959865,
+                  "y": 0.19602272727272727,
+                  "width": 0.07174832213158701,
+                  "height": 0.017348491784298058
+                },
+                {
+                  "x": 0.30782677145565257,
+                  "y": 0.2288510101010101,
+                  "width": 0.06083332635218801,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "word_bboxes_b": [
+                {
+                  "x": 0.09803921568627451,
+                  "y": 0.11502525059863775,
+                  "width": 0.07737255719752094,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.18086275088241677,
+                  "y": 0.11502525059863775,
+                  "width": 0.0392156862745098,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.2255294151555479,
+                  "y": 0.11502525059863775,
+                  "width": 0.04249019248812806,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.27347058564229726,
+                  "y": 0.11502525059863775,
+                  "width": 0.03486274270450368,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.31378430634542226,
+                  "y": 0.11502525059863775,
+                  "width": 0.05666665469898897,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.3759019390430326,
+                  "y": 0.11502525059863775,
+                  "width": 0.10135289111168556,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.48270580815333947,
+                  "y": 0.11502525059863775,
+                  "width": 0.033784355213439546,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.5219411413654004,
+                  "y": 0.11502525059863775,
+                  "width": 0.08392154469209559,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.6113136640561172,
+                  "y": 0.11502525059863775,
+                  "width": 0.062117632697610295,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.6788822747523489,
+                  "y": 0.11502525059863775,
+                  "width": 0.06319607005399816,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.7475293228049683,
+                  "y": 0.11502525059863775,
+                  "width": 0.11441174675436581,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.09803921568627451,
+                  "y": 0.13270201827540543,
+                  "width": 0.07737255719752094,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.18086275088241677,
+                  "y": 0.13270201827540543,
+                  "width": 0.031607833563112746,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.21792156244415084,
+                  "y": 0.13270201827540543,
+                  "width": 0.07956860112208947,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.3029411415648616,
+                  "y": 0.13270201827540543,
+                  "width": 0.08717645383348652,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.3955685733969695,
+                  "y": 0.13270201827540543,
+                  "width": 0.11115686254563674,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.5121764139412275,
+                  "y": 0.13270201827540543,
+                  "width": 0.03270586799172794,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.5503332599315768,
+                  "y": 0.13270201827540543,
+                  "width": 0.08062744140625,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.6364116793364482,
+                  "y": 0.13270201827540543,
+                  "width": 0.09590193804572611,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.7377645953807955,
+                  "y": 0.13270201827540543,
+                  "width": 0.03813724891812194,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.7813528222975388,
+                  "y": 0.13270201827540543,
+                  "width": 0.11441169688904207,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.09803921568627451,
+                  "y": 0.1503787859521731,
+                  "width": 0.03378430534811581,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.13727451149934258,
+                  "y": 0.1503787859521731,
+                  "width": 0.062098048091713896,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.20482352512334687,
+                  "y": 0.1503787859521731,
+                  "width": 0.03160784602944368,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.24188234915141188,
+                  "y": 0.1503787859521731,
+                  "width": 0.04686273313036152,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.2941960602803947,
+                  "y": 0.1503787859521731,
+                  "width": 0.07845096962124694,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.378098007900263,
+                  "y": 0.1503787859521731,
+                  "width": 0.061019623201656964,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.44456860910054125,
+                  "y": 0.1503787859521731,
+                  "width": 0.11988232182521447,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.5699019089243771,
+                  "y": 0.1503787859521731,
+                  "width": 0.037058811561734066,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.6124116984847324,
+                  "y": 0.1503787859521731,
+                  "width": 0.07954900404986213,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.6974116805332159,
+                  "y": 0.1503787859521731,
+                  "width": 0.03270586799172794,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.7355685265235652,
+                  "y": 0.1503787859521731,
+                  "width": 0.10137256298189849,
+                  "height": 0.020818180508083768
+                },
+                {
+                  "x": 0.09803921568627451,
+                  "y": 0.16805556326201468,
+                  "width": 0.07956862605475133,
+                  "height": 0.020818170875009864
+                },
+                {
+                  "x": 0.7401305553959865,
+                  "y": 0.21875,
+                  "width": 0.020882350946563523,
+                  "height": 0.017348491784298058
+                },
+                {
+                  "x": 0.30782677145565257,
+                  "y": 0.2515782828282828,
+                  "width": 0.06991828968322356,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "word_bboxes": [
+                {
+                  "x": 0.7401305553959865,
+                  "y": 0.19602272727272727,
+                  "width": 0.07174832213158701,
+                  "height": 0.017348491784298058
+                },
+                {
+                  "x": 0.30782677145565257,
+                  "y": 0.2288510101010101,
+                  "width": 0.06083332635218801,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "highlight_mode": "word",
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "subtype": "character_change",
+              "description": "Character content changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "before": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "after": "These modifications test the ability to detect subtle content differences while maintaining file structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "region": "paragraph_2",
+            "severity": "minor",
+            "description": "Replaced 'document' with synonym 'file'."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "old_text": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+            "new_text": "From another angle, extended content section this page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+            "bbox": {
+              "x": 0.09803921568627451,
+              "y": 0.3765782828282828,
+              "width": 0.7973853217230903,
+              "height": 0.0665908967605745
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "line",
+              "alignment_reason": "fuzzy",
+              "similarity": 0.9065049064038433,
+              "line_id": "para_95976d6cdadc",
+              "line_id_base": "para_95976d6cdadc",
+              "line_id_mod": "para_d6fd9ea3972d",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "insert",
+                  "a_tokens": [],
+                  "b_tokens": [
+                    "From",
+                    "another",
+                    "angle,"
+                  ]
+                }
+              ],
+              "word_bboxes_a": [],
+              "word_bboxes_b": [
+                {
+                  "x": 0.09803921568627451,
+                  "y": 0.3993055555555556,
+                  "width": 0.03812091802459916,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.14070261537639145,
+                  "y": 0.3993055555555556,
+                  "width": 0.05540850271586499,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.2006535997577742,
+                  "y": 0.3993055555555556,
+                  "width": 0.04450978796466503,
+                  "height": 0.017348472518150252
+                }
+              ],
+              "word_bboxes": [],
+              "highlight_mode": "word",
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "subtype": "character_change",
+              "description": "Character content changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "before": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+            "after": "From another angle, extended content section this page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+            "region": "paragraph_4",
+            "severity": "moderate",
+            "description": "Paraphrased lead sentence to simulate subtle rewrite."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "old_text": "Metric Original Revised",
+            "new_text": "Metric Original Revised Delta",
+            "bbox": {
+              "x": 0.09677726596009496,
+              "y": 0.4776250665838068,
+              "width": 0.3219770424038756,
+              "height": 0.15367302172111735
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "table",
+              "table_change": "structure",
+              "old_structure": {
+                "rows": 5,
+                "cols": 3
+              },
+              "new_structure": {
+                "rows": 5,
+                "cols": 4
+              },
+              "fusion_modules": [
+                "table"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "is_ocr": false,
+              "subtype": "table:structure",
+              "description": "Table structure changed: 1 column added"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "before": "Metric Original Revised",
+            "after": "Metric Original Revised Delta",
+            "region": "table",
+            "severity": "moderate",
+            "description": "Added a derived delta column to the metrics table."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "old_text": "Generated pair — page 1",
+            "new_text": "Rev B — page 1",
+            "bbox": {
+              "x": 0.08823529411764706,
+              "y": 0.9473800659179688,
+              "width": 0.16594112620634188,
+              "height": 0.015613594440498701
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "header_footer_change": "footer",
+              "is_page_number": false,
+              "is_repeating": false,
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "fusion_modules": [
+                "header_footer"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "is_ocr": false,
+              "subtype": "header_footer:footer",
+              "description": "Footer changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "before": "Generated pair — page 1",
+            "after": "Rev B — page 1",
+            "region": "footer",
+            "severity": "minor",
+            "description": "Updated footer text to simulate branding/layout change."
+          }
+        }
+      ],
+      "false_positives": [
+        {
+          "page": 1,
+          "diff_type": "modified",
+          "change_type": "formatting",
+          "old_text": "Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF",
+          "new_text": "Synthetic PDF Dataset Generation This document serves as a base template for generating",
+          "bbox": {
+            "x": 0.09803921568627451,
+            "y": 0.09753787878787878,
+            "width": 0.7692155027701184,
+            "height": 0.017348482151224157
+          },
+          "confidence": 0.85,
+          "metadata": {
+            "formatting_type": "font_size",
+            "old_size": 10.0,
+            "new_size": 12.0,
+            "old_size_bucket": 10.0,
+            "new_size_bucket": 12.0,
+            "size_diff": 2.0,
+            "page_width": 612.0,
+            "page_height": 792.0,
+            "header_footer_change": "header",
+            "is_page_number": false,
+            "is_repeating": false,
+            "fusion_modules": [
+              "formatting",
+              "header_footer"
+            ],
+            "fusion_count": 2,
+            "fusion_diff_count": 2,
+            "is_ocr": false,
+            "subtype": "header_footer:header",
+            "description": "Header changed"
+          }
+        }
+      ],
+      "false_negatives": [
+        {
+          "page": 1,
+          "diff_type": "modified",
+          "change_type": "content",
+          "before": "These modifications test the ability to detect subtle content differences while maintaining file structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+          "after": "These modifications test the ability to detect subtle content differences while maintaining file structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simuulate real-world scenarios where documents are reformatted without altering content.",
+          "region": "paragraph_2",
+          "severity": "minor",
+          "description": "Inserted a character duplication typo inside a long word."
+        }
+      ]
+    },
+    {
+      "pair_id": "variation_05",
+      "gt_count": 6,
+      "pred_count": 5,
+      "tp": 5,
+      "fp": 0,
+      "fn": 1,
+      "matches": [
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "layout",
+            "old_text": null,
+            "new_text": null,
+            "bbox": {
+              "x": 0.09803921568627451,
+              "y": 0.19602272727272727,
+              "width": 0.7973853217230903,
+              "height": 0.6345833672417535
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "region",
+              "subtype": "layout_drift",
+              "highlight_mode": "region",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "description": "Text modified"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "layout",
+            "before": null,
+            "after": null,
+            "region": "paragraph_1",
+            "severity": "minor",
+            "description": "Changed paragraph spacing to 18pt to simulate layout drift."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "old_text": null,
+            "new_text": null,
+            "bbox": {
+              "x": 0.09677788229549632,
+              "y": 0.47762525153882573,
+              "width": 0.3219712081609987,
+              "height": 0.153678163470644
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "table",
+              "table_change": "style",
+              "fusion_modules": [
+                "table"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "is_ocr": false,
+              "subtype": "table:style",
+              "description": "Text modified"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "before": null,
+            "after": null,
+            "region": "table",
+            "severity": "minor",
+            "description": "Tweaked table padding and border weight to alter structure visibility."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "old_text": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "new_text": "These modifications test the ability to detect subtle content differences while maintaining paper structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "bbox": {
+              "x": 0.7401305553959865,
+              "y": 0.19602272727272727,
+              "width": 0.071748322131587,
+              "height": 0.017348491784298065
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "line",
+              "alignment_reason": "fuzzy",
+              "similarity": 0.9474354397990646,
+              "line_id": "para_cf111437c626",
+              "line_id_base": "para_cf111437c626",
+              "line_id_mod": "para_2e1f14f34e40",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "replace",
+                  "a_tokens": [
+                    "document"
+                  ],
+                  "b_tokens": [
+                    "paper"
+                  ]
+                }
+              ],
+              "word_bboxes_a": [
+                {
+                  "x": 0.7401305553959865,
+                  "y": 0.19602272727272727,
+                  "width": 0.07174832213158701,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "word_bboxes_b": [
+                {
+                  "x": 0.7401305553959865,
+                  "y": 0.20612373737373738,
+                  "width": 0.04178100785398795,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "word_bboxes": [
+                {
+                  "x": 0.7401305553959865,
+                  "y": 0.19602272727272727,
+                  "width": 0.07174832213158701,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "highlight_mode": "word",
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "subtype": "character_change",
+              "description": "Character content changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "before": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "after": "These modifications test the ability to detect subtle content differences while maintaining paper structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "region": "paragraph_2",
+            "severity": "minor",
+            "description": "Replaced 'document' with synonym 'paper'."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "old_text": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "new_text": "Essentially, structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test casees for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "bbox": {
+              "x": 0.30236926109962214,
+              "y": 0.3109217171717172,
+              "width": 0.04267973058363972,
+              "height": 0.01734847251815025
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "line",
+              "alignment_reason": "fuzzy",
+              "similarity": 0.931171680967392,
+              "line_id": "para_264da37941a1",
+              "line_id_base": "para_264da37941a1",
+              "line_id_mod": "para_861c16ebafa2",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "insert",
+                  "a_tokens": [],
+                  "b_tokens": [
+                    "Essentially,"
+                  ]
+                },
+                {
+                  "tag": "replace",
+                  "a_tokens": [
+                    "cases"
+                  ],
+                  "b_tokens": [
+                    "casees"
+                  ]
+                }
+              ],
+              "word_bboxes_a": [
+                {
+                  "x": 0.30236926109962214,
+                  "y": 0.3109217171717172,
+                  "width": 0.042679730583639705,
+                  "height": 0.017348472518150252
+                }
+              ],
+              "word_bboxes_b": [
+                {
+                  "x": 0.09803921568627451,
+                  "y": 0.30460858585858586,
+                  "width": 0.08263073092192606,
+                  "height": 0.017348491784298058
+                },
+                {
+                  "x": 0.4022548650604448,
+                  "y": 0.3210227272727273,
+                  "width": 0.05176471884733711,
+                  "height": 0.017348472518150252
+                }
+              ],
+              "word_bboxes": [
+                {
+                  "x": 0.30236926109962214,
+                  "y": 0.3109217171717172,
+                  "width": 0.042679730583639705,
+                  "height": 0.017348472518150252
+                }
+              ],
+              "highlight_mode": "word",
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "subtype": "character_change",
+              "description": "Character content changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "before": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "after": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test casees for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "region": "paragraph_3",
+            "severity": "minor",
+            "description": "Inserted a character duplication typo inside a long word."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "visual",
+            "old_text": "Figure 1. Baseline architecture illustration.",
+            "new_text": "Figure 3. Baseline architecture illustration.",
+            "bbox": {
+              "x": 0.09706802667356004,
+              "y": 0.6456622869318182,
+              "width": 0.4603583003025429,
+              "height": 0.1849438075826626
+            },
+            "confidence": 0.85,
+            "metadata": {
+              "type": "figure",
+              "alignment_reason": "fuzzy",
+              "similarity": 0.8707748209270219,
+              "line_id": "0c222bb46a8d",
+              "line_id_base": "0c222bb46a8d",
+              "line_id_mod": "9e0bf9488f77",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "replace",
+                  "a_tokens": [
+                    "1."
+                  ],
+                  "b_tokens": [
+                    "3."
+                  ]
+                }
+              ],
+              "word_bboxes_a": [
+                {
+                  "x": 0.14888889337676803,
+                  "y": 0.8135100855971827,
+                  "width": 0.01362744499655331,
+                  "height": 0.01709600891729798
+                }
+              ],
+              "word_bboxes_b": [
+                {
+                  "x": 0.14888889337676803,
+                  "y": 0.8236110956981929,
+                  "width": 0.01362744499655331,
+                  "height": 0.01709600891729798
+                }
+              ],
+              "word_bboxes": [
+                {
+                  "x": 0.14888889337676803,
+                  "y": 0.8135100855971827,
+                  "width": 0.01362744499655331,
+                  "height": 0.01709600891729798
+                }
+              ],
+              "highlight_mode": "word",
+              "figure_change": "numbering",
+              "old_number": 1,
+              "new_number": 3,
+              "fusion_modules": [
+                "line",
+                "figure"
+              ],
+              "fusion_count": 2,
+              "fusion_diff_count": 2,
+              "subtype": "figure:numbering",
+              "description": "Figure numbering changed from 1 to 3"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "visual",
+            "before": "Figure 1. Baseline architecture illustration.",
+            "after": "Figure 3. Baseline architecture illustration.",
+            "region": "figure_caption",
+            "severity": "minor",
+            "description": "Shifted figure numbering and caption wording."
+          }
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "page": 1,
+          "diff_type": "modified",
+          "change_type": "content",
+          "before": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test casees for layout-aware diff detection. Each variation includes ground truth annotations.",
+          "after": "Essentially, structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test casees for layout-aware diff detection. Each variation includes ground truth annotations.",
+          "region": "paragraph_3",
+          "severity": "moderate",
+          "description": "Paraphrased lead sentence to simulate subtle rewrite."
+        }
+      ]
+    },
+    {
+      "pair_id": "variation_06",
+      "gt_count": 7,
+      "pred_count": 7,
+      "tp": 6,
+      "fp": 1,
+      "fn": 1,
+      "matches": [
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "layout",
+            "old_text": null,
+            "new_text": null,
+            "bbox": {
+              "x": 0.09803921568627451,
+              "y": 0.19602272727272727,
+              "width": 0.7864866568372141,
+              "height": 0.6345833672417535
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "region",
+              "subtype": "layout_drift",
+              "highlight_mode": "region",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "description": "Text modified"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "layout",
+            "before": null,
+            "after": null,
+            "region": "paragraph_1",
+            "severity": "minor",
+            "description": "Changed paragraph spacing to 18pt to simulate layout drift."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "old_text": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "new_text": "Put differently, these modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "bbox": {
+              "x": 0.09803921568627451,
+              "y": 0.19602272727272727,
+              "width": 0.7864866568372141,
+              "height": 0.06659091602672232
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "line",
+              "alignment_reason": "fuzzy",
+              "similarity": 0.9449755402707763,
+              "line_id": "para_cf111437c626",
+              "line_id_base": "para_cf111437c626",
+              "line_id_mod": "para_c336fed76a60",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "insert",
+                  "a_tokens": [],
+                  "b_tokens": [
+                    "Put",
+                    "differently,"
+                  ]
+                }
+              ],
+              "word_bboxes_a": [],
+              "word_bboxes_b": [
+                {
+                  "x": 0.09803921568627451,
+                  "y": 0.20612373737373738,
+                  "width": 0.024526147281422335,
+                  "height": 0.017348491784298058
+                },
+                {
+                  "x": 0.12710784463321462,
+                  "y": 0.20612373737373738,
+                  "width": 0.07537582497191585,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "word_bboxes": [],
+              "highlight_mode": "word",
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "subtype": "character_change",
+              "description": "Character content changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "before": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "after": "Put differently, these modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "region": "paragraph_2",
+            "severity": "moderate",
+            "description": "Paraphrased lead sentence to simulate subtle rewrite."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "old_text": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "new_text": "Structural Modifications grid structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "bbox": {
+              "x": 0.2723856159285003,
+              "y": 0.29450757575757575,
+              "width": 0.040866004096137165,
+              "height": 0.017348491784298037
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "line",
+              "alignment_reason": "fuzzy",
+              "similarity": 0.9442601355215675,
+              "line_id": "para_264da37941a1",
+              "line_id_base": "para_264da37941a1",
+              "line_id_mod": "para_c3cc3c40c162",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "replace",
+                  "a_tokens": [
+                    "Table"
+                  ],
+                  "b_tokens": [
+                    "grid"
+                  ]
+                }
+              ],
+              "word_bboxes_a": [
+                {
+                  "x": 0.2723856159285003,
+                  "y": 0.29450757575757575,
+                  "width": 0.04086600409613715,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "word_bboxes_b": [
+                {
+                  "x": 0.2723856159285003,
+                  "y": 0.30460858585858586,
+                  "width": 0.027238559099583844,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "word_bboxes": [
+                {
+                  "x": 0.2723856159285003,
+                  "y": 0.29450757575757575,
+                  "width": 0.04086600409613715,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "highlight_mode": "word",
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "subtype": "character_change",
+              "description": "Character content changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "before": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "after": "Structural Modifications grid structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "region": "paragraph_3",
+            "severity": "minor",
+            "description": "Replaced 'Table' with synonym 'grid'."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "old_text": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+            "new_text": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+            "bbox": {
+              "x": 0.09803921568627451,
+              "y": 0.3765782828282828,
+              "width": 0.7374834048202614,
+              "height": 0.033762613932291685
+            },
+            "confidence": 0.85,
+            "metadata": {
+              "type": "line",
+              "alignment_reason": "fuzzy",
+              "similarity": 0.9782200138674506,
+              "line_id": "para_95976d6cdadc",
+              "line_id_base": "para_95976d6cdadc",
+              "line_id_mod": "para_cf4e909c086c",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "replace",
+                  "a_tokens": [
+                    "pages,"
+                  ],
+                  "b_tokens": [
+                    "pages"
+                  ]
+                }
+              ],
+              "word_bboxes_a": [
+                {
+                  "x": 0.34777774686127705,
+                  "y": 0.39299242424242425,
+                  "width": 0.049052269630182804,
+                  "height": 0.017348472518150252
+                }
+              ],
+              "word_bboxes_b": [
+                {
+                  "x": 0.4706551545585682,
+                  "y": 0.3865845805466777,
+                  "width": 0.048960766761131536,
+                  "height": 0.019083350595801768
+                }
+              ],
+              "word_bboxes": [
+                {
+                  "x": 0.34777774686127705,
+                  "y": 0.39299242424242425,
+                  "width": 0.049052269630182804,
+                  "height": 0.017348472518150252
+                }
+              ],
+              "highlight_mode": "word",
+              "formatting_type": "font_size",
+              "old_size": 10.0,
+              "new_size": 11.0,
+              "old_size_bucket": 10.0,
+              "new_size_bucket": 11.0,
+              "size_diff": 1.0,
+              "fusion_modules": [
+                "line",
+                "formatting"
+              ],
+              "fusion_count": 2,
+              "fusion_diff_count": 2,
+              "description": "Font size changed from 10.0pt to 11.0pt"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "before": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+            "after": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+            "region": "paragraph_4",
+            "severity": "minor",
+            "description": "Removed a comma to create a subtle punctuation change."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "old_text": "Metric Original Revised",
+            "new_text": "Metric Original Revised Delta",
+            "bbox": {
+              "x": 0.0967791508693321,
+              "y": 0.47762517755681816,
+              "width": 0.3219618494370404,
+              "height": 0.15367498224431814
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "table",
+              "table_change": "structure",
+              "old_structure": {
+                "rows": 5,
+                "cols": 3
+              },
+              "new_structure": {
+                "rows": 5,
+                "cols": 4
+              },
+              "fusion_modules": [
+                "table"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "is_ocr": false,
+              "subtype": "table:structure",
+              "description": "Table structure changed: 1 column added"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "before": "Metric Original Revised",
+            "after": "Metric Original Revised Delta",
+            "region": "table",
+            "severity": "moderate",
+            "description": "Added a derived delta column to the metrics table."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "visual",
+            "old_text": "Figure 1. Baseline architecture illustration.",
+            "new_text": "Figure 2. Baseline architecture illustration.",
+            "bbox": {
+              "x": 0.09706968419692096,
+              "y": 0.6456665039062499,
+              "width": 0.46035520665785845,
+              "height": 0.18493959060823084
+            },
+            "confidence": 0.85,
+            "metadata": {
+              "type": "figure",
+              "alignment_reason": "fuzzy",
+              "similarity": 0.9058887819575347,
+              "line_id": "0c222bb46a8d",
+              "line_id_base": "0c222bb46a8d",
+              "line_id_mod": "708229db6cba",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "replace",
+                  "a_tokens": [
+                    "1."
+                  ],
+                  "b_tokens": [
+                    "2."
+                  ]
+                }
+              ],
+              "word_bboxes_a": [
+                {
+                  "x": 0.14888889337676803,
+                  "y": 0.8135100855971827,
+                  "width": 0.01362744499655331,
+                  "height": 0.01709600891729798
+                }
+              ],
+              "word_bboxes_b": [
+                {
+                  "x": 0.14888889337676803,
+                  "y": 0.8071969542840515,
+                  "width": 0.01362744499655331,
+                  "height": 0.01709600891729798
+                }
+              ],
+              "word_bboxes": [
+                {
+                  "x": 0.14888889337676803,
+                  "y": 0.8135100855971827,
+                  "width": 0.01362744499655331,
+                  "height": 0.01709600891729798
+                }
+              ],
+              "highlight_mode": "word",
+              "figure_change": "numbering",
+              "old_number": 1,
+              "new_number": 2,
+              "fusion_modules": [
+                "line",
+                "figure"
+              ],
+              "fusion_count": 2,
+              "fusion_diff_count": 2,
+              "subtype": "figure:numbering",
+              "description": "Figure numbering changed from 1 to 2"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "visual",
+            "before": "Figure 1. Baseline architecture illustration.",
+            "after": "Figure 2. Baseline architecture illustration.",
+            "region": "figure_caption",
+            "severity": "minor",
+            "description": "Shifted figure numbering and caption wording."
+          }
+        }
+      ],
+      "false_positives": [
+        {
+          "page": 1,
+          "diff_type": "modified",
+          "change_type": "layout",
+          "old_text": null,
+          "new_text": null,
+          "bbox": {
+            "x": 0.09803921568627451,
+            "y": 0.8135100855971827,
+            "width": 0.3042156493741702,
+            "height": 0.01709600891729801
+          },
+          "confidence": 0.75,
+          "metadata": {
+            "type": "region",
+            "subtype": "layout_drift",
+            "highlight_mode": "region",
+            "page_width": 612.0,
+            "page_height": 792.0,
+            "is_ocr": false,
+            "fusion_modules": [
+              "line"
+            ],
+            "fusion_count": 1,
+            "fusion_diff_count": 1,
+            "description": "Text modified"
+          }
+        }
+      ],
+      "false_negatives": [
+        {
+          "page": 1,
+          "diff_type": "modified",
+          "change_type": "formatting",
+          "before": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+          "after": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+          "region": "paragraph_4",
+          "severity": "minor",
+          "description": "Adjusted font size to 11pt for a single paragraph."
+        }
+      ]
+    },
+    {
+      "pair_id": "variation_07",
+      "gt_count": 6,
+      "pred_count": 6,
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "matches": [
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "layout",
+            "old_text": null,
+            "new_text": null,
+            "bbox": {
+              "x": 0.09803921568627451,
+              "y": 0.29450757575757575,
+              "width": 0.7973853217230903,
+              "height": 0.536098518756905
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "region",
+              "subtype": "layout_drift",
+              "highlight_mode": "region",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "description": "Text modified"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "layout",
+            "before": null,
+            "after": null,
+            "region": "paragraph_2",
+            "severity": "minor",
+            "description": "Changed paragraph spacing to 18pt to simulate layout drift."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "old_text": null,
+            "new_text": null,
+            "bbox": {
+              "x": 0.09677606919232536,
+              "y": 0.4776255474668561,
+              "width": 0.32195219750497855,
+              "height": 0.153665068655303
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "table",
+              "table_change": "style",
+              "fusion_modules": [
+                "table"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "is_ocr": false,
+              "subtype": "table:style",
+              "description": "Text modified"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "before": null,
+            "after": null,
+            "region": "table",
+            "severity": "minor",
+            "description": "Tweaked table padding and border weight to alter structure visibility."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "old_text": "Synthetic PDF baseline",
+            "new_text": "Synthetic diff experiment",
+            "bbox": {
+              "x": 0.08823529411764706,
+              "y": 0.03323863732694375,
+              "width": 0.15283821455014296,
+              "height": 0.015613637789331301
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "header_footer_change": "header",
+              "is_page_number": false,
+              "is_repeating": false,
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "fusion_modules": [
+                "header_footer"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "is_ocr": false,
+              "subtype": "header_footer:header",
+              "description": "Header changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "before": "Synthetic PDF baseline",
+            "after": "Synthetic diff experiment",
+            "region": "header",
+            "severity": "minor",
+            "description": "Updated header text to simulate branding/layout change."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "old_text": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "new_text": "Essentially, these modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "bbox": {
+              "x": 0.09803921568627451,
+              "y": 0.19602272727272727,
+              "width": 0.7864866568372141,
+              "height": 0.06659091602672232
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "line",
+              "alignment_reason": "fuzzy",
+              "similarity": 0.9849703965159763,
+              "line_id": "para_cf111437c626",
+              "line_id_base": "para_cf111437c626",
+              "line_id_mod": "para_13fec81498da",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "insert",
+                  "a_tokens": [],
+                  "b_tokens": [
+                    "Essentially,"
+                  ]
+                }
+              ],
+              "word_bboxes_a": [],
+              "word_bboxes_b": [
+                {
+                  "x": 0.09803921568627451,
+                  "y": 0.19602272727272727,
+                  "width": 0.08263073092192606,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "word_bboxes": [],
+              "highlight_mode": "word",
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "subtype": "character_change",
+              "description": "Character content changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "before": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "after": "Essentially, these modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "region": "paragraph_2",
+            "severity": "moderate",
+            "description": "Paraphrased lead sentence to simulate subtle rewrite."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "old_text": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "new_text": "Structural Modifiications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "bbox": {
+              "x": 0.1725000119676777,
+              "y": 0.29450757575757575,
+              "width": 0.09534312229530487,
+              "height": 0.017348491784298037
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "line",
+              "alignment_reason": "fuzzy",
+              "similarity": 0.9512204147056108,
+              "line_id": "para_264da37941a1",
+              "line_id_base": "para_264da37941a1",
+              "line_id_mod": "para_8e7161d9e25a",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "replace",
+                  "a_tokens": [
+                    "Modifications"
+                  ],
+                  "b_tokens": [
+                    "Modifiications"
+                  ]
+                }
+              ],
+              "word_bboxes_a": [
+                {
+                  "x": 0.1725000119676777,
+                  "y": 0.29450757575757575,
+                  "width": 0.09534312229530484,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "word_bboxes_b": [
+                {
+                  "x": 0.1725000119676777,
+                  "y": 0.30460858585858586,
+                  "width": 0.09897057527030995,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "word_bboxes": [
+                {
+                  "x": 0.1725000119676777,
+                  "y": 0.29450757575757575,
+                  "width": 0.09534312229530484,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "highlight_mode": "word",
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "subtype": "character_change",
+              "description": "Character content changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "before": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "after": "Structural Modifiications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "region": "paragraph_3",
+            "severity": "minor",
+            "description": "Inserted a character duplication typo inside a long word."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "old_text": "Generated pair — page 1",
+            "new_text": "Prototype draft 1",
+            "bbox": {
+              "x": 0.08823529411764706,
+              "y": 0.9473800659179688,
+              "width": 0.16594112620634188,
+              "height": 0.015613594440498701
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "header_footer_change": "footer",
+              "is_page_number": false,
+              "is_repeating": false,
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "fusion_modules": [
+                "header_footer"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "is_ocr": false,
+              "subtype": "header_footer:footer",
+              "description": "Footer changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "before": "Generated pair — page 1",
+            "after": "Prototype draft 1",
+            "region": "footer",
+            "severity": "minor",
+            "description": "Updated footer text to simulate branding/layout change."
+          }
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "pair_id": "variation_08",
+      "gt_count": 6,
+      "pred_count": 6,
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "matches": [
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "layout",
+            "old_text": null,
+            "new_text": null,
+            "bbox": {
+              "x": 0.09803921568627451,
+              "y": 0.8135100855971827,
+              "width": 0.3042156493741702,
+              "height": 0.01709600891729801
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "region",
+              "subtype": "layout_drift",
+              "highlight_mode": "region",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "description": "Text modified"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "layout",
+            "before": null,
+            "after": null,
+            "region": "paragraph_4",
+            "severity": "minor",
+            "description": "Changed paragraph spacing to 18pt to simulate layout drift."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "old_text": "Synthetic PDF baseline",
+            "new_text": "PDF diff QA sprint",
+            "bbox": {
+              "x": 0.08823529411764706,
+              "y": 0.03323863732694375,
+              "width": 0.15283821455014296,
+              "height": 0.015613637789331301
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "header_footer_change": "header",
+              "is_page_number": false,
+              "is_repeating": false,
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "fusion_modules": [
+                "header_footer"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "is_ocr": false,
+              "subtype": "header_footer:header",
+              "description": "Header changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "before": "Synthetic PDF baseline",
+            "after": "PDF diff QA sprint",
+            "region": "header",
+            "severity": "minor",
+            "description": "Updated header text to simulate branding/layout change."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "old_text": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "new_text": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments, and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "bbox": {
+              "x": 0.32143791049134496,
+              "y": 0.21243686868686867,
+              "width": 0.08808821634529462,
+              "height": 0.017348491784298065
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "line",
+              "alignment_reason": "line_id",
+              "similarity": 1.0,
+              "line_id": "para_cf111437c626",
+              "line_id_base": "para_cf111437c626",
+              "line_id_mod": "para_cf111437c626",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "replace",
+                  "a_tokens": [
+                    "adjustments"
+                  ],
+                  "b_tokens": [
+                    "adjustments,"
+                  ]
+                }
+              ],
+              "word_bboxes_a": [
+                {
+                  "x": 0.32143791049134496,
+                  "y": 0.21243686868686867,
+                  "width": 0.08808821634529462,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "word_bboxes_b": [
+                {
+                  "x": 0.32143791049134496,
+                  "y": 0.21243686868686867,
+                  "width": 0.0926306980108124,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "word_bboxes": [
+                {
+                  "x": 0.32143791049134496,
+                  "y": 0.21243686868686867,
+                  "width": 0.08808821634529462,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "highlight_mode": "word",
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "subtype": "punctuation",
+              "description": "Punctuation changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "before": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "after": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments, and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "region": "paragraph_2",
+            "severity": "minor",
+            "description": "Inserted a comma to alter pacing of the sentence."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "old_text": "Metric Original Revised",
+            "new_text": "Metric Original Revised Delta",
+            "bbox": {
+              "x": 0.09677781048943014,
+              "y": 0.47762391986268943,
+              "width": 0.32194140864353554,
+              "height": 0.15367246685606056
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "table",
+              "table_change": "structure",
+              "old_structure": {
+                "rows": 5,
+                "cols": 3
+              },
+              "new_structure": {
+                "rows": 5,
+                "cols": 4
+              },
+              "fusion_modules": [
+                "table"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "is_ocr": false,
+              "subtype": "table:structure",
+              "description": "Table structure changed: 1 column added"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "before": "Metric Original Revised",
+            "after": "Metric Original Revised Delta",
+            "region": "table",
+            "severity": "moderate",
+            "description": "Added a derived delta column to the metrics table."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "visual",
+            "old_text": "Figure 1. Baseline architecture illustration.",
+            "new_text": "Figure 2. Baseline architecture illustration.",
+            "bbox": {
+              "x": 0.09707176657284007,
+              "y": 0.6456648763020834,
+              "width": 0.46035546994676774,
+              "height": 0.1849412182123974
+            },
+            "confidence": 0.85,
+            "metadata": {
+              "type": "figure",
+              "alignment_reason": "fuzzy",
+              "similarity": 0.8707748209270219,
+              "line_id": "0c222bb46a8d",
+              "line_id_base": "0c222bb46a8d",
+              "line_id_mod": "ca5330458543",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "replace",
+                  "a_tokens": [
+                    "1."
+                  ],
+                  "b_tokens": [
+                    "2."
+                  ]
+                }
+              ],
+              "word_bboxes_a": [
+                {
+                  "x": 0.14888889337676803,
+                  "y": 0.8135100855971827,
+                  "width": 0.01362744499655331,
+                  "height": 0.01709600891729798
+                }
+              ],
+              "word_bboxes_b": [
+                {
+                  "x": 0.14888889337676803,
+                  "y": 0.8236110956981929,
+                  "width": 0.01362744499655331,
+                  "height": 0.01709600891729798
+                }
+              ],
+              "word_bboxes": [
+                {
+                  "x": 0.14888889337676803,
+                  "y": 0.8135100855971827,
+                  "width": 0.01362744499655331,
+                  "height": 0.01709600891729798
+                }
+              ],
+              "highlight_mode": "word",
+              "figure_change": "numbering",
+              "old_number": 1,
+              "new_number": 2,
+              "fusion_modules": [
+                "line",
+                "figure"
+              ],
+              "fusion_count": 2,
+              "fusion_diff_count": 2,
+              "subtype": "figure:numbering",
+              "description": "Figure numbering changed from 1 to 2"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "visual",
+            "before": "Figure 1. Baseline architecture illustration.",
+            "after": "Figure 2. Baseline architecture illustration.",
+            "region": "figure_caption",
+            "severity": "minor",
+            "description": "Shifted figure numbering and caption wording."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "old_text": "Generated pair — page 1",
+            "new_text": "Rev B — page 1",
+            "bbox": {
+              "x": 0.08823529411764706,
+              "y": 0.9473800659179688,
+              "width": 0.16594112620634188,
+              "height": 0.015613594440498701
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "header_footer_change": "footer",
+              "is_page_number": false,
+              "is_repeating": false,
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "fusion_modules": [
+                "header_footer"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "is_ocr": false,
+              "subtype": "header_footer:footer",
+              "description": "Footer changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "before": "Generated pair — page 1",
+            "after": "Rev B — page 1",
+            "region": "footer",
+            "severity": "minor",
+            "description": "Updated footer text to simulate branding/layout change."
+          }
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "pair_id": "variation_09",
+      "gt_count": 5,
+      "pred_count": 4,
+      "tp": 4,
+      "fp": 0,
+      "fn": 1,
+      "matches": [
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "old_text": null,
+            "new_text": null,
+            "bbox": {
+              "x": 0.0967775053136489,
+              "y": 0.47762465968276513,
+              "width": 0.321963399251302,
+              "height": 0.1536853397253788
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "table",
+              "table_change": "style",
+              "fusion_modules": [
+                "table"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "is_ocr": false,
+              "subtype": "table:style",
+              "description": "Text modified"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "layout",
+            "before": null,
+            "after": null,
+            "region": "paragraph_1",
+            "severity": "minor",
+            "description": "Changed paragraph spacing to 6pt to simulate layout drift."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "old_text": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "new_text": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments, and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+            "bbox": {
+              "x": 0.32143791049134496,
+              "y": 0.21243686868686867,
+              "width": 0.08808821634529462,
+              "height": 0.017348491784298065
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "line",
+              "alignment_reason": "line_id",
+              "similarity": 1.0,
+              "line_id": "para_cf111437c626",
+              "line_id_base": "para_cf111437c626",
+              "line_id_mod": "para_cf111437c626",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "replace",
+                  "a_tokens": [
+                    "adjustments"
+                  ],
+                  "b_tokens": [
+                    "adjustments,"
+                  ]
+                }
+              ],
+              "word_bboxes_a": [
+                {
+                  "x": 0.32143791049134496,
+                  "y": 0.21243686868686867,
+                  "width": 0.08808821634529462,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "word_bboxes_b": [
+                {
+                  "x": 0.32143791049134496,
+                  "y": 0.20738636363636365,
+                  "width": 0.0926306980108124,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "word_bboxes": [
+                {
+                  "x": 0.32143791049134496,
+                  "y": 0.21243686868686867,
+                  "width": 0.08808821634529462,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "highlight_mode": "word",
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "subtype": "punctuation",
+              "description": "Punctuation changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "formatting",
+            "before": null,
+            "after": null,
+            "region": "table",
+            "severity": "minor",
+            "description": "Tweaked table padding and border weight to alter structure visibility."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "old_text": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "new_text": "From another angle, structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "bbox": {
+              "x": 0.09803921568627451,
+              "y": 0.29450757575757575,
+              "width": 0.7574344211154513,
+              "height": 0.050176755346433066
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "line",
+              "alignment_reason": "fuzzy",
+              "similarity": 0.9406348554066375,
+              "line_id": "para_264da37941a1",
+              "line_id_base": "para_264da37941a1",
+              "line_id_mod": "para_a7e85370fcd6",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "insert",
+                  "a_tokens": [],
+                  "b_tokens": [
+                    "From",
+                    "another",
+                    "angle,"
+                  ]
+                }
+              ],
+              "word_bboxes_a": [],
+              "word_bboxes_b": [
+                {
+                  "x": 0.09803921568627451,
+                  "y": 0.2894570707070707,
+                  "width": 0.03812091802459916,
+                  "height": 0.017348491784298058
+                },
+                {
+                  "x": 0.14070261537639145,
+                  "y": 0.2894570707070707,
+                  "width": 0.05540850271586499,
+                  "height": 0.017348491784298058
+                },
+                {
+                  "x": 0.2006535997577742,
+                  "y": 0.2894570707070707,
+                  "width": 0.04450978796466503,
+                  "height": 0.017348491784298058
+                }
+              ],
+              "word_bboxes": [],
+              "highlight_mode": "word",
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "subtype": "character_change",
+              "description": "Character content changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "before": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "after": "From another angle, structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "region": "paragraph_3",
+            "severity": "moderate",
+            "description": "Paraphrased lead sentence to simulate subtle rewrite."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "visual",
+            "old_text": "Figure 1. Baseline architecture illustration.",
+            "new_text": "Figure 3. Baseline architecture illustration.",
+            "bbox": {
+              "x": 0.09707041422526042,
+              "y": 0.6456667258522727,
+              "width": 0.460354907465916,
+              "height": 0.18493936866220806
+            },
+            "confidence": 0.85,
+            "metadata": {
+              "type": "figure",
+              "alignment_reason": "fuzzy",
+              "similarity": 0.919139836971905,
+              "line_id": "0c222bb46a8d",
+              "line_id_base": "0c222bb46a8d",
+              "line_id_mod": "172b2ecbc964",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "replace",
+                  "a_tokens": [
+                    "1."
+                  ],
+                  "b_tokens": [
+                    "3."
+                  ]
+                }
+              ],
+              "word_bboxes_a": [
+                {
+                  "x": 0.14888889337676803,
+                  "y": 0.8135100855971827,
+                  "width": 0.01362744499655331,
+                  "height": 0.01709600891729798
+                }
+              ],
+              "word_bboxes_b": [
+                {
+                  "x": 0.14888889337676803,
+                  "y": 0.8084595805466778,
+                  "width": 0.01362744499655331,
+                  "height": 0.01709600891729798
+                }
+              ],
+              "word_bboxes": [
+                {
+                  "x": 0.14888889337676803,
+                  "y": 0.8135100855971827,
+                  "width": 0.01362744499655331,
+                  "height": 0.01709600891729798
+                }
+              ],
+              "highlight_mode": "word",
+              "figure_change": "numbering",
+              "old_number": 1,
+              "new_number": 3,
+              "fusion_modules": [
+                "line",
+                "figure"
+              ],
+              "fusion_count": 2,
+              "fusion_diff_count": 2,
+              "subtype": "figure:numbering",
+              "description": "Figure numbering changed from 1 to 3"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "visual",
+            "before": "Figure 1. Baseline architecture illustration.",
+            "after": "Figure 3. Baseline architecture illustration.",
+            "region": "figure_caption",
+            "severity": "minor",
+            "description": "Shifted figure numbering and caption wording."
+          }
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "page": 1,
+          "diff_type": "modified",
+          "change_type": "formatting",
+          "before": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+          "after": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments, and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+          "region": "paragraph_2",
+          "severity": "minor",
+          "description": "Inserted a comma to alter pacing of the sentence."
+        }
+      ]
+    },
+    {
+      "pair_id": "variation_10",
+      "gt_count": 4,
+      "pred_count": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 1,
+      "matches": [
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "old_text": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "new_text": "Put differently, structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations. Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the abilitty to correctly classify different types of changes.",
+            "bbox": {
+              "x": 0.09803921568627451,
+              "y": 0.29450757575757575,
+              "width": 0.7574344211154513,
+              "height": 0.050176755346433066
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "line",
+              "alignment_reason": "fuzzy",
+              "similarity": 0.580117930030224,
+              "line_id": "para_264da37941a1",
+              "line_id_base": "para_264da37941a1",
+              "line_id_mod": "para_2991b81a49c6",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "word_ops": [
+                {
+                  "tag": "insert",
+                  "a_tokens": [],
+                  "b_tokens": [
+                    "Put",
+                    "differently,"
+                  ]
+                },
+                {
+                  "tag": "insert",
+                  "a_tokens": [],
+                  "b_tokens": [
+                    "Extended",
+                    "Content",
+                    "Section",
+                    "This",
+                    "page",
+                    "demonstrates",
+                    "how",
+                    "the",
+                    "generator",
+                    "handles",
+                    "multi-page",
+                    "documents.",
+                    "Paragraphs",
+                    "are",
+                    "distributed",
+                    "across",
+                    "pages,",
+                    "and",
+                    "modifications",
+                    "can",
+                    "occur",
+                    "on",
+                    "any",
+                    "page.",
+                    "The",
+                    "evaluation",
+                    "framework",
+                    "uses",
+                    "these",
+                    "synthetic",
+                    "pairs",
+                    "to",
+                    "measure",
+                    "detection",
+                    "accuracy,",
+                    "false",
+                    "positive",
+                    "rates,",
+                    "and",
+                    "the",
+                    "abilitty",
+                    "to",
+                    "correctly",
+                    "classify",
+                    "different",
+                    "types",
+                    "of",
+                    "changes."
+                  ]
+                }
+              ],
+              "word_bboxes_a": [],
+              "word_bboxes_b": [
+                {
+                  "x": 0.09803921568627451,
+                  "y": 0.29431818952464095,
+                  "width": 0.029431374244440613,
+                  "height": 0.020818170875009864
+                },
+                {
+                  "x": 0.13292156792933646,
+                  "y": 0.29431818952464095,
+                  "width": 0.09045099744609758,
+                  "height": 0.020818170875009864
+                },
+                {
+                  "x": 0.09803921568627451,
+                  "y": 0.3803661616161616,
+                  "width": 0.0690359477124183,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.1716176575305415,
+                  "y": 0.3803661616161616,
+                  "width": 0.05722221673703661,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.2333823559330959,
+                  "y": 0.3803661616161616,
+                  "width": 0.05449344909269046,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.29241828669130415,
+                  "y": 0.3803661616161616,
+                  "width": 0.03086601207458895,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.32782678043141084,
+                  "y": 0.3803661616161616,
+                  "width": 0.036339853324142156,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.36870911542107077,
+                  "y": 0.3803661616161616,
+                  "width": 0.09898693109649459,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.4722384783177594,
+                  "y": 0.3803661616161616,
+                  "width": 0.02996731427759906,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.5067482742608762,
+                  "y": 0.3803661616161616,
+                  "width": 0.022712458192912583,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.5340032141193066,
+                  "y": 0.3803661616161616,
+                  "width": 0.06993457071142259,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.608480266496247,
+                  "y": 0.3803661616161616,
+                  "width": 0.05722220427070568,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.6702449524324704,
+                  "y": 0.3803661616161616,
+                  "width": 0.07627444797092015,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.7510618820689083,
+                  "y": 0.3803661616161616,
+                  "width": 0.08446073843762765,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.09803921568627451,
+                  "y": 0.39678030303030304,
+                  "width": 0.0844607883029514,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.18704248565474366,
+                  "y": 0.39678030303030304,
+                  "width": 0.023611131057240605,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.21519609837750203,
+                  "y": 0.39678030303030304,
+                  "width": 0.07537577510659212,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.29511435514961193,
+                  "y": 0.39678030303030304,
+                  "width": 0.04812091004614737,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.34777774686127705,
+                  "y": 0.39678030303030304,
+                  "width": 0.049052269630182804,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.4013724981569776,
+                  "y": 0.39678030303030304,
+                  "width": 0.02725486506044475,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.4331698947482639,
+                  "y": 0.39678030303030304,
+                  "width": 0.09534309736264297,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.5330554737764246,
+                  "y": 0.39678030303030304,
+                  "width": 0.026339861302593956,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.5639378167445364,
+                  "y": 0.39678030303030304,
+                  "width": 0.03995095047296262,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.6084312488830167,
+                  "y": 0.39678030303030304,
+                  "width": 0.018169926662071078,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.6311436572106056,
+                  "y": 0.39678030303030304,
+                  "width": 0.026339861302593956,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.6620260001787173,
+                  "y": 0.39678030303030304,
+                  "width": 0.04088233498965993,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.707450816833895,
+                  "y": 0.39678030303030304,
+                  "width": 0.02815356285743464,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.7401468613568474,
+                  "y": 0.39678030303030304,
+                  "width": 0.07447710224226409,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.8191664452646293,
+                  "y": 0.39678030303030304,
+                  "width": 0.0762580921447355,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.09803921568627451,
+                  "y": 0.4131944444444444,
+                  "width": 0.03450980840944776,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.13709150576124005,
+                  "y": 0.4131944444444444,
+                  "width": 0.039967318765478196,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.18160130619223602,
+                  "y": 0.4131944444444444,
+                  "width": 0.06447713515337776,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.25062092301113154,
+                  "y": 0.4131944444444444,
+                  "width": 0.03540846880744485,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.29057187348409413,
+                  "y": 0.4131944444444444,
+                  "width": 0.01362744499655331,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.3087418250788271,
+                  "y": 0.4131944444444444,
+                  "width": 0.06356208153020322,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.3768463882745481,
+                  "y": 0.4131944444444444,
+                  "width": 0.06630714266907935,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.44769606247446897,
+                  "y": 0.4131944444444444,
+                  "width": 0.06991826475056168,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.5221568088905484,
+                  "y": 0.4131944444444444,
+                  "width": 0.03450979594311683,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.561209086499183,
+                  "y": 0.4131944444444444,
+                  "width": 0.05539214688968035,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.6211437150543812,
+                  "y": 0.4131944444444444,
+                  "width": 0.040865979163475286,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.6665521758833742,
+                  "y": 0.4131944444444444,
+                  "width": 0.02725488999310662,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.6983495475419985,
+                  "y": 0.4131944444444444,
+                  "width": 0.02271240832758885,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.7256044375351052,
+                  "y": 0.4131944444444444,
+                  "width": 0.04630718355864481,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.7764541027592677,
+                  "y": 0.4131944444444444,
+                  "width": 0.01362744499655331,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.7946240294213388,
+                  "y": 0.4131944444444444,
+                  "width": 0.06173192441853043,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.09803921568627451,
+                  "y": 0.42960858585858586,
+                  "width": 0.05356208950865502,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.1561437868604473,
+                  "y": 0.42960858585858586,
+                  "width": 0.0590359556908701,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.21972222421683518,
+                  "y": 0.42960858585858586,
+                  "width": 0.0390522776086346,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.26331698349098753,
+                  "y": 0.42960858585858586,
+                  "width": 0.01362744499655331,
+                  "height": 0.017348472518150252
+                },
+                {
+                  "x": 0.2814869101530586,
+                  "y": 0.42960858585858586,
+                  "width": 0.06630716760174121,
+                  "height": 0.017348472518150252
+                }
+              ],
+              "word_bboxes": [],
+              "highlight_mode": "word",
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "subtype": "character_change",
+              "description": "Character content changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "before": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "after": "Put differently, structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+            "region": "paragraph_3",
+            "severity": "moderate",
+            "description": "Paraphrased lead sentence to simulate subtle rewrite."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "deleted",
+            "change_type": "content",
+            "old_text": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+            "new_text": null,
+            "bbox": {
+              "x": 0.09803921568627451,
+              "y": 0.3765782828282828,
+              "width": 0.7973853217230903,
+              "height": 0.0665908967605745
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "line",
+              "alignment_reason": "deleted",
+              "line_id": "para_95976d6cdadc",
+              "page_width": 612.0,
+              "page_height": 792.0,
+              "is_ocr": false,
+              "fusion_modules": [
+                "line"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "subtype": "character_change",
+              "description": "Character content changed"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "before": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+            "after": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the abilitty to correctly classify different types of changes.",
+            "region": "paragraph_4",
+            "severity": "minor",
+            "description": "Inserted a character duplication typo inside a long word."
+          }
+        },
+        {
+          "score": 1.0,
+          "pred": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "old_text": "Metric Original Revised",
+            "new_text": "Metric Original Revised Delta",
+            "bbox": {
+              "x": 0.09677617091758578,
+              "y": 0.47762214429450756,
+              "width": 0.3219307933134191,
+              "height": 0.15368903882575757
+            },
+            "confidence": 0.75,
+            "metadata": {
+              "type": "table",
+              "table_change": "structure",
+              "old_structure": {
+                "rows": 5,
+                "cols": 3
+              },
+              "new_structure": {
+                "rows": 5,
+                "cols": 4
+              },
+              "fusion_modules": [
+                "table"
+              ],
+              "fusion_count": 1,
+              "fusion_diff_count": 1,
+              "is_ocr": false,
+              "subtype": "table:structure",
+              "description": "Table structure changed: 1 column added"
+            }
+          },
+          "gt": {
+            "page": 1,
+            "diff_type": "modified",
+            "change_type": "content",
+            "before": "Metric Original Revised",
+            "after": "Metric Original Revised Delta",
+            "region": "table",
+            "severity": "moderate",
+            "description": "Added a derived delta column to the metrics table."
+          }
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "page": 1,
+          "diff_type": "modified",
+          "change_type": "formatting",
+          "before": "Put differently, structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+          "after": "Put differently, structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+          "region": "paragraph_3",
+          "severity": "minor",
+          "description": "Adjusted font size to 12pt for a single paragraph."
+        }
+      ]
+    }
+  ]
+}

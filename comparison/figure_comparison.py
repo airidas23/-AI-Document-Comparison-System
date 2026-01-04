@@ -1,15 +1,27 @@
-"""Figure caption and numbering comparison."""
+"""Figure caption and numbering comparison with perceptual hashing."""
 from __future__ import annotations
 
+import io
 import re
-from dataclasses import dataclass
-from typing import Dict, List, Optional, Tuple
+from dataclasses import dataclass, field
+from typing import Dict, List, Optional, Tuple, Any
+
+import numpy as np
 
 from comparison.alignment import align_pages
-from comparison.models import Diff, PageData
+from comparison.models import Diff, PageData, FigureRegion
 from utils.coordinates import normalize_bbox
 from utils.logging import logger
 from utils.text_normalization import normalize_text
+
+# Optional: imagehash for perceptual hashing
+try:
+    import imagehash
+    from PIL import Image
+    IMAGEHASH_AVAILABLE = True
+except ImportError:
+    IMAGEHASH_AVAILABLE = False
+    logger.warning("imagehash not available - figure visual comparison disabled")
 
 
 @dataclass
@@ -21,6 +33,200 @@ class FigureCaption:
     caption_number: Optional[int] = None
     caption_label: Optional[str] = None  # "Figure", "Fig.", etc.
     caption_bbox: Optional[Dict[str, float]] = None
+    image_data: Optional[bytes] = None  # Raw image bytes for visual comparison
+    phash: Optional[str] = None  # Perceptual hash string
+    dhash: Optional[str] = None  # Difference hash string
+
+
+def compute_figure_hashes(image_data: bytes) -> Tuple[Optional[str], Optional[str]]:
+    """
+    Compute perceptual and difference hashes for a figure image.
+    
+    Args:
+        image_data: Raw image bytes (PNG, JPEG, etc.)
+    
+    Returns:
+        Tuple of (phash_string, dhash_string), or (None, None) if unavailable
+    """
+    if not IMAGEHASH_AVAILABLE or not image_data:
+        return None, None
+    
+    try:
+        img = Image.open(io.BytesIO(image_data))
+        if img.mode != 'RGB':
+            img = img.convert('RGB')
+        
+        # Perceptual hash - good for similar images with minor edits
+        phash = str(imagehash.phash(img))
+        
+        # Difference hash - good for structural changes
+        dhash = str(imagehash.dhash(img))
+        
+        return phash, dhash
+    except Exception as e:
+        logger.warning("Failed to compute image hashes: %s", e)
+        return None, None
+
+
+def compare_figure_hashes(
+    phash_a: Optional[str],
+    phash_b: Optional[str],
+    dhash_a: Optional[str],
+    dhash_b: Optional[str],
+    threshold: int = 8,
+) -> Tuple[float, str]:
+    """
+    Compare two figures using their perceptual hashes.
+    
+    Args:
+        phash_a: Perceptual hash of first figure
+        phash_b: Perceptual hash of second figure
+        dhash_a: Difference hash of first figure
+        dhash_b: Difference hash of second figure
+        threshold: Hamming distance threshold (default 8, max 64)
+    
+    Returns:
+        Tuple of (similarity_score 0-1, change_type)
+        - change_type: "identical", "similar", "different"
+    """
+    if not IMAGEHASH_AVAILABLE:
+        return 1.0, "unknown"
+    
+    if not all([phash_a, phash_b]):
+        return 0.5, "unknown"
+    
+    try:
+        # Convert string hashes to imagehash objects
+        hash_a_p = imagehash.hex_to_hash(phash_a)
+        hash_b_p = imagehash.hex_to_hash(phash_b)
+        
+        # Hamming distance (0 = identical, 64 = completely different)
+        phash_distance = hash_a_p - hash_b_p
+        
+        # Also check dhash for structural changes
+        dhash_distance = 64  # Default to max if not available
+        if dhash_a and dhash_b:
+            hash_a_d = imagehash.hex_to_hash(dhash_a)
+            hash_b_d = imagehash.hex_to_hash(dhash_b)
+            dhash_distance = hash_a_d - hash_b_d
+        
+        # Use the more conservative (larger) distance
+        max_distance = max(phash_distance, dhash_distance)
+        
+        # Convert to similarity score (0-1)
+        similarity = 1.0 - (max_distance / 64.0)
+        
+        # Categorize the change
+        if max_distance == 0:
+            change_type = "identical"
+        elif max_distance <= threshold:
+            change_type = "similar"
+        else:
+            change_type = "different"
+        
+        return similarity, change_type
+    
+    except Exception as e:
+        logger.warning("Failed to compare hashes: %s", e)
+        return 0.5, "unknown"
+
+
+def extract_figure_image(page_data: Any, figure_bbox: Dict[str, float]) -> Optional[bytes]:
+    """
+    Extract figure image bytes from a PDF page.
+    
+    This requires access to the original PDF document or rendered page.
+    
+    Args:
+        page_data: Page data or fitz.Page object
+        figure_bbox: Figure bounding box
+    
+    Returns:
+        Raw image bytes or None
+    """
+    # Check if we have a fitz page reference
+    if hasattr(page_data, 'fitz_page') and page_data.fitz_page is not None:
+        try:
+            import fitz
+            page = page_data.fitz_page
+            
+            # Convert bbox to fitz.Rect
+            rect = fitz.Rect(
+                figure_bbox["x"],
+                figure_bbox["y"],
+                figure_bbox["x"] + figure_bbox["width"],
+                figure_bbox["y"] + figure_bbox["height"]
+            )
+            
+            # Render at 2x resolution for better quality
+            mat = fitz.Matrix(2, 2)
+            clip = rect
+            
+            pix = page.get_pixmap(matrix=mat, clip=clip)
+            return pix.tobytes("png")
+        
+        except Exception as e:
+            logger.debug("Could not extract figure image: %s", e)
+
+    # Fallback: reopen the source PDF (if available) and render the clipped region.
+    # This is the common path for PageData objects that don't carry a live fitz.Page.
+    try:
+        source_path = None
+        page_index = None
+        if hasattr(page_data, "metadata") and isinstance(page_data.metadata, dict):
+            source_path = page_data.metadata.get("source_pdf_path")
+            page_index = page_data.metadata.get("page_index")
+
+        if source_path:
+            import fitz
+
+            # Default to 0-based page index derived from 1-based page_num.
+            if page_index is None and hasattr(page_data, "page_num"):
+                try:
+                    page_index = int(page_data.page_num) - 1
+                except Exception:
+                    page_index = None
+
+            with fitz.open(source_path) as doc:
+                if page_index is None or page_index < 0 or page_index >= len(doc):
+                    return None
+                page = doc[page_index]
+                rect = fitz.Rect(
+                    figure_bbox["x"],
+                    figure_bbox["y"],
+                    figure_bbox["x"] + figure_bbox["width"],
+                    figure_bbox["y"] + figure_bbox["height"],
+                )
+                mat = fitz.Matrix(2, 2)
+                pix = page.get_pixmap(matrix=mat, clip=rect)
+                return pix.tobytes("png")
+    except Exception as e:
+        logger.debug("Could not extract figure image via source_pdf_path: %s", e)
+    
+    # Check if image data is in metadata
+    if hasattr(page_data, 'metadata') and page_data.metadata:
+        figures = page_data.metadata.get("figures", [])
+        for fig in figures:
+            fig_bbox = fig.get("bbox")
+            if not fig_bbox:
+                continue
+            
+            # Handle both list and dict bbox formats
+            if isinstance(fig_bbox, dict):
+                fig_x = fig_bbox.get("x", 0)
+                fig_y = fig_bbox.get("y", 0)
+            elif isinstance(fig_bbox, (list, tuple)) and len(fig_bbox) >= 2:
+                fig_x = fig_bbox[0]
+                fig_y = fig_bbox[1]
+            else:
+                continue
+            
+            # Check if this is the matching figure
+            if (abs(fig_x - figure_bbox["x"]) < 5 and
+                abs(fig_y - figure_bbox["y"]) < 5):
+                return fig.get("image_data")
+    
+    return None
 
 
 def extract_figure_captions(page: PageData) -> List[FigureCaption]:
@@ -224,7 +430,8 @@ def compare_figure_captions(
         for caption_a, caption_b in matched_pairs:
             caption_diffs = _compare_caption_pair(
                 caption_a, caption_b, page_a.page_num, confidence,
-                page_a.width, page_a.height
+                page_a.width, page_a.height,
+                page_a=page_a, page_b=page_b  # Pass pages for visual comparison
             )
             all_diffs.extend(caption_diffs)
         
@@ -246,6 +453,7 @@ def compare_figure_captions(
                 bbox=normalized_bbox,
                 confidence=confidence,
                 metadata={
+                    "type": "figure",
                     "figure_change": "figure_deleted",
                     "caption_number": caption.caption_number,
                     "page_width": page_a.width,
@@ -271,6 +479,7 @@ def compare_figure_captions(
                 bbox=normalized_bbox,
                 confidence=confidence,
                 metadata={
+                    "type": "figure",
                     "figure_change": "figure_added",
                     "caption_number": caption.caption_number,
                     "page_width": page_b.width,
@@ -343,9 +552,12 @@ def _compare_caption_pair(
     confidence: float,
     page_width: float,
     page_height: float,
+    page_a: Optional[PageData] = None,
+    page_b: Optional[PageData] = None,
 ) -> List[Diff]:
-    """Compare two matched figure captions."""
+    """Compare two matched figure captions, including visual comparison."""
     from comparison.models import Diff
+    from config.settings import settings
     
     diffs = []
     
@@ -356,18 +568,64 @@ def _compare_caption_pair(
         page_width, page_height
     )
     
+    # Visual comparison using perceptual hashing
+    if IMAGEHASH_AVAILABLE and page_a and page_b:
+        # Extract images if not already present
+        if caption_a.image_data is None:
+            caption_a.image_data = extract_figure_image(page_a, caption_a.figure_bbox)
+        if caption_b.image_data is None:
+            caption_b.image_data = extract_figure_image(page_b, caption_b.figure_bbox)
+        
+        # Compute hashes if we have images
+        if caption_a.image_data and caption_b.image_data:
+            if caption_a.phash is None:
+                caption_a.phash, caption_a.dhash = compute_figure_hashes(caption_a.image_data)
+            if caption_b.phash is None:
+                caption_b.phash, caption_b.dhash = compute_figure_hashes(caption_b.image_data)
+            
+            # Compare hashes
+            threshold = getattr(settings, 'figure_hash_threshold', 8)
+            similarity, visual_change = compare_figure_hashes(
+                caption_a.phash, caption_b.phash,
+                caption_a.dhash, caption_b.dhash,
+                threshold=threshold
+            )
+            
+            if visual_change == "different":
+                diffs.append(Diff(
+                    page_num=page_num,
+                    diff_type="modified",
+                    change_type="visual",
+                    old_text=caption_a.caption_text or "Figure (visual)",
+                    new_text=caption_b.caption_text or "Figure (visual)",
+                    bbox=normalized_bbox,
+                    confidence=similarity,
+                    metadata={
+                        "type": "figure",
+                        "figure_change": "visual_content",
+                        "phash_a": caption_a.phash,
+                        "phash_b": caption_b.phash,
+                        "dhash_a": caption_a.dhash,
+                        "dhash_b": caption_b.dhash,
+                        "visual_similarity": similarity,
+                        "page_width": page_width,
+                        "page_height": page_height,
+                    },
+                ))
+    
     # Check for numbering change
     if caption_a.caption_number is not None and caption_b.caption_number is not None:
         if caption_a.caption_number != caption_b.caption_number:
             diffs.append(Diff(
                 page_num=page_num,
                 diff_type="modified",
-                change_type="formatting",
+                change_type="visual",
                 old_text=caption_a.caption_text or f"Figure {caption_a.caption_number}",
                 new_text=caption_b.caption_text or f"Figure {caption_b.caption_number}",
                 bbox=normalized_bbox,
                 confidence=confidence,
                 metadata={
+                    "type": "figure",
                     "figure_change": "numbering",
                     "old_number": caption_a.caption_number,
                     "new_number": caption_b.caption_number,
@@ -391,6 +649,7 @@ def _compare_caption_pair(
             bbox=normalized_bbox if caption_a.caption_bbox is None else None,
             confidence=confidence,
             metadata={
+                "type": "figure",
                 "figure_change": "caption_text",
                 "page_width": page_width,
                 "page_height": page_height,

@@ -3,6 +3,8 @@
 import sys
 from pathlib import Path
 
+import pytest
+
 # Add project root to path
 project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
@@ -20,9 +22,7 @@ def test_doclayout_yolo():
     print("\nTest 1: Loading YOLO model...")
     model = load_yolo_model()
     
-    if model is None:
-        print("❌ FAILED: Model failed to load")
-        return False
+    assert model is not None, "DocLayout-YOLO model failed to load"
     
     print(f"✅ Model loaded: {type(model)}")
     
@@ -41,8 +41,7 @@ def test_doclayout_yolo():
     
     if not test_pdf.exists():
         print(f"⚠️  Test PDF not found: {test_pdf}")
-        print("Skipping PDF analysis test")
-        return True
+        pytest.skip("Test PDF not available")
     
     try:
         pages = analyze_layout(test_pdf, use_layoutparser=True)
@@ -90,17 +89,17 @@ def test_doclayout_yolo():
             
             if method == "yolo" and (total_tables > 0 or total_figures > 0 or total_text > 0):
                 print("\n✅ DocLayout-YOLO is working correctly!")
-                return True
+                assert True
             else:
                 print(f"\n⚠️  Expected YOLO detections, but got method='{method}' with limited detections")
-                return False
+                assert method == "yolo", f"Expected layout_method='yolo', got '{method}'"
         
-        return True
+        assert True
     except Exception as e:
         print(f"❌ Error analyzing PDF: {e}")
         import traceback
         traceback.print_exc()
-        return False
+        pytest.fail(f"Error analyzing PDF: {e}")
 
 if __name__ == "__main__":
     success = test_doclayout_yolo()

@@ -219,10 +219,17 @@ def analyze_layout(path: str | Path, use_layoutparser: bool = True) -> List[Page
 def _detect_with_yolo(page) -> tuple[List[dict], List[dict], List[dict]]:
     from PIL import Image
     import numpy as np
+    from utils.coordinates import pixel_bbox_to_pdf_points
 
     model = load_yolo_model()
     if model is None:
-        return [], [], []
+        # Fallback to heuristic detection when YOLO weights are unavailable.
+        # This keeps figure/table metadata working even if the YOLO libraries
+        # are installed but the model file is missing.
+        tables = _detect_tables(page)
+        figures = _detect_figures(page)
+        paragraphs: List[dict] = []
+        return tables, figures, paragraphs
 
     # Convert PDF page → image
     pix = page.get_pixmap(dpi=150)
@@ -262,7 +269,7 @@ def _detect_with_yolo(page) -> tuple[List[dict], List[dict], List[dict]]:
     ):
         cls_idx = int(cls.item())
         cls_name = model.names[cls_idx].lower()
-        bbox = xyxy.tolist()
+        bbox_px = xyxy.tolist()  # pixel-space xyxy
         confidence = float(conf.item())
 
         # Map YOLO class → our domain layout class
@@ -270,10 +277,21 @@ def _detect_with_yolo(page) -> tuple[List[dict], List[dict], List[dict]]:
         if mapped is None:
             continue
 
+        bbox_dict = pixel_bbox_to_pdf_points(
+            bbox_px,
+            pix.width,
+            pix.height,
+            page.rect.width,
+            page.rect.height,
+        )
+
         entry = {
-            "bbox": bbox,
+            "bbox": bbox_dict,
             "confidence": round(confidence, 3),
             "label": mapped,
+            "bbox_units": "pt",
+            "bbox_space": "page",
+            "bbox_source": "exact",
         }
 
         if mapped == "table":
@@ -315,6 +333,8 @@ def refine_with_sam(img, bbox):
 # ---------------------------------------------------------
 def _detect_tables(page) -> List[dict]:
     """Fallback heuristic table detection."""
+    from utils.coordinates import bbox_tuple_to_dict
+    
     tables = []
     try:
         blocks = page.get_text("dict", flags=0)
@@ -330,10 +350,16 @@ def _detect_tables(page) -> List[dict]:
                                 x_coords.append(bbox[0])
 
                     if len(set(round(x, 0) for x in x_coords)) < len(x_coords) * 0.7:
-                        tables.append({
-                            "bbox": block.get("bbox"),
-                            "confidence": 0.5,
-                        })
+                        bbox_list = block.get("bbox")
+                        bbox_dict = bbox_tuple_to_dict(tuple(bbox_list)) if bbox_list and len(bbox_list) == 4 else None
+                        if bbox_dict is not None:
+                            tables.append({
+                                "bbox": bbox_dict,
+                                "confidence": 0.5,
+                                "bbox_units": "pt",
+                                "bbox_space": "page",
+                                "bbox_source": "exact",
+                            })
     except Exception as exc:
         logger.debug("Table detection error: %s", exc)
 
@@ -342,6 +368,8 @@ def _detect_tables(page) -> List[dict]:
 
 def _detect_figures(page) -> List[dict]:
     """Fallback heuristic for image detection."""
+    from utils.coordinates import bbox_tuple_to_dict
+    
     figures = []
     try:
         image_list = page.get_images()
@@ -351,11 +379,14 @@ def _detect_figures(page) -> List[dict]:
             img_rects = page.get_image_rects(xref)
             for rect in img_rects:
                 figures.append({
-                    "bbox": [rect.x0, rect.y0, rect.x1, rect.y1],
+                    "bbox": bbox_tuple_to_dict((rect.x0, rect.y0, rect.x1, rect.y1)),
                     "xref": xref,
                     "width": base_image["width"],
                     "height": base_image["height"],
                     "confidence": 1.0,
+                    "bbox_units": "pt",
+                    "bbox_space": "page",
+                    "bbox_source": "exact",
                 })
     except Exception as exc:
         logger.debug("Figure detection error: %s", exc)

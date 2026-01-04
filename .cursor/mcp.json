@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "gradio": {
+      "url": "http://localhost:7860/gradio_api/mcp/sse"
+    },
+    "upload_files_to_gradio": {
+      "command": "/Users/airidas/Documents/KTU/P170M109 Computational Intelligence and Decision Making/project/.venv/bin/uvx",
+      "args": [
+        "--from",
+        "gradio[mcp]",
+        "gradio",
+        "upload-mcp",
+        "http://localhost:7860/",
+        "/Users/airidas/Documents/KTU/P170M109 Computational Intelligence and Decision Making/project"
+      ]
+    }
+  }
+}

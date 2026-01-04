@@ -1,13 +1,20 @@
 #!/usr/bin/env python3
 """Test OCR bounding box visualization with the fix applied."""
 import sys
+import os
 from pathlib import Path
+
+import pytest
 
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
+@pytest.mark.integration
+@pytest.mark.slow
 def test_ocr_bbox_viz():
     """Test OCR bounding box visualization after the scaling fix."""
+    if os.environ.get("RUN_OCR_BBOX_VIZ") != "1":
+        pytest.skip("Set RUN_OCR_BBOX_VIZ=1 to run this integration test")
     from extraction.ocr_visualizer import visualize_ocr_on_pdf_page
     
     # Test PDF (use one from synthetic dataset if available)
@@ -16,7 +23,7 @@ def test_ocr_bbox_viz():
     if not Path(pdf_path).exists():
         print(f"❌ Test PDF not found: {pdf_path}")
         print("Please provide a valid PDF path to test.")
-        return False
+        pytest.skip("Test PDF not available")
     
     print("=" * 70)
     print("OCR BOUNDING BOX VISUALIZATION TEST")
@@ -32,7 +39,7 @@ def test_ocr_bbox_viz():
         result_img = visualize_ocr_on_pdf_page(
             pdf_path=pdf_path,
             page_num=0,
-            ocr_engine="deepseekß",
+            ocr_engine="paddle",
             output_path=output_path,
             show_text=False,  # Don't show text labels to keep boxes clean
             show_confidence=False
@@ -52,13 +59,13 @@ def test_ocr_bbox_viz():
         print("\nIf boxes still cover the entire page, the fix didn't work.")
         print("=" * 70)
         
-        return True
+        assert result_img is not None
         
     except Exception as e:
         print(f"\n❌ Test failed with error: {e}")
         import traceback
         traceback.print_exc()
-        return False
+        pytest.fail(f"OCR bbox viz failed: {e}")
 
 if __name__ == "__main__":
     success = test_ocr_bbox_viz()

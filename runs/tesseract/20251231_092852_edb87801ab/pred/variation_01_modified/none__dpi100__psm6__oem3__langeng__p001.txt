@@ -1,0 +1,30 @@
+Synthetic PDF baseline
+
+Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF
+pairs with known differences. The generator applies various modifications including text changes, formatting
+adjustments, and structural alterations. Text Modifications The system can apply synonym swaps,
+paraphrasing, typo insertion, and punctuation changes.
+‘These modifications test the ability to detect subtle content differences while maintaining document structure.
+Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware
+comparison. These changes simulate real-world scenarios where documents are reformatted without altering
+content.
+Structural Modifications Table structure changes figure caption updates, and header/footer modifications
+provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth
+annotations.
+Extended Content Section This page demonstrates how the generator handles multi-page documents.
+Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework
+uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly
+classify different types of changes.
+
+Metric Original | Revised Delta
+
+Precision 092 | 090 | -002
+
+Recall 0.88 | 0.90 | +0.02
+
+Lateney (ms) 129 124 | 5.00
+
+Throughput (docsimin) | 38 33° | 5.00
+Figure 2. Baseline architecture illustration.
+
+Generated pair—page 1

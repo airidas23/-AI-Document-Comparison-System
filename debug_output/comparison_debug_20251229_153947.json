@@ -1,0 +1,409 @@
+{
+  "timestamp": "20251229_153947",
+  "doc_a": "data/synthetic/dataset/variation_08/variation_08_original.pdf",
+  "doc_b": "data/synthetic/dataset/variation_08/variation_08_modified.pdf",
+  "metrics": {
+    "total_time": 1.825789213180542,
+    "extraction_time": 1.8149378299713135,
+    "layout_time": 0.0,
+    "comparison_time": 0.004514932632446289,
+    "classification_time": 0.00011706352233886719,
+    "fusion_time": 9.608268737792969e-05,
+    "pages_processed": 1,
+    "diffs_found": 6,
+    "diffs_before_fusion": 12,
+    "diffs_after_fusion": 6
+  },
+  "config": {
+    "ocr_mode": "auto",
+    "ocr_engine": null,
+    "force_ocr": false,
+    "sensitivity_threshold": null,
+    "fusion_strategy": "triangulation"
+  },
+  "summary": {
+    "total": 6,
+    "by_type": {
+      "modified": 6
+    },
+    "by_change_type": {
+      "formatting": 3,
+      "content": 2,
+      "layout": 1
+    },
+    "by_subtype": {
+      "header_footer:header": 1,
+      "punctuation": 1,
+      "table:structure": 1,
+      "layout_drift": 1,
+      "figure:numbering": 1,
+      "header_footer:footer": 1
+    },
+    "ocr_stats": {
+      "ocr_diffs": 0,
+      "ocr_low_severity": 0,
+      "ocr_formatting_noise": 0
+    }
+  },
+  "diffs": [
+    {
+      "page_num": 1,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "formatting",
+      "old_text": "Synthetic PDF baseline",
+      "new_text": "PDF diff QA sprint",
+      "old_text_normalized": "synthetic pdf baseline",
+      "new_text_normalized": "pdf diff qa sprint",
+      "bbox": {
+        "x": 0.08823529411764706,
+        "y": 0.03323863732694375,
+        "width": 0.15283821455014296,
+        "height": 0.015613637789331301
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "header_footer_change": "header",
+        "is_page_number": false,
+        "is_repeating": false,
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "fusion_modules": [
+          "header_footer"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "is_ocr": false,
+        "subtype": "header_footer:header",
+        "description": "Header changed"
+      }
+    },
+    {
+      "page_num": 1,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "formatting",
+      "old_text": "Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware",
+      "new_text": "Formatting Changes Font size adjustments, and spacing modifications are applied to test formatting-aware",
+      "old_text_normalized": "formatting changes font size adjustments and spacing modifications are applied to test formatting-aware",
+      "new_text_normalized": "formatting changes font size adjustments, and spacing modifications are applied to test formatting-aware",
+      "bbox": {
+        "x": 0.09803921568627451,
+        "y": 0.21243686868686867,
+        "width": 0.765571644103605,
+        "height": 0.017348491784298065
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "line_id",
+        "similarity": 1.0,
+        "line_id": "e080ab563e32",
+        "line_id_base": "e080ab563e32",
+        "line_id_mod": "e080ab563e32",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "replace",
+            "a_tokens": [
+              "adjustments"
+            ],
+            "b_tokens": [
+              "adjustments,"
+            ]
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.32143791049134496,
+            "y": 0.21243686868686867,
+            "width": 0.08808821634529462,
+            "height": 0.017348491784298058
+          }
+        ],
+        "word_bboxes_b": [
+          {
+            "x": 0.32143791049134496,
+            "y": 0.21243686868686867,
+            "width": 0.0926306980108124,
+            "height": 0.017348491784298058
+          }
+        ],
+        "word_bboxes": [
+          {
+            "x": 0.32143791049134496,
+            "y": 0.21243686868686867,
+            "width": 0.08808821634529462,
+            "height": 0.017348491784298058
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "punctuation",
+        "description": "Punctuation changed"
+      }
+    },
+    {
+      "page_num": 1,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Throughput (docs/min) 36 31",
+      "new_text": "Throughput (docs/min) 36 31 -5.00",
+      "old_text_normalized": "throughput (docs/min) 36 31",
+      "new_text_normalized": "throughput (docs/min) 36 31-5.00",
+      "bbox": {
+        "x": 0.09651519775390624,
+        "y": 0.4671881288470644,
+        "width": 0.3225848328833486,
+        "height": 0.15390895034327645
+      },
+      "bbox_b": null,
+      "confidence": 0.85,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "table",
+        "alignment_reason": "fuzzy",
+        "similarity": 0.8052247293052702,
+        "line_id": "311235125af7",
+        "line_id_base": "311235125af7",
+        "line_id_mod": "3b2481e6ba30",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "-5.00"
+            ]
+          }
+        ],
+        "word_bboxes_a": [],
+        "word_bboxes_b": [
+          {
+            "x": 0.43065199509165647,
+            "y": 0.6064709750088778,
+            "width": 0.033514633677364174,
+            "height": 0.015613632972794349
+          }
+        ],
+        "word_bboxes": [],
+        "highlight_mode": "line_fallback",
+        "table_change": "structure",
+        "old_structure": {
+          "rows": 5,
+          "cols": 3
+        },
+        "new_structure": {
+          "rows": 5,
+          "cols": 4
+        },
+        "absorbed_line_diffs": 5,
+        "fusion_modules": [
+          "table",
+          "line"
+        ],
+        "fusion_count": 2,
+        "fusion_diff_count": 6,
+        "subtype": "table:structure",
+        "description": "Table structure changed: 1 column added"
+      }
+    },
+    {
+      "page_num": 1,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "layout",
+      "old_text": null,
+      "new_text": null,
+      "old_text_normalized": null,
+      "new_text_normalized": null,
+      "bbox": {
+        "x": 0.09803921568627451,
+        "y": 0.4752146402994792,
+        "width": 0.3089166529038373,
+        "height": 0.347815696639244
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "region",
+        "subtype": "layout_drift",
+        "highlight_mode": "region",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "description": "Text modified"
+      }
+    },
+    {
+      "page_num": 1,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Figure 1. Baseline architecture illustration.",
+      "new_text": "Figure 2. Baseline architecture illustration.",
+      "old_text_normalized": "figure 1. baseline architecture illustration.",
+      "new_text_normalized": "figure 2. baseline architecture illustration.",
+      "bbox": {
+        "x": 0.09711048799402573,
+        "y": 0.6382426313920455,
+        "width": 0.46024800618489586,
+        "height": 0.18478770554667767
+      },
+      "bbox_b": null,
+      "confidence": 0.85,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "figure",
+        "alignment_reason": "fuzzy",
+        "similarity": 0.8707748209270219,
+        "line_id": "0c222bb46a8d",
+        "line_id_base": "0c222bb46a8d",
+        "line_id_mod": "708229db6cba",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": false,
+        "word_ops": [
+          {
+            "tag": "replace",
+            "a_tokens": [
+              "1."
+            ],
+            "b_tokens": [
+              "2."
+            ]
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.14888889337676803,
+            "y": 0.8059343280214252,
+            "width": 0.01362744499655331,
+            "height": 0.01709600891729798
+          }
+        ],
+        "word_bboxes_b": [
+          {
+            "x": 0.14888889337676803,
+            "y": 0.8160353381224353,
+            "width": 0.01362744499655331,
+            "height": 0.01709600891729798
+          }
+        ],
+        "word_bboxes": [
+          {
+            "x": 0.14888889337676803,
+            "y": 0.8059343280214252,
+            "width": 0.01362744499655331,
+            "height": 0.01709600891729798
+          }
+        ],
+        "highlight_mode": "word",
+        "figure_change": "numbering",
+        "old_number": 1,
+        "new_number": 2,
+        "fusion_modules": [
+          "line",
+          "figure"
+        ],
+        "fusion_count": 2,
+        "fusion_diff_count": 2,
+        "subtype": "figure:numbering",
+        "description": "Figure numbering changed from 1 to 2"
+      }
+    },
+    {
+      "page_num": 1,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "formatting",
+      "old_text": "Generated pair — page 1",
+      "new_text": "Rev B — page 1",
+      "old_text_normalized": "generated pair-page 1",
+      "new_text_normalized": "rev b-page 1",
+      "bbox": {
+        "x": 0.08823529411764706,
+        "y": 0.9473800659179688,
+        "width": 0.16594112620634188,
+        "height": 0.015613594440498701
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "header_footer_change": "footer",
+        "is_page_number": false,
+        "is_repeating": false,
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "fusion_modules": [
+          "header_footer"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "is_ocr": false,
+        "subtype": "header_footer:footer",
+        "description": "Footer changed"
+      }
+    }
+  ],
+  "comparison_report": {
+    "text_diffs_count": 4,
+    "table_diffs_count": 1,
+    "figure_diffs_count": 1,
+    "formula_diffs_count": 0,
+    "layout_diffs_count": 1,
+    "total_diffs": 6,
+    "diffs_before_fusion": 12,
+    "diffs_after_fusion": 6,
+    "fusion_reduction_percent": 50.0,
+    "by_change_type": {
+      "content": 2,
+      "visual": 0,
+      "layout": 1,
+      "formatting": 3
+    },
+    "by_diff_type": {
+      "added": 0,
+      "deleted": 0,
+      "modified": 6
+    }
+  }
+}

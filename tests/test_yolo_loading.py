@@ -3,6 +3,8 @@
 import sys
 from pathlib import Path
 
+import pytest
+
 # Add project root to path
 project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
@@ -20,12 +22,9 @@ def test_yolo_model_loading():
     logger.info("Test 1: Loading YOLO model...")
     model = load_yolo_model()
     
-    if model is not None:
-        logger.info("✅ SUCCESS: YOLO model loaded successfully!")
-        logger.info(f"Model type: {type(model)}")
-    else:
-        logger.error("❌ FAILED: YOLO model failed to load")
-        return False
+    assert model is not None, "YOLO model failed to load"
+    logger.info("✅ SUCCESS: YOLO model loaded successfully!")
+    logger.info(f"Model type: {type(model)}")
     
     # Test 2: Try to analyze a PDF
     logger.info("\nTest 2: Analyzing a PDF with YOLO...")
@@ -34,7 +33,7 @@ def test_yolo_model_loading():
     if not test_pdf.exists():
         logger.warning(f"Test PDF not found: {test_pdf}")
         logger.info("Skipping PDF analysis test")
-        return True
+        pytest.skip("Test PDF not available")
     
     try:
         pages = analyze_layout(test_pdf, use_layoutparser=True)
@@ -50,10 +49,10 @@ def test_yolo_model_loading():
             else:
                 logger.warning(f"⚠️  Expected 'yolo' but got '{method}'")
         
-        return True
+        assert True
     except Exception as e:
         logger.error(f"❌ FAILED: Error analyzing PDF: {e}")
-        return False
+        pytest.fail(f"Error analyzing PDF: {e}")
 
 if __name__ == "__main__":
     success = test_yolo_model_loading()

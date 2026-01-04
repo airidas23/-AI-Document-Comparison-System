@@ -15,10 +15,84 @@ from utils.logging import configure_logging, logger
 configure_logging()
 
 
+def validate_model_type(local_dir: Path, expected_model_type: str = None) -> bool:
+    """
+    Validate that the model at local_dir is the correct type.
+    
+    For DeepSeek-OCR, we check for 'DeepseekOCR' in architectures or auto_map,
+    not model_type (which is 'deepseek_vl_v2' because OCR uses VL2 architecture).
+    
+    Args:
+        local_dir: Local directory path to the model
+        expected_model_type: Expected model type identifier:
+            - 'deepseekocr': Check for DeepseekOCRForCausalLM architecture
+    
+    Returns:
+        True if model type matches (or if expected_model_type is None), False otherwise
+    """
+    if expected_model_type is None:
+        return True  # Skip validation if no expected type provided
+    
+    try:
+        from transformers import AutoConfig
+        config = AutoConfig.from_pretrained(str(local_dir), trust_remote_code=True)
+        
+        if expected_model_type.lower() == 'deepseekocr':
+            # DeepSeek-OCR uses deepseek_vl_v2 as base, but has DeepseekOCR architecture
+            architectures = getattr(config, 'architectures', [])
+            auto_map = getattr(config, 'auto_map', {})
+            
+            # Check if it has DeepseekOCR architecture
+            has_ocr_arch = any('DeepseekOCR' in arch for arch in architectures)
+            has_ocr_auto = any('DeepseekOCR' in str(v) for v in auto_map.values())
+            
+            if has_ocr_arch or has_ocr_auto:
+                logger.info(
+                    "✓ Model validated as DeepSeek-OCR (architectures: %s, auto_map: %s)",
+                    architectures,
+                    list(auto_map.values()) if auto_map else []
+                )
+                return True
+            else:
+                logger.error(
+                    "Model at %s does not appear to be DeepSeek-OCR. "
+                    "Architectures: %s, Auto map: %s",
+                    local_dir,
+                    architectures,
+                    auto_map
+                )
+                return False
+        else:
+            # For other model types, check model_type directly
+            actual_type = getattr(config, 'model_type', None)
+            if actual_type is None:
+                logger.warning("Could not determine model_type from config at %s", local_dir)
+                return True
+            
+            actual_type_lower = actual_type.lower()
+            expected_type_lower = expected_model_type.lower()
+            
+            if actual_type_lower != expected_type_lower:
+                logger.error(
+                    "Model type mismatch! Expected '%s', but found '%s' at %s",
+                    expected_model_type,
+                    actual_type,
+                    local_dir
+                )
+                return False
+            
+            logger.info("✓ Model type validated: %s", actual_type)
+            return True
+    except Exception as exc:
+        logger.warning("Could not validate model type: %s", exc)
+        return True  # Don't fail download if validation fails
+
+
 def download_model(
     model_id: str,
     local_dir: Path,
     model_name: str,
+    expected_model_type: str = None,
 ) -> bool:
     """
     Download a model from HuggingFace to a local directory.
@@ -27,6 +101,7 @@ def download_model(
         model_id: HuggingFace model identifier (e.g., 'deepseek-ai/deepseek-ocr')
         local_dir: Local directory path to save the model
         model_name: Human-readable model name for logging
+        expected_model_type: Expected model_type to validate after download (e.g., 'deepseekocr')
     
     Returns:
         True if download successful, False otherwise
@@ -41,7 +116,15 @@ def download_model(
     
     # Check if model already exists
     if local_dir.exists() and any(local_dir.iterdir()):
-        logger.info("%s already exists at %s, skipping download", model_name, local_dir)
+        logger.info("%s already exists at %s, validating...", model_name, local_dir)
+        # Validate existing model
+        if expected_model_type and not validate_model_type(local_dir, expected_model_type):
+            logger.error(
+                "Existing model at %s has wrong type. Please remove it and re-run this script.",
+                local_dir
+            )
+            return False
+        logger.info("✓ Existing model validated, skipping download")
         return True
     
     logger.info("Downloading %s from HuggingFace...", model_name)
@@ -56,11 +139,21 @@ def download_model(
         snapshot_download(
             repo_id=model_id,
             local_dir=str(local_dir),
+            local_dir_use_symlinks=False,
         )
         
         # Verify download
         if local_dir.exists() and any(local_dir.iterdir()):
             logger.info("✓ Successfully downloaded %s to %s", model_name, local_dir)
+            
+            # Validate model type if expected type provided
+            if expected_model_type:
+                if not validate_model_type(local_dir, expected_model_type):
+                    logger.error(
+                        "Downloaded model has wrong type! This may indicate a corrupted download."
+                    )
+                    return False
+            
             return True
         else:
             logger.error("Download completed but model files not found at %s", local_dir)
@@ -140,6 +233,7 @@ def main() -> None:
         model_id="deepseek-ai/deepseek-ocr",
         local_dir=deepseek_path,
         model_name="DeepSeek-OCR",
+        expected_model_type="deepseekocr",  # Validate it's actually DeepSeek-OCR, not VL2
     )
     
     # Download sentence transformer model

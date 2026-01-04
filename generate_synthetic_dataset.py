@@ -2,6 +2,7 @@
 """Generate multiple synthetic PDF variations and analyze results."""
 from __future__ import annotations
 
+import argparse
 import json
 import sys
 from collections import Counter, defaultdict
@@ -12,6 +13,7 @@ project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
 from data.synthetic.generator import generate_synthetic_pairs
+from data.synthetic.scan_simulator import ScanConfig
 from utils.logging import configure_logging, logger
 
 configure_logging()
@@ -130,11 +132,17 @@ def generate_summary_report(stats: dict, pairs: list[dict], output_dir: Path) ->
     with open(report_path, "w", encoding="utf-8") as f:
         f.write("# Synthetic PDF Dataset Generation Summary\n\n")
         f.write(f"**Total Pairs Generated:** {stats['total_pairs']}\n\n")
+
+        f.write(
+            "This summary reports the *ground-truth change log entries* injected by the synthetic generator. "
+            "A single injected modification (e.g., spacing or table structure) can result in multiple pipeline-detected diffs "
+            "because detectors often split large visual/layout shifts into many localized regions.\n\n"
+        )
         
         f.write("## Statistics\n\n")
-        f.write(f"- Average changes per pair: {stats.get('avg_changes_per_pair', 0):.2f}\n")
-        f.write(f"- Minimum changes in a pair: {stats.get('min_changes', 0)}\n")
-        f.write(f"- Maximum changes in a pair: {stats.get('max_changes', 0)}\n\n")
+        f.write(f"- Average ground-truth logged changes per pair: {stats.get('avg_changes_per_pair', 0):.2f}\n")
+        f.write(f"- Minimum ground-truth logged changes in a pair: {stats.get('min_changes', 0)}\n")
+        f.write(f"- Maximum ground-truth logged changes in a pair: {stats.get('max_changes', 0)}\n\n")
         
         f.write("## Change Type Distribution\n\n")
         for change_type, count in stats["change_types"].most_common():
@@ -170,22 +178,52 @@ def generate_summary_report(stats: dict, pairs: list[dict], output_dir: Path) ->
                 m.replace("_apply_", "").replace("_", " ").title() 
                 for m in pair.get("applied_modifications", [])
             )
+            modifications_count = len(pair.get("applied_modifications", []) or [])
+
+            # Match on-disk layout: each variation is stored under its own folder.
+            # Prefer deriving the folder name from the modified_pdf path if present.
+            try:
+                pair_dir_name = Path(pair.get("modified_pdf", "")).parent.name or pair_id
+            except Exception:
+                pair_dir_name = pair_id
+
             f.write(f"### {pair_id}\n\n")
-            f.write(f"- **Changes:** {changes_count}\n")
+            f.write(f"- **Ground Truth Changes (logged):** {changes_count}\n")
+            f.write(f"- **Injected Modifications:** {modifications_count}\n")
             f.write(f"- **Modifications:** {modifications}\n")
             f.write(f"- **Original PDF:** `{Path(pair.get('original_pdf', '')).name}`\n")
             f.write(f"- **Modified PDF:** `{Path(pair.get('modified_pdf', '')).name}`\n")
-            f.write(f"- **Change Log:** `{pair_id}_change_log.json`\n\n")
+            f.write(f"- **Change Log:** `{pair_dir_name}/{pair_id}_change_log.json`\n\n")
     
     logger.info("Summary report written to: %s", report_path)
 
 
 def main():
     """Generate multiple variations and analyze results."""
-    num_variations = 10
+    parser = argparse.ArgumentParser(description="Generate synthetic PDF diff dataset (optionally with scanned variants).")
+    parser.add_argument("--num-variations", type=int, default=10)
+    parser.add_argument("--output-dir", default=str(project_root / "data" / "synthetic" / "dataset"))
+    parser.add_argument("--scanned", action="store_true", help="Also generate image-only scanned PDFs per variation")
+
+    parser.add_argument("--pages", type=int, default=2, help="Target page count for generated PDFs")
+    parser.add_argument(
+        "--rich",
+        action="store_true",
+        help="Generate rich documents (multi-font text, vector graphics blocks, and vector-text formulas)",
+    )
+
+    # Scan knobs (used only when --scanned)
+    parser.add_argument("--scan-dpi", type=int, default=200)
+    parser.add_argument("--scan-jpeg-quality", type=int, default=55)
+    parser.add_argument("--scan-noise-sigma", type=float, default=7.0)
+    parser.add_argument("--scan-blur-sigma", type=float, default=0.6)
+    parser.add_argument("--scan-max-rotation", type=float, default=1.0)
+    args = parser.parse_args()
+
+    num_variations = int(args.num_variations)
     
     # Setup directories
-    output_dir = project_root / "data" / "synthetic" / "dataset"
+    output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     
     # Create base PDF
@@ -201,10 +239,24 @@ def main():
     # Generate variations
     logger.info("Generating %d synthetic PDF variations...", num_variations)
     try:
+        scan_cfg = None
+        if args.scanned:
+            scan_cfg = ScanConfig(
+                dpi=int(args.scan_dpi),
+                jpeg_quality=int(args.scan_jpeg_quality),
+                noise_sigma=float(args.scan_noise_sigma),
+                gaussian_blur_sigma=float(args.scan_blur_sigma),
+                max_rotation_deg=float(args.scan_max_rotation),
+            )
+
         pairs = generate_synthetic_pairs(
             base_pdf_path=base_pdf,
             output_dir=output_dir,
             num_variations=num_variations,
+            target_pages=int(args.pages),
+            rich_content=bool(args.rich),
+            generate_scanned=bool(args.scanned),
+            scan_config=scan_cfg,
         )
         
         logger.info("✓ Successfully generated %d pairs", len(pairs))

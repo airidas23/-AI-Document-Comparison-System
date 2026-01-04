@@ -1,0 +1,2285 @@
+{
+  "timestamp": "20251229_160858",
+  "doc_a": "data/synthetic/test_output_20p/variation_01/variation_01_original_scanned.pdf",
+  "doc_b": "data/synthetic/test_output_20p/variation_01/variation_01_modified_scanned.pdf",
+  "metrics": {
+    "total_time": 1202.9623250961304,
+    "extraction_time": 631.2995929718018,
+    "layout_time": 0.0,
+    "comparison_time": 0.016579151153564453,
+    "classification_time": 0.007144927978515625,
+    "fusion_time": 0.0023107528686523438,
+    "pages_processed": 20,
+    "diffs_found": 23,
+    "diffs_before_fusion": 92,
+    "diffs_after_fusion": 81
+  },
+  "config": {
+    "ocr_mode": "auto",
+    "ocr_engine": null,
+    "force_ocr": false,
+    "sensitivity_threshold": null,
+    "fusion_strategy": "triangulation"
+  },
+  "summary": {
+    "total": 23,
+    "by_type": {
+      "modified": 22,
+      "deleted": 1
+    },
+    "by_change_type": {
+      "content": 17,
+      "layout": 5,
+      "formatting": 1
+    },
+    "by_subtype": {
+      "character_change": 16,
+      "table:structure": 5,
+      "layout_drift": 1,
+      "number_format": 1
+    },
+    "ocr_stats": {
+      "ocr_diffs": 23,
+      "ocr_low_severity": 0,
+      "ocr_formatting_noise": 1
+    }
+  },
+  "diffs": [
+    {
+      "page_num": 1,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with known differences. The generator applies various modifications including text changes, formatting adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. Key observation: small layout shifts can fragment into many local diffs.",
+      "new_text": "Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic formatting adjustments, and structural alterations. Text Modifications The system can apply synonym PDF pairs with known differences. The generator applies various modifications including text changes, swaps, paraphrasing, typo insertion, and punctuation changes. Key observation: small layout shifts can fragment into many local diffs. Formula: E = mc 2",
+      "old_text_normalized": "synthetic pdf dataset generation this document serves as a base template for generating synthetic pdf pairs with known differences. the generator applies various modifications including text changes, formatting adjustments, and structural alterations. text modifications the system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. key observation: small layout shifts can fragment into many local diffs.",
+      "new_text_normalized": "synthetic pdf dataset generation this document serves as a base template for generating synthetic formatting adjustments, and structural alterations. text modifications the system can apply synonym pdf pairs with known differences. the generator applies various modifications including text changes, swaps, paraphrasing, typo insertion, and punctuation changes. key observation: small layout shifts can fragment into many local diffs. formula: e = mc 2",
+      "bbox": {
+        "x": 0.09490196078431372,
+        "y": 0.4333333333333333,
+        "width": 0.7780392156862745,
+        "height": 0.08969696969696966
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "line_id",
+        "similarity": 1.0,
+        "line_id": "para_042ea07ada8c",
+        "line_id_base": "para_042ea07ada8c",
+        "line_id_mod": "para_042ea07ada8c",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": true,
+        "ocr_change_ratio": 0.7743362831858407,
+        "ocr_changed_chars": 350,
+        "word_ops": [
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "formatting adjustments, and structural alterations. Text Modifications The system can apply synonym"
+            ]
+          },
+          {
+            "tag": "delete",
+            "a_tokens": [
+              "formatting adjustments, and structural alterations. Text Modifications The system can apply synonym"
+            ],
+            "b_tokens": []
+          },
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "Formula: E = mc",
+              "2"
+            ]
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.09490196078431372,
+            "y": 0.46606060606060606,
+            "width": 0.7607843137254902,
+            "height": 0.024848484848484856
+          }
+        ],
+        "word_bboxes_b": [
+          {
+            "x": 0.0988235294117647,
+            "y": 0.463030303030303,
+            "width": 0.7623529411764705,
+            "height": 0.027272727272727303
+          },
+          {
+            "x": 0.09647058823529411,
+            "y": 0.5418181818181819,
+            "width": 0.1411764705882353,
+            "height": 0.01575757575757578
+          },
+          {
+            "x": 0.23137254901960783,
+            "y": 0.5412121212121211,
+            "width": 0.010196078431372563,
+            "height": 0.008484848484848519
+          }
+        ],
+        "word_bboxes": [
+          {
+            "x": 0.09490196078431372,
+            "y": 0.46606060606060606,
+            "width": 0.7607843137254902,
+            "height": 0.024848484848484856
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 3,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with known differences. The generator applies various modifications including text changes, formatting adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. Constraint: preserve semantics while perturbing formatting.",
+      "new_text": "Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with known differences. The generator applies various modifications including text changes, formatting adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. Constraint: preserve semantics while perturbing formatting. Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+      "old_text_normalized": "synthetic pdf dataset generation this document serves as a base template for generating synthetic pdf pairs with known differences. the generator applies various modifications including text changes, formatting adjustments, and structural alterations. text modifications the system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. constraint: preserve semantics while perturbing formatting.",
+      "new_text_normalized": "synthetic pdf dataset generation this document serves as a base template for generating synthetic pdf pairs with known differences. the generator applies various modifications including text changes, formatting adjustments, and structural alterations. text modifications the system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. constraint: preserve semantics while perturbing formatting. extended content section this page demonstrates how the generator handles multi-page documents. paragraphs are distributed across pages, and modifications can occur on any page. the evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+      "bbox": {
+        "x": 0.10352941176470588,
+        "y": 0.2496969696969697,
+        "width": 0.7678431372549019,
+        "height": 0.08303030303030301
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "line_id",
+        "similarity": 1.0,
+        "line_id": "para_aa6af221e98f",
+        "line_id_base": "para_aa6af221e98f",
+        "line_id_mod": "para_aa6af221e98f",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": true,
+        "ocr_change_ratio": 0.45324675324675323,
+        "ocr_changed_chars": 349,
+        "word_ops": [
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are",
+              "distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic",
+              "pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of",
+              "changes."
+            ]
+          }
+        ],
+        "word_bboxes_a": [],
+        "word_bboxes_b": [
+          {
+            "x": 0.09568627450980391,
+            "y": 0.3648484848484848,
+            "width": 0.7937254901960783,
+            "height": 0.016969696969696968
+          },
+          {
+            "x": 0.09490196078431372,
+            "y": 0.3806060606060606,
+            "width": 0.7819607843137255,
+            "height": 0.01878787878787878
+          },
+          {
+            "x": 0.09568627450980391,
+            "y": 0.3969696969696969,
+            "width": 0.7498039215686273,
+            "height": 0.01939393939393941
+          },
+          {
+            "x": 0.09568627450980391,
+            "y": 0.416969696969697,
+            "width": 0.06431372549019607,
+            "height": 0.016969696969696968
+          }
+        ],
+        "word_bboxes": [],
+        "highlight_mode": "line_fallback",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 3,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "layout",
+      "old_text": "Table (5x3)",
+      "new_text": "Table (5x4)",
+      "old_text_normalized": "table (5x3)",
+      "new_text_normalized": "table (5x4)",
+      "bbox": {
+        "x": 0.10011953914866727,
+        "y": 0.5836151677911932,
+        "width": 0.31975006103515624,
+        "height": 0.1526855098839962
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "table",
+        "table_change": "structure",
+        "old_structure": {
+          "rows": 5,
+          "cols": 3
+        },
+        "new_structure": {
+          "rows": 5,
+          "cols": 4
+        },
+        "fusion_modules": [
+          "table"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "is_ocr": true,
+        "subtype": "table:structure",
+        "description": "Table structure changed: 1 column added"
+      }
+    },
+    {
+      "page_num": 5,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes. Constraint: preserve semantics while perturbing formatting. Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+      "new_text": "Error Analysis - Page 5 Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes. Constraint: preserve semantics while perturbing formatting. Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+      "old_text_normalized": "extended content section this page demonstrates how the generator handles multi-page documents. paragraphs are distributed across pages, and modifications can occur on any page. the evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes. constraint: preserve semantics while perturbing formatting. structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. each variation includes ground truth annotations.",
+      "new_text_normalized": "error analysis-page 5 extended content section this page demonstrates how the generator handles multi-page documents. paragraphs are distributed across pages, and modifications can occur on any page. the evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes. constraint: preserve semantics while perturbing formatting. structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. each variation includes ground truth annotations.",
+      "bbox": {
+        "x": 0.10352941176470588,
+        "y": 0.1496969696969697,
+        "width": 0.7929411764705881,
+        "height": 0.14848484848484847
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "fuzzy",
+        "similarity": 0.9555374333845895,
+        "line_id": "para_189867a2723f",
+        "line_id_base": "para_189867a2723f",
+        "line_id_mod": "para_45e542df48a5",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": true,
+        "ocr_change_ratio": 0.03522205206738132,
+        "ocr_changed_chars": 23,
+        "word_ops": [
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "Error Analysis - Page 5"
+            ]
+          }
+        ],
+        "word_bboxes_a": [],
+        "word_bboxes_b": [
+          {
+            "x": 0.10745098039215685,
+            "y": 0.10484848484848484,
+            "width": 0.22666666666666666,
+            "height": 0.019393939393939394
+          }
+        ],
+        "word_bboxes": [],
+        "highlight_mode": "line_fallback",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 5,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content. Note: this section includes mixed fonts and vector graphics blocks. Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with known differences. The generator applies various modifications including text changes, formatting adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. Key observation: small layout shifts can fragment into many local diffs. Formula: π = 3.14159, σ = 0.57721 (constants)",
+      "new_text": "Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with known differences. The generator applies various modifications including text changes, formatting adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. Key observation: small layout shifts can fragment into many local diffs.",
+      "old_text_normalized": "these modifications test the ability to detect subtle content differences while maintaining document structure. formatting changes font size adjustments and spacing modifications are applied to test formatting-aware comparison. these changes simulate real-world scenarios where documents are reformatted without altering content. note: this section includes mixed fonts and vector graphics blocks. synthetic pdf dataset generation this document serves as a base template for generating synthetic pdf pairs with known differences. the generator applies various modifications including text changes, formatting adjustments, and structural alterations. text modifications the system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. key observation: small layout shifts can fragment into many local diffs. formula: π = 3.14159, σ = 0.57721 (constants)",
+      "new_text_normalized": "synthetic pdf dataset generation this document serves as a base template for generating synthetic pdf pairs with known differences. the generator applies various modifications including text changes, formatting adjustments, and structural alterations. text modifications the system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. key observation: small layout shifts can fragment into many local diffs.",
+      "bbox": {
+        "x": 0.09803921568627451,
+        "y": 0.33454545454545453,
+        "width": 0.7913725490196077,
+        "height": 0.22848484848484857
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "added",
+        "similarity": 1.0,
+        "line_id": "para_54d060165d99",
+        "line_id_base": "para_13f8c9d1bb6c",
+        "line_id_mod": "para_13f8c9d1bb6c",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": true,
+        "ocr_change_ratio": 0.5478359908883826,
+        "ocr_changed_chars": 481,
+        "word_ops": [
+          {
+            "tag": "delete",
+            "a_tokens": [
+              "Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic",
+              "PDF pairs with known differences. The generator applies various modifications including text changes,",
+              "formatting adjustments, and structural alterations. Text Modifications The system can apply synonym",
+              "swaps, paraphrasing, typo insertion, and punctuation changes. Key observation: small layout shifts can",
+              "fragment into many local diffs.",
+              "Formula: π = 3.14159, σ = 0.57721 (constants)"
+            ],
+            "b_tokens": []
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.10352941176470588,
+            "y": 0.4327272727272727,
+            "width": 0.7560784313725489,
+            "height": 0.023030303030303043
+          },
+          {
+            "x": 0.10117647058823528,
+            "y": 0.4478787878787878,
+            "width": 0.7647058823529411,
+            "height": 0.024848484848484856
+          },
+          {
+            "x": 0.10117647058823528,
+            "y": 0.46242424242424246,
+            "width": 0.7545098039215685,
+            "height": 0.025454545454545487
+          },
+          {
+            "x": 0.10117647058823528,
+            "y": 0.47878787878787876,
+            "width": 0.7701960784313725,
+            "height": 0.024848484848484856
+          },
+          {
+            "x": 0.10196078431372549,
+            "y": 0.4951515151515151,
+            "width": 0.22588235294117648,
+            "height": 0.018181818181818153
+          },
+          {
+            "x": 0.10196078431372549,
+            "y": 0.5454545454545454,
+            "width": 0.3866666666666666,
+            "height": 0.017575757575757595
+          }
+        ],
+        "word_bboxes_b": [],
+        "word_bboxes": [
+          {
+            "x": 0.10352941176470588,
+            "y": 0.4327272727272727,
+            "width": 0.7560784313725489,
+            "height": 0.023030303030303043
+          },
+          {
+            "x": 0.10117647058823528,
+            "y": 0.4478787878787878,
+            "width": 0.7647058823529411,
+            "height": 0.024848484848484856
+          },
+          {
+            "x": 0.10117647058823528,
+            "y": 0.46242424242424246,
+            "width": 0.7545098039215685,
+            "height": 0.025454545454545487
+          },
+          {
+            "x": 0.10117647058823528,
+            "y": 0.47878787878787876,
+            "width": 0.7701960784313725,
+            "height": 0.024848484848484856
+          },
+          {
+            "x": 0.10196078431372549,
+            "y": 0.4951515151515151,
+            "width": 0.22588235294117648,
+            "height": 0.018181818181818153
+          },
+          {
+            "x": 0.10196078431372549,
+            "y": 0.5454545454545454,
+            "width": 0.3866666666666666,
+            "height": 0.017575757575757595
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 2,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 6,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Ablation Study - Page 6 Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations. Constraint: preserve semantics while perturbing formatting. These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content. Constraint: preserve semantics while perturbing formatting.",
+      "new_text": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content. Constraint: preserve semantics while perturbing formatting.",
+      "old_text_normalized": "ablation study-page 6 structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. each variation includes ground truth annotations. constraint: preserve semantics while perturbing formatting. these modifications test the ability to detect subtle content differences while maintaining document structure. formatting changes font size adjustments and spacing modifications are applied to test formatting-aware comparison. these changes simulate real-world scenarios where documents are reformatted without altering content. constraint: preserve semantics while perturbing formatting.",
+      "new_text_normalized": "these modifications test the ability to detect subtle content differences while maintaining document structure. formatting changes font size adjustments and spacing modifications are applied to test formatting-aware comparison. these changes simulate real-world scenarios where documents are reformatted without altering content. constraint: preserve semantics while perturbing formatting.",
+      "bbox": {
+        "x": 0.09803921568627451,
+        "y": 0.1103030303030303,
+        "width": 0.7905882352941175,
+        "height": 0.19939393939393935
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "added",
+        "similarity": 1.0,
+        "line_id": "para_10184373014c",
+        "line_id_base": "para_7c7d0eb7edc6",
+        "line_id_mod": "para_7c7d0eb7edc6",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": true,
+        "ocr_change_ratio": 0.5634005763688761,
+        "ocr_changed_chars": 391,
+        "word_ops": [
+          {
+            "tag": "replace",
+            "a_tokens": [
+              "Ablation Study - Page 6"
+            ],
+            "b_tokens": [
+              "Ablation Study — Page 6"
+            ]
+          },
+          {
+            "tag": "delete",
+            "a_tokens": [
+              "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting",
+              "Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes",
+              "simulate real-world scenarios where documents are reformatted without altering content. Constraint: preserve semantics while",
+              "perturbing formatting."
+            ],
+            "b_tokens": []
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.09803921568627451,
+            "y": 0.1103030303030303,
+            "width": 0.23058823529411765,
+            "height": 0.019393939393939394
+          },
+          {
+            "x": 0.09803921568627451,
+            "y": 0.2387878787878788,
+            "width": 0.7505882352941174,
+            "height": 0.01878787878787878
+          },
+          {
+            "x": 0.0988235294117647,
+            "y": 0.2545454545454545,
+            "width": 0.7537254901960784,
+            "height": 0.020000000000000004
+          },
+          {
+            "x": 0.09803921568627451,
+            "y": 0.2715151515151515,
+            "width": 0.779607843137255,
+            "height": 0.020000000000000004
+          },
+          {
+            "x": 0.0988235294117647,
+            "y": 0.29393939393939394,
+            "width": 0.1388235294117647,
+            "height": 0.015757575757575745
+          }
+        ],
+        "word_bboxes_b": [
+          {
+            "x": 0.10509803921568626,
+            "y": 0.10181818181818182,
+            "width": 0.22666666666666666,
+            "height": 0.01878787878787878
+          }
+        ],
+        "word_bboxes": [
+          {
+            "x": 0.09803921568627451,
+            "y": 0.1103030303030303,
+            "width": 0.23058823529411765,
+            "height": 0.019393939393939394
+          },
+          {
+            "x": 0.09803921568627451,
+            "y": 0.2387878787878788,
+            "width": 0.7505882352941174,
+            "height": 0.01878787878787878
+          },
+          {
+            "x": 0.0988235294117647,
+            "y": 0.2545454545454545,
+            "width": 0.7537254901960784,
+            "height": 0.020000000000000004
+          },
+          {
+            "x": 0.09803921568627451,
+            "y": 0.2715151515151515,
+            "width": 0.779607843137255,
+            "height": 0.020000000000000004
+          },
+          {
+            "x": 0.0988235294117647,
+            "y": 0.29393939393939394,
+            "width": 0.1388235294117647,
+            "height": 0.015757575757575745
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 2,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 6,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Formula: E = mc{ Vector graphic — page 6 Input Process Output",
+      "new_text": "Vector graphic — page 6 Input Process Output",
+      "old_text_normalized": "formula: e = mc{ vector graphic-page 6 input process output",
+      "new_text_normalized": "vector graphic-page 6 input process output",
+      "bbox": {
+        "x": 0.09568627450980391,
+        "y": 0.5503030303030303,
+        "width": 0.5215686274509804,
+        "height": 0.17454545454545467
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "fuzzy",
+        "similarity": 0.8329947898425514,
+        "line_id": "para_183884cfbff7",
+        "line_id_base": "para_183884cfbff7",
+        "line_id_mod": "para_82283a89d253",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": true,
+        "ocr_change_ratio": 0.2786885245901639,
+        "ocr_changed_chars": 17,
+        "word_ops": [
+          {
+            "tag": "delete",
+            "a_tokens": [
+              "Formula: E = mc{"
+            ],
+            "b_tokens": []
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.09568627450980391,
+            "y": 0.5503030303030303,
+            "width": 0.1513725490196078,
+            "height": 0.029696969696969673
+          }
+        ],
+        "word_bboxes_b": [],
+        "word_bboxes": [
+          {
+            "x": 0.09568627450980391,
+            "y": 0.5503030303030303,
+            "width": 0.1513725490196078,
+            "height": 0.029696969696969673
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 7,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations. Constraint: preserve semantics while perturbing formatting. Formula: at = σ(Wxt + Uht-1 + b) Metric Original Revised Precision 0.92 0.90 Recall 0.88 0.90 Latency (ms) 131 122 Throughput (docs/min) 32 31",
+      "new_text": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations. Constraint: preserve semantics while perturbing formatting.",
+      "old_text_normalized": "structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. each variation includes ground truth annotations. constraint: preserve semantics while perturbing formatting. formula: at = σ(wxt + uht-1 + b) metric original revised precision 0.92 0.90 recall 0.88 0.90 latency (ms) 131 122 throughput (docs/min) 32 31",
+      "new_text_normalized": "structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. each variation includes ground truth annotations. constraint: preserve semantics while perturbing formatting.",
+      "bbox": {
+        "x": 0.0988235294117647,
+        "y": 0.4412121212121212,
+        "width": 0.7490196078431373,
+        "height": 0.28363636363636363
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "fuzzy",
+        "similarity": 0.7258557000797496,
+        "line_id": "para_f9e3998cffb5",
+        "line_id_base": "para_f9e3998cffb5",
+        "line_id_mod": "para_0083013bbec1",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": true,
+        "ocr_change_ratio": 0.33726415094339623,
+        "ocr_changed_chars": 143,
+        "word_ops": [
+          {
+            "tag": "delete",
+            "a_tokens": [
+              "Formula: at = σ(Wxt + Uht-1 + b)",
+              "Metric",
+              "Original",
+              "Revised",
+              "Precision",
+              "0.92",
+              "0.90",
+              "Recall",
+              "0.88",
+              "0.90",
+              "Latency (ms)",
+              "131",
+              "122",
+              "Throughput (docs/min)",
+              "32",
+              "31"
+            ],
+            "b_tokens": []
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.0988235294117647,
+            "y": 0.5242424242424242,
+            "width": 0.2752941176470588,
+            "height": 0.024848484848484856
+          },
+          {
+            "x": 0.10823529411764705,
+            "y": 0.5842424242424242,
+            "width": 0.05254901960784313,
+            "height": 0.01999999999999997
+          },
+          {
+            "x": 0.27294117647058824,
+            "y": 0.5866666666666667,
+            "width": 0.06352941176470588,
+            "height": 0.01939393939393941
+          },
+          {
+            "x": 0.3466666666666667,
+            "y": 0.5884848484848485,
+            "width": 0.0627450980392157,
+            "height": 0.016969696969696968
+          },
+          {
+            "x": 0.10823529411764705,
+            "y": 0.6145454545454545,
+            "width": 0.06745098039215687,
+            "height": 0.018181818181818153
+          },
+          {
+            "x": 0.28627450980392155,
+            "y": 0.616969696969697,
+            "width": 0.03686274509803922,
+            "height": 0.016363636363636337
+          },
+          {
+            "x": 0.36,
+            "y": 0.6181818181818182,
+            "width": 0.03686274509803922,
+            "height": 0.016363636363636337
+          },
+          {
+            "x": 0.10823529411764705,
+            "y": 0.6448484848484848,
+            "width": 0.048627450980392166,
+            "height": 0.017575757575757595
+          },
+          {
+            "x": 0.28549019607843135,
+            "y": 0.6472727272727272,
+            "width": 0.03686274509803922,
+            "height": 0.016969696969697037
+          },
+          {
+            "x": 0.3592156862745098,
+            "y": 0.6484848484848486,
+            "width": 0.0376470588235294,
+            "height": 0.016969696969697037
+          },
+          {
+            "x": 0.10745098039215685,
+            "y": 0.6751515151515152,
+            "width": 0.09019607843137253,
+            "height": 0.01939393939393941
+          },
+          {
+            "x": 0.28784313725490196,
+            "y": 0.6781818181818182,
+            "width": 0.03137254901960782,
+            "height": 0.01575757575757578
+          },
+          {
+            "x": 0.36,
+            "y": 0.6775757575757576,
+            "width": 0.035294117647058816,
+            "height": 0.01878787878787878
+          },
+          {
+            "x": 0.10823529411764705,
+            "y": 0.7048484848484848,
+            "width": 0.1505882352941176,
+            "height": 0.01939393939393941
+          },
+          {
+            "x": 0.2901960784313725,
+            "y": 0.7066666666666666,
+            "width": 0.026666666666666655,
+            "height": 0.018181818181818153
+          },
+          {
+            "x": 0.36470588235294116,
+            "y": 0.7084848484848485,
+            "width": 0.024313725490196073,
+            "height": 0.01636363636363641
+          }
+        ],
+        "word_bboxes_b": [],
+        "word_bboxes": [
+          {
+            "x": 0.0988235294117647,
+            "y": 0.5242424242424242,
+            "width": 0.2752941176470588,
+            "height": 0.024848484848484856
+          },
+          {
+            "x": 0.10823529411764705,
+            "y": 0.5842424242424242,
+            "width": 0.05254901960784313,
+            "height": 0.01999999999999997
+          },
+          {
+            "x": 0.27294117647058824,
+            "y": 0.5866666666666667,
+            "width": 0.06352941176470588,
+            "height": 0.01939393939393941
+          },
+          {
+            "x": 0.3466666666666667,
+            "y": 0.5884848484848485,
+            "width": 0.0627450980392157,
+            "height": 0.016969696969696968
+          },
+          {
+            "x": 0.10823529411764705,
+            "y": 0.6145454545454545,
+            "width": 0.06745098039215687,
+            "height": 0.018181818181818153
+          },
+          {
+            "x": 0.28627450980392155,
+            "y": 0.616969696969697,
+            "width": 0.03686274509803922,
+            "height": 0.016363636363636337
+          },
+          {
+            "x": 0.36,
+            "y": 0.6181818181818182,
+            "width": 0.03686274509803922,
+            "height": 0.016363636363636337
+          },
+          {
+            "x": 0.10823529411764705,
+            "y": 0.6448484848484848,
+            "width": 0.048627450980392166,
+            "height": 0.017575757575757595
+          },
+          {
+            "x": 0.28549019607843135,
+            "y": 0.6472727272727272,
+            "width": 0.03686274509803922,
+            "height": 0.016969696969697037
+          },
+          {
+            "x": 0.3592156862745098,
+            "y": 0.6484848484848486,
+            "width": 0.0376470588235294,
+            "height": 0.016969696969697037
+          },
+          {
+            "x": 0.10745098039215685,
+            "y": 0.6751515151515152,
+            "width": 0.09019607843137253,
+            "height": 0.01939393939393941
+          },
+          {
+            "x": 0.28784313725490196,
+            "y": 0.6781818181818182,
+            "width": 0.03137254901960782,
+            "height": 0.01575757575757578
+          },
+          {
+            "x": 0.36,
+            "y": 0.6775757575757576,
+            "width": 0.035294117647058816,
+            "height": 0.01878787878787878
+          },
+          {
+            "x": 0.10823529411764705,
+            "y": 0.7048484848484848,
+            "width": 0.1505882352941176,
+            "height": 0.01939393939393941
+          },
+          {
+            "x": 0.2901960784313725,
+            "y": 0.7066666666666666,
+            "width": 0.026666666666666655,
+            "height": 0.018181818181818153
+          },
+          {
+            "x": 0.36470588235294116,
+            "y": 0.7084848484848485,
+            "width": 0.024313725490196073,
+            "height": 0.01636363636363641
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 7,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "layout",
+      "old_text": "Table (5x3)",
+      "new_text": "Table (5x4)",
+      "old_text_normalized": "table (5x3)",
+      "new_text_normalized": "table (5x4)",
+      "bbox": {
+        "x": 0.10260033700980391,
+        "y": 0.5804961973248106,
+        "width": 0.3160320925245098,
+        "height": 0.1520785984848485
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "table",
+        "table_change": "structure",
+        "old_structure": {
+          "rows": 5,
+          "cols": 3
+        },
+        "new_structure": {
+          "rows": 5,
+          "cols": 4
+        },
+        "fusion_modules": [
+          "table"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "is_ocr": true,
+        "subtype": "table:structure",
+        "description": "Table structure changed: 1 column added"
+      }
+    },
+    {
+      "page_num": 10,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations. Key observation: small layout shifts can fragment into many local diffs.",
+      "new_text": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations. Key observation: small layout shifts can fragment into many local diffs. These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content. Constraint: preserve semantics while perturbing formatting. known differences. The generator applies various modifications including text changes, formatting adjustments, and Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. Note: this section includes mixed fonts and vector graphics blocks. Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic changes. Key observation: small layout shifts can fragment into many local diffs. Formula: π = 3.14159, σ = 0.57721 (constants)",
+      "old_text_normalized": "structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. each variation includes ground truth annotations. key observation: small layout shifts can fragment into many local diffs.",
+      "new_text_normalized": "structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. each variation includes ground truth annotations. key observation: small layout shifts can fragment into many local diffs. these modifications test the ability to detect subtle content differences while maintaining document structure. formatting changes font size adjustments and spacing modifications are applied to test formatting-aware comparison. these changes simulate real-world scenarios where documents are reformatted without altering content. constraint: preserve semantics while perturbing formatting. known differences. the generator applies various modifications including text changes, formatting adjustments, and synthetic pdf dataset generation this document serves as a base template for generating synthetic pdf pairs with structural alterations. text modifications the system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. note: this section includes mixed fonts and vector graphics blocks. extended content section this page demonstrates how the generator handles multi-page documents. paragraphs are pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of distributed across pages, and modifications can occur on any page. the evaluation framework uses these synthetic changes. key observation: small layout shifts can fragment into many local diffs. formula: π = 3.14159, σ = 0.57721 (constants)",
+      "bbox": {
+        "x": 0.10509803921568626,
+        "y": 0.15575757575757576,
+        "width": 0.7874509803921569,
+        "height": 0.049696969696969684
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "line_id",
+        "similarity": 1.0,
+        "line_id": "para_2fbbf0731412",
+        "line_id_base": "para_2fbbf0731412",
+        "line_id_mod": "para_2fbbf0731412",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": true,
+        "ocr_change_ratio": 0.8141592920353983,
+        "ocr_changed_chars": 1288,
+        "word_ops": [
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "These modifications test the ability to detect subtle content differences while maintaining document structure.",
+              "Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware",
+              "comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+              "Constraint: preserve semantics while perturbing formatting.",
+              "known differences. The generator applies various modifications including text changes, formatting adjustments, and",
+              "Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with",
+              "structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and",
+              "punctuation changes. Note: this section includes mixed fonts and vector graphics blocks.",
+              "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are",
+              "pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of",
+              "distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic",
+              "changes. Key observation: small layout shifts can fragment into many local diffs.",
+              "Formula: π = 3.14159, σ = 0.57721 (constants)"
+            ]
+          }
+        ],
+        "word_bboxes_a": [],
+        "word_bboxes_b": [
+          {
+            "x": 0.1003921568627451,
+            "y": 0.22363636363636363,
+            "width": 0.7474509803921568,
+            "height": 0.030909090909090896
+          },
+          {
+            "x": 0.1003921568627451,
+            "y": 0.2406060606060606,
+            "width": 0.7207843137254902,
+            "height": 0.02969696969696971
+          },
+          {
+            "x": 0.0996078431372549,
+            "y": 0.25757575757575757,
+            "width": 0.796078431372549,
+            "height": 0.030909090909090896
+          },
+          {
+            "x": 0.1003921568627451,
+            "y": 0.27575757575757576,
+            "width": 0.4078431372549019,
+            "height": 0.022424242424242413
+          },
+          {
+            "x": 0.09803921568627451,
+            "y": 0.34121212121212124,
+            "width": 0.7858823529411765,
+            "height": 0.029696969696969673
+          },
+          {
+            "x": 0.1003921568627451,
+            "y": 0.32545454545454544,
+            "width": 0.7905882352941176,
+            "height": 0.029090909090909115
+          },
+          {
+            "x": 0.0988235294117647,
+            "y": 0.3581818181818182,
+            "width": 0.7701960784313724,
+            "height": 0.027272727272727303
+          },
+          {
+            "x": 0.0988235294117647,
+            "y": 0.3745454545454545,
+            "width": 0.6039215686274509,
+            "height": 0.02363636363636367
+          },
+          {
+            "x": 0.0972549019607843,
+            "y": 0.4248484848484848,
+            "width": 0.7890196078431373,
+            "height": 0.027878787878787857
+          },
+          {
+            "x": 0.09568627450980391,
+            "y": 0.4569696969696969,
+            "width": 0.7458823529411764,
+            "height": 0.027272727272727303
+          },
+          {
+            "x": 0.0972549019607843,
+            "y": 0.4412121212121212,
+            "width": 0.7741176470588235,
+            "height": 0.027878787878787857
+          },
+          {
+            "x": 0.09647058823529411,
+            "y": 0.47393939393939394,
+            "width": 0.5537254901960784,
+            "height": 0.023030303030303043
+          },
+          {
+            "x": 0.09490196078431372,
+            "y": 0.5218181818181817,
+            "width": 0.39294117647058824,
+            "height": 0.01999999999999997
+          }
+        ],
+        "word_bboxes": [],
+        "highlight_mode": "line_fallback",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 11,
+      "page_num_b": null,
+      "diff_type": "deleted",
+      "change_type": "content",
+      "old_text": "Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with known differences. The generator applies various modifications including text changes, formatting adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. Note: this section includes mixed fonts and vector graphics blocks.",
+      "new_text": "Methods- Page 11 These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content. Note: this section includes mixed fonts and vector graphics blocks. Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with known differences. The generator applies various modifications including text changes, formatting adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. Note: this section includes mixed fonts and vector graphics blocks.",
+      "old_text_normalized": "synthetic pdf dataset generation this document serves as a base template for generating synthetic pdf pairs with known differences. the generator applies various modifications including text changes, formatting adjustments, and structural alterations. text modifications the system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. note: this section includes mixed fonts and vector graphics blocks.",
+      "new_text_normalized": "methods-page 11 these modifications test the ability to detect subtle content differences while maintaining document structure. formatting changes font size adjustments and spacing modifications are applied to test formatting-aware comparison. these changes simulate real-world scenarios where documents are reformatted without altering content. note: this section includes mixed fonts and vector graphics blocks. synthetic pdf dataset generation this document serves as a base template for generating synthetic pdf pairs with known differences. the generator applies various modifications including text changes, formatting adjustments, and structural alterations. text modifications the system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. note: this section includes mixed fonts and vector graphics blocks.",
+      "bbox": {
+        "x": 0.09647058823529411,
+        "y": 0.1,
+        "width": 0.803921568627451,
+        "height": 0.3236363636363636
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "region",
+        "alignment_reason": "added",
+        "line_id": "para_3dfec282a823",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": true,
+        "subtype": "layout_drift",
+        "highlight_mode": "region",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 3,
+        "description": "Text removed: 'Synthetic PDF Dataset Generation This document ser...'"
+      }
+    },
+    {
+      "page_num": 11,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations. Key observation: small layout shifts can fragment into many local diffs. Formula: E = mc 2",
+      "new_text": "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations. Key observation: small layout shifts can fragment into many local diffs.",
+      "old_text_normalized": "structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. each variation includes ground truth annotations. key observation: small layout shifts can fragment into many local diffs. formula: e = mc 2",
+      "new_text_normalized": "structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. each variation includes ground truth annotations. key observation: small layout shifts can fragment into many local diffs.",
+      "bbox": {
+        "x": 0.10117647058823528,
+        "y": 0.45575757575757575,
+        "width": 0.7513725490196078,
+        "height": 0.09575757575757576
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "line_id",
+        "similarity": 1.0,
+        "line_id": "para_792b169d6e74",
+        "line_id_base": "para_792b169d6e74",
+        "line_id_mod": "para_792b169d6e74",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": true,
+        "ocr_change_ratio": 0.057692307692307696,
+        "ocr_changed_chars": 18,
+        "word_ops": [
+          {
+            "tag": "delete",
+            "a_tokens": [
+              "Formula: E = mc",
+              "2"
+            ],
+            "b_tokens": []
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.10117647058823528,
+            "y": 0.5351515151515152,
+            "width": 0.13725490196078433,
+            "height": 0.016363636363636337
+          },
+          {
+            "x": 0.23529411764705882,
+            "y": 0.5363636363636364,
+            "width": 0.007058823529411754,
+            "height": 0.0072727272727272614
+          }
+        ],
+        "word_bboxes_b": [],
+        "word_bboxes": [
+          {
+            "x": 0.10117647058823528,
+            "y": 0.5351515151515152,
+            "width": 0.13725490196078433,
+            "height": 0.016363636363636337
+          },
+          {
+            "x": 0.23529411764705882,
+            "y": 0.5363636363636364,
+            "width": 0.007058823529411754,
+            "height": 0.0072727272727272614
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 11,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "layout",
+      "old_text": "Table (5x3)",
+      "new_text": "Table (5x4)",
+      "old_text_normalized": "table (5x3)",
+      "new_text_normalized": "table (5x4)",
+      "bbox": {
+        "x": 0.10153490253523284,
+        "y": 0.5908968838778409,
+        "width": 0.3178052475873162,
+        "height": 0.15382553562973478
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "table",
+        "table_change": "structure",
+        "old_structure": {
+          "rows": 5,
+          "cols": 3
+        },
+        "new_structure": {
+          "rows": 5,
+          "cols": 4
+        },
+        "fusion_modules": [
+          "table"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "is_ocr": true,
+        "subtype": "table:structure",
+        "description": "Table structure changed: 1 column added"
+      }
+    },
+    {
+      "page_num": 12,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Results - Page 12 Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with known differences. The generator applies various modifications including text changes, formatting adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. Constraint: preserve semantics while perturbing formatting. Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes. Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations. Constraint: preserve semantics while perturbing formatting.",
+      "new_text": "Results - Page 12 Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with known differences. The generator applies various modifications including text changes, formatting adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. Constraint: preserve semantics while perturbing formatting.",
+      "old_text_normalized": "results-page 12 synthetic pdf dataset generation this document serves as a base template for generating synthetic pdf pairs with known differences. the generator applies various modifications including text changes, formatting adjustments, and structural alterations. text modifications the system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. constraint: preserve semantics while perturbing formatting. extended content section this page demonstrates how the generator handles multi-page documents. paragraphs are distributed across pages, and modifications can occur on any page. the evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes. structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. each variation includes ground truth annotations. constraint: preserve semantics while perturbing formatting.",
+      "new_text_normalized": "results-page 12 synthetic pdf dataset generation this document serves as a base template for generating synthetic pdf pairs with known differences. the generator applies various modifications including text changes, formatting adjustments, and structural alterations. text modifications the system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. constraint: preserve semantics while perturbing formatting.",
+      "bbox": {
+        "x": 0.09098039215686274,
+        "y": 0.10424242424242425,
+        "width": 0.7952941176470588,
+        "height": 0.2878787878787878
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "line_id",
+        "similarity": 1.0,
+        "line_id": "para_9171196848b6",
+        "line_id_base": "para_9171196848b6",
+        "line_id_mod": "para_9171196848b6",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": true,
+        "ocr_change_ratio": 0.5902712815715622,
+        "ocr_changed_chars": 631,
+        "word_ops": [
+          {
+            "tag": "delete",
+            "a_tokens": [
+              "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are",
+              "distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to",
+              "measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+              "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide",
+              "comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations.",
+              "Constraint: preserve semantics while perturbing formatting."
+            ],
+            "b_tokens": []
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.09490196078431372,
+            "y": 0.2587878787878788,
+            "width": 0.7505882352941176,
+            "height": 0.01878787878787878
+          },
+          {
+            "x": 0.09490196078431372,
+            "y": 0.2739393939393939,
+            "width": 0.7913725490196079,
+            "height": 0.021212121212121227
+          },
+          {
+            "x": 0.09568627450980391,
+            "y": 0.2903030303030303,
+            "width": 0.7137254901960784,
+            "height": 0.02181818181818182
+          },
+          {
+            "x": 0.09803921568627451,
+            "y": 0.3418181818181818,
+            "width": 0.7647058823529411,
+            "height": 0.01878787878787878
+          },
+          {
+            "x": 0.0972549019607843,
+            "y": 0.3563636363636364,
+            "width": 0.7247058823529412,
+            "height": 0.021212121212121227
+          },
+          {
+            "x": 0.09803921568627451,
+            "y": 0.37575757575757573,
+            "width": 0.40078431372549017,
+            "height": 0.016363636363636337
+          }
+        ],
+        "word_bboxes_b": [],
+        "word_bboxes": [
+          {
+            "x": 0.09490196078431372,
+            "y": 0.2587878787878788,
+            "width": 0.7505882352941176,
+            "height": 0.01878787878787878
+          },
+          {
+            "x": 0.09490196078431372,
+            "y": 0.2739393939393939,
+            "width": 0.7913725490196079,
+            "height": 0.021212121212121227
+          },
+          {
+            "x": 0.09568627450980391,
+            "y": 0.2903030303030303,
+            "width": 0.7137254901960784,
+            "height": 0.02181818181818182
+          },
+          {
+            "x": 0.09803921568627451,
+            "y": 0.3418181818181818,
+            "width": 0.7647058823529411,
+            "height": 0.01878787878787878
+          },
+          {
+            "x": 0.0972549019607843,
+            "y": 0.3563636363636364,
+            "width": 0.7247058823529412,
+            "height": 0.021212121212121227
+          },
+          {
+            "x": 0.09803921568627451,
+            "y": 0.37575757575757573,
+            "width": 0.40078431372549017,
+            "height": 0.016363636363636337
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 12,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "formatting",
+      "old_text": "Formula: at= σ(Wx+Uht-1 +b)",
+      "new_text": "Formula: at = σ(Wx +Uht-1 +b)",
+      "old_text_normalized": "formula: at= σ(wx+uht-1 +b)",
+      "new_text_normalized": "formula: at = σ(wx +uht-1 +b)",
+      "bbox": {
+        "x": 0.0988235294117647,
+        "y": 0.5248484848484849,
+        "width": 0.2737254901960784,
+        "height": 0.021818181818181848
+      },
+      "bbox_b": null,
+      "confidence": 0.3,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "line_id",
+        "similarity": 1.0,
+        "line_id": "898833419f1c",
+        "line_id_base": "898833419f1c",
+        "line_id_mod": "898833419f1c",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": true,
+        "ocr_change_ratio": 0.06896551724137931,
+        "ocr_changed_chars": 2,
+        "word_ops": [
+          {
+            "tag": "replace",
+            "a_tokens": [
+              "Formula: at= σ(Wx+Uht-1 +b)"
+            ],
+            "b_tokens": [
+              "Formula: at = σ(Wx +Uht-1 +b)"
+            ]
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.0988235294117647,
+            "y": 0.5248484848484849,
+            "width": 0.2737254901960784,
+            "height": 0.021818181818181855
+          }
+        ],
+        "word_bboxes_b": [
+          {
+            "x": 0.1003921568627451,
+            "y": 0.5278787878787878,
+            "width": 0.2752941176470588,
+            "height": 0.01939393939393941
+          }
+        ],
+        "word_bboxes": [
+          {
+            "x": 0.0988235294117647,
+            "y": 0.5248484848484849,
+            "width": 0.2737254901960784,
+            "height": 0.021818181818181855
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "number_format",
+        "description": "Number formatting changed",
+        "ocr_reliability": "low",
+        "ocr_note": "OCR font/style data is synthetic; diff may be noise"
+      }
+    },
+    {
+      "page_num": 13,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes. Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations. These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content. Note: this section includes mixed fonts and vector graphics blocks. Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with known differences. The generator applies various modifications including text changes, formatting adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. Formula: $^{2}$x^{2}$dx =$1/3",
+      "new_text": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+      "old_text_normalized": "extended content section this page demonstrates how the generator handles multi-page documents. paragraphs are distributed across pages, and modifications can occur on any page. the evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes. structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. each variation includes ground truth annotations. these modifications test the ability to detect subtle content differences while maintaining document structure. formatting changes font size adjustments and spacing modifications are applied to test formatting-aware comparison. these changes simulate real-world scenarios where documents are reformatted without altering content. note: this section includes mixed fonts and vector graphics blocks. synthetic pdf dataset generation this document serves as a base template for generating synthetic pdf pairs with known differences. the generator applies various modifications including text changes, formatting adjustments, and structural alterations. text modifications the system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. formula: $^{2}$x^{2}$dx =$1/3",
+      "new_text_normalized": "extended content section this page demonstrates how the generator handles multi-page documents. paragraphs are distributed across pages, and modifications can occur on any page. the evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes.",
+      "bbox": {
+        "x": 0.09803921568627451,
+        "y": 0.14545454545454545,
+        "width": 0.7960784313725491,
+        "height": 0.39212121212121215
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "line_id",
+        "similarity": 1.0,
+        "line_id": "para_6f4bfd364071",
+        "line_id_base": "para_6f4bfd364071",
+        "line_id_mod": "para_6f4bfd364071",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": true,
+        "ocr_change_ratio": 0.7441176470588236,
+        "ocr_changed_chars": 1012,
+        "word_ops": [
+          {
+            "tag": "delete",
+            "a_tokens": [
+              "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications",
+              "provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth",
+              "annotations.",
+              "These modifications test the ability to detect subtle content differences while maintaining document structure.",
+              "Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware",
+              "comparison. These changes simulate real-world scenarios where documents are reformatted without altering content.",
+              "Note: this section includes mixed fonts and vector graphics blocks.",
+              "Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic",
+              "PDF pairs with known differences. The generator applies various modifications including text changes,",
+              "formatting adjustments, and structural alterations. Text Modifications The system can apply synonym",
+              "swaps, paraphrasing, typo insertion, and punctuation changes.",
+              "Formula: $^{2}$x^{2}$dx =$1/3"
+            ],
+            "b_tokens": []
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.10274509803921568,
+            "y": 0.23939393939393938,
+            "width": 0.748235294117647,
+            "height": 0.027272727272727264
+          },
+          {
+            "x": 0.10196078431372549,
+            "y": 0.25757575757575757,
+            "width": 0.7278431372549019,
+            "height": 0.026060606060606045
+          },
+          {
+            "x": 0.10196078431372549,
+            "y": 0.27515151515151515,
+            "width": 0.09176470588235294,
+            "height": 0.015757575757575745
+          },
+          {
+            "x": 0.10117647058823528,
+            "y": 0.32121212121212117,
+            "width": 0.7450980392156862,
+            "height": 0.027878787878787857
+          },
+          {
+            "x": 0.1003921568627451,
+            "y": 0.33818181818181814,
+            "width": 0.72,
+            "height": 0.027272727272727303
+          },
+          {
+            "x": 0.1003921568627451,
+            "y": 0.35393939393939394,
+            "width": 0.7937254901960785,
+            "height": 0.030303030303030304
+          },
+          {
+            "x": 0.10117647058823528,
+            "y": 0.3721212121212121,
+            "width": 0.45490196078431366,
+            "height": 0.021212121212121227
+          },
+          {
+            "x": 0.10117647058823528,
+            "y": 0.4193939393939394,
+            "width": 0.7584313725490195,
+            "height": 0.027878787878787857
+          },
+          {
+            "x": 0.1003921568627451,
+            "y": 0.43696969696969695,
+            "width": 0.7654901960784313,
+            "height": 0.027878787878787857
+          },
+          {
+            "x": 0.0996078431372549,
+            "y": 0.4533333333333333,
+            "width": 0.7545098039215687,
+            "height": 0.027272727272727303
+          },
+          {
+            "x": 0.1003921568627451,
+            "y": 0.4715151515151515,
+            "width": 0.4713725490196078,
+            "height": 0.022424242424242413
+          },
+          {
+            "x": 0.09803921568627451,
+            "y": 0.5145454545454545,
+            "width": 0.20549019607843136,
+            "height": 0.023030303030303043
+          }
+        ],
+        "word_bboxes_b": [],
+        "word_bboxes": [
+          {
+            "x": 0.10274509803921568,
+            "y": 0.23939393939393938,
+            "width": 0.748235294117647,
+            "height": 0.027272727272727264
+          },
+          {
+            "x": 0.10196078431372549,
+            "y": 0.25757575757575757,
+            "width": 0.7278431372549019,
+            "height": 0.026060606060606045
+          },
+          {
+            "x": 0.10196078431372549,
+            "y": 0.27515151515151515,
+            "width": 0.09176470588235294,
+            "height": 0.015757575757575745
+          },
+          {
+            "x": 0.10117647058823528,
+            "y": 0.32121212121212117,
+            "width": 0.7450980392156862,
+            "height": 0.027878787878787857
+          },
+          {
+            "x": 0.1003921568627451,
+            "y": 0.33818181818181814,
+            "width": 0.72,
+            "height": 0.027272727272727303
+          },
+          {
+            "x": 0.1003921568627451,
+            "y": 0.35393939393939394,
+            "width": 0.7937254901960785,
+            "height": 0.030303030303030304
+          },
+          {
+            "x": 0.10117647058823528,
+            "y": 0.3721212121212121,
+            "width": 0.45490196078431366,
+            "height": 0.021212121212121227
+          },
+          {
+            "x": 0.10117647058823528,
+            "y": 0.4193939393939394,
+            "width": 0.7584313725490195,
+            "height": 0.027878787878787857
+          },
+          {
+            "x": 0.1003921568627451,
+            "y": 0.43696969696969695,
+            "width": 0.7654901960784313,
+            "height": 0.027878787878787857
+          },
+          {
+            "x": 0.0996078431372549,
+            "y": 0.4533333333333333,
+            "width": 0.7545098039215687,
+            "height": 0.027272727272727303
+          },
+          {
+            "x": 0.1003921568627451,
+            "y": 0.4715151515151515,
+            "width": 0.4713725490196078,
+            "height": 0.022424242424242413
+          },
+          {
+            "x": 0.09803921568627451,
+            "y": 0.5145454545454545,
+            "width": 0.20549019607843136,
+            "height": 0.023030303030303043
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 14,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Ablation Study - Page 14 Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations. These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content. Note: this section includes mixed fonts and vector graphics blocks.",
+      "new_text": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content. Note: this section includes mixed fonts and vector graphics blocks.",
+      "old_text_normalized": "ablation study-page 14 structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. each variation includes ground truth annotations. these modifications test the ability to detect subtle content differences while maintaining document structure. formatting changes font size adjustments and spacing modifications are applied to test formatting-aware comparison. these changes simulate real-world scenarios where documents are reformatted without altering content. note: this section includes mixed fonts and vector graphics blocks.",
+      "new_text_normalized": "these modifications test the ability to detect subtle content differences while maintaining document structure. formatting changes font size adjustments and spacing modifications are applied to test formatting-aware comparison. these changes simulate real-world scenarios where documents are reformatted without altering content. note: this section includes mixed fonts and vector graphics blocks.",
+      "bbox": {
+        "x": 0.09803921568627451,
+        "y": 0.10242424242424242,
+        "width": 0.7960784313725491,
+        "height": 0.19090909090909092
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "added",
+        "similarity": 0.7342264323617742,
+        "line_id": "para_61a39a98d7ec",
+        "line_id_base": "para_fa8e746e653c",
+        "line_id_mod": "para_97243a61372b",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": true,
+        "ocr_change_ratio": 1.525660964230171,
+        "ocr_changed_chars": 981,
+        "word_ops": [
+          {
+            "tag": "delete",
+            "a_tokens": [
+              "Ablation Study - Page 14",
+              "Structural Modifications Table structure changes, figure caption updates, and header/footer modifications",
+              "provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth",
+              "annotations."
+            ],
+            "b_tokens": []
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.11450980392156862,
+            "y": 0.10242424242424242,
+            "width": 0.2376470588235294,
+            "height": 0.020606060606060614
+          },
+          {
+            "x": 0.11294117647058824,
+            "y": 0.14848484848484847,
+            "width": 0.7811764705882354,
+            "height": 0.024848484848484856
+          },
+          {
+            "x": 0.11137254901960784,
+            "y": 0.16545454545454544,
+            "width": 0.7607843137254903,
+            "height": 0.024848484848484856
+          },
+          {
+            "x": 0.11137254901960784,
+            "y": 0.18121212121212119,
+            "width": 0.0964705882352941,
+            "height": 0.016969696969696968
+          }
+        ],
+        "word_bboxes_b": [],
+        "word_bboxes": [
+          {
+            "x": 0.11450980392156862,
+            "y": 0.10242424242424242,
+            "width": 0.2376470588235294,
+            "height": 0.020606060606060614
+          },
+          {
+            "x": 0.11294117647058824,
+            "y": 0.14848484848484847,
+            "width": 0.7811764705882354,
+            "height": 0.024848484848484856
+          },
+          {
+            "x": 0.11137254901960784,
+            "y": 0.16545454545454544,
+            "width": 0.7607843137254903,
+            "height": 0.024848484848484856
+          },
+          {
+            "x": 0.11137254901960784,
+            "y": 0.18121212121212119,
+            "width": 0.0964705882352941,
+            "height": 0.016969696969696968
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 2,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 15,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "layout",
+      "old_text": "Table (5x3)",
+      "new_text": "Table (5x4)",
+      "old_text_normalized": "table (5x3)",
+      "new_text_normalized": "table (5x4)",
+      "bbox": {
+        "x": 0.10477043600643382,
+        "y": 0.559745908794981,
+        "width": 0.31859449199601714,
+        "height": 0.15242908824573864
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "table",
+        "table_change": "structure",
+        "old_structure": {
+          "rows": 5,
+          "cols": 3
+        },
+        "new_structure": {
+          "rows": 5,
+          "cols": 4
+        },
+        "fusion_modules": [
+          "table"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "is_ocr": true,
+        "subtype": "table:structure",
+        "description": "Table structure changed: 1 column added"
+      }
+    },
+    {
+      "page_num": 17,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes. Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations. Constraint: preserve semantics while perturbing formatting. These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content. Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with known differences. The generator applies various modifications including text changes, formatting adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. Constraint: preserve semantics while perturbing formatting.",
+      "new_text": "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes. Structural Modifications Table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. Each variation includes ground truth annotations. Constraint: preserve semantics while perturbing formatting. These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content. Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with known differences. The generator applies various modifications including text changes, formatting adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, formatting. paraphrasing, typo insertion, and punctuation changes. Constraint: preserve semantics while perturbing Formula: at = σ(Wx{+ Uht-1 + b)",
+      "old_text_normalized": "extended content section this page demonstrates how the generator handles multi-page documents. paragraphs are distributed across pages, and modifications can occur on any page. the evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes. structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. each variation includes ground truth annotations. constraint: preserve semantics while perturbing formatting. these modifications test the ability to detect subtle content differences while maintaining document structure. formatting changes font size adjustments and spacing modifications are applied to test formatting-aware comparison. these changes simulate real-world scenarios where documents are reformatted without altering content. synthetic pdf dataset generation this document serves as a base template for generating synthetic pdf pairs with known differences. the generator applies various modifications including text changes, formatting adjustments, and structural alterations. text modifications the system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. constraint: preserve semantics while perturbing formatting.",
+      "new_text_normalized": "extended content section this page demonstrates how the generator handles multi-page documents. paragraphs are distributed across pages and modifications can occur on any page. the evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes. structural modifications table structure changes, figure caption updates, and header/footer modifications provide comprehensive test cases for layout-aware diff detection. each variation includes ground truth annotations. constraint: preserve semantics while perturbing formatting. these modifications test the ability to detect subtle content differences while maintaining document structure. formatting changes font size adjustments and spacing modifications are applied to test formatting-aware comparison. these changes simulate real-world scenarios where documents are reformatted without altering content. synthetic pdf dataset generation this document serves as a base template for generating synthetic pdf pairs with known differences. the generator applies various modifications including text changes, formatting adjustments, and structural alterations. text modifications the system can apply synonym swaps, formatting. paraphrasing, typo insertion, and punctuation changes. constraint: preserve semantics while perturbing formula: at = σ(wx{+ uht-1 + b)",
+      "bbox": {
+        "x": 0.0972549019607843,
+        "y": 0.14484848484848484,
+        "width": 0.7937254901960784,
+        "height": 0.34121212121212124
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "fuzzy",
+        "similarity": 0.9748607457922038,
+        "line_id": "para_2861edaef6bf",
+        "line_id_base": "para_2861edaef6bf",
+        "line_id_mod": "para_d4508bf18f70",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": true,
+        "ocr_change_ratio": 0.028308563340410473,
+        "ocr_changed_chars": 40,
+        "word_ops": [
+          {
+            "tag": "replace",
+            "a_tokens": [
+              "across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection"
+            ],
+            "b_tokens": [
+              "across pages and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection"
+            ]
+          },
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "formatting."
+            ]
+          },
+          {
+            "tag": "replace",
+            "a_tokens": [
+              "formatting."
+            ],
+            "b_tokens": [
+              "Formula: at = σ(Wx{+ Uht-1 + b)"
+            ]
+          }
+        ],
+        "word_bboxes_a": [
+          {
+            "x": 0.09803921568627451,
+            "y": 0.1612121212121212,
+            "width": 0.7929411764705881,
+            "height": 0.02969696969696969
+          },
+          {
+            "x": 0.10196078431372549,
+            "y": 0.4678787878787879,
+            "width": 0.0807843137254902,
+            "height": 0.018181818181818153
+          }
+        ],
+        "word_bboxes_b": [
+          {
+            "x": 0.10666666666666667,
+            "y": 0.16060606060606059,
+            "width": 0.7960784313725491,
+            "height": 0.02969696969696971
+          },
+          {
+            "x": 0.09803921568627451,
+            "y": 0.4569696969696969,
+            "width": 0.0823529411764706,
+            "height": 0.01939393939393941
+          },
+          {
+            "x": 0.0972549019607843,
+            "y": 0.5054545454545455,
+            "width": 0.2768627450980392,
+            "height": 0.02424242424242423
+          }
+        ],
+        "word_bboxes": [
+          {
+            "x": 0.09803921568627451,
+            "y": 0.1612121212121212,
+            "width": 0.7929411764705881,
+            "height": 0.02969696969696969
+          },
+          {
+            "x": 0.10196078431372549,
+            "y": 0.4678787878787879,
+            "width": 0.0807843137254902,
+            "height": 0.018181818181818153
+          }
+        ],
+        "highlight_mode": "word",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 18,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with known differences. The generator applies various modifications including text changes, formatting adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. Key observation: small layout shifts can fragment into many local diffs.",
+      "new_text": "Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with known differences. The generator applies various modifications including text changes, formatting adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. Key observation: small layout shifts can fragment into many local diffs. Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes. Constraint: preserve semantics while perturbing formatting. Formula: ${1}$x^{2}$dx}=$1/3",
+      "old_text_normalized": "synthetic pdf dataset generation this document serves as a base template for generating synthetic pdf pairs with known differences. the generator applies various modifications including text changes, formatting adjustments, and structural alterations. text modifications the system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. key observation: small layout shifts can fragment into many local diffs.",
+      "new_text_normalized": "synthetic pdf dataset generation this document serves as a base template for generating synthetic pdf pairs with known differences. the generator applies various modifications including text changes, formatting adjustments, and structural alterations. text modifications the system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. key observation: small layout shifts can fragment into many local diffs. extended content section this page demonstrates how the generator handles multi-page documents. paragraphs are distributed across pages, and modifications can occur on any page. the evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes. constraint: preserve semantics while perturbing formatting. formula: ${1}$x^{2}$dx}=$1/3",
+      "bbox": {
+        "x": 0.1003921568627451,
+        "y": 0.3127272727272727,
+        "width": 0.7843137254901962,
+        "height": 0.07818181818181819
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "line_id",
+        "similarity": 1.0,
+        "line_id": "para_ed00d20ee0ed",
+        "line_id_base": "para_ed00d20ee0ed",
+        "line_id_mod": "para_ed00d20ee0ed",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": true,
+        "ocr_change_ratio": 0.5022935779816514,
+        "ocr_changed_chars": 438,
+        "word_ops": [
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed",
+              "across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection",
+              "accuracy, false positive rates, and the ability to correctly classify different types of changes. Constraint: preserve semantics while",
+              "perturbing formatting.",
+              "Formula: ${1}$x^{2}$dx}=$1/3"
+            ]
+          }
+        ],
+        "word_bboxes_a": [],
+        "word_bboxes_b": [
+          {
+            "x": 0.09803921568627451,
+            "y": 0.423030303030303,
+            "width": 0.788235294117647,
+            "height": 0.023030303030303043
+          },
+          {
+            "x": 0.0972549019607843,
+            "y": 0.4387878787878788,
+            "width": 0.8007843137254903,
+            "height": 0.02363636363636367
+          },
+          {
+            "x": 0.09803921568627451,
+            "y": 0.4551515151515151,
+            "width": 0.7984313725490196,
+            "height": 0.021818181818181855
+          },
+          {
+            "x": 0.09803921568627451,
+            "y": 0.4696969696969697,
+            "width": 0.1396078431372549,
+            "height": 0.017575757575757595
+          },
+          {
+            "x": 0.09568627450980391,
+            "y": 0.516969696969697,
+            "width": 0.20784313725490194,
+            "height": 0.021818181818181855
+          }
+        ],
+        "word_bboxes": [],
+        "highlight_mode": "line_fallback",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 19,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content. Key observation: small layout shifts can fragment into many local diffs.",
+      "new_text": "Methods -— Page 19 These modifications test the ability to detect subtle content differences while maintaining document structure. Formatting Changes Font size adjustments and spacing modifications are applied to test formatting-aware comparison. These changes simulate real-world scenarios where documents are reformatted without altering content. Key observation: small layout shifts can fragment into many local diffs.",
+      "old_text_normalized": "these modifications test the ability to detect subtle content differences while maintaining document structure. formatting changes font size adjustments and spacing modifications are applied to test formatting-aware comparison. these changes simulate real-world scenarios where documents are reformatted without altering content. key observation: small layout shifts can fragment into many local diffs.",
+      "new_text_normalized": "methods--page 19 these modifications test the ability to detect subtle content differences while maintaining document structure. formatting changes font size adjustments and spacing modifications are applied to test formatting-aware comparison. these changes simulate real-world scenarios where documents are reformatted without altering content. key observation: small layout shifts can fragment into many local diffs.",
+      "bbox": {
+        "x": 0.10666666666666667,
+        "y": 0.14606060606060606,
+        "width": 0.7937254901960784,
+        "height": 0.06303030303030305
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "fuzzy",
+        "similarity": 0.9298020431868497,
+        "line_id": "para_5e2d8d03e562",
+        "line_id_base": "para_5e2d8d03e562",
+        "line_id_mod": "para_2602e535f304",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": true,
+        "ocr_change_ratio": 0.04513064133016627,
+        "ocr_changed_chars": 19,
+        "word_ops": [
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "Methods -— Page 19"
+            ]
+          }
+        ],
+        "word_bboxes_a": [],
+        "word_bboxes_b": [
+          {
+            "x": 0.09411764705882351,
+            "y": 0.10727272727272727,
+            "width": 0.18588235294117644,
+            "height": 0.02181818181818182
+          }
+        ],
+        "word_bboxes": [],
+        "highlight_mode": "line_fallback",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 19,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "content",
+      "old_text": "Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with known differences. The generator applies various modifications including text changes, formatting adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes.",
+      "new_text": "Synthetic PDF Dataset Generation This document serves as a base template for generating synthetic PDF pairs with known differences. The generator applies various modifications including text changes, formatting adjustments, and structural alterations. Text Modifications The system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes. Note: this section includes mixed fonts and vector graphics blocks.",
+      "old_text_normalized": "synthetic pdf dataset generation this document serves as a base template for generating synthetic pdf pairs with known differences. the generator applies various modifications including text changes, formatting adjustments, and structural alterations. text modifications the system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes.",
+      "new_text_normalized": "synthetic pdf dataset generation this document serves as a base template for generating synthetic pdf pairs with known differences. the generator applies various modifications including text changes, formatting adjustments, and structural alterations. text modifications the system can apply synonym swaps, paraphrasing, typo insertion, and punctuation changes. extended content section this page demonstrates how the generator handles multi-page documents. paragraphs are distributed across pages, and modifications can occur on any page. the evaluation framework uses these synthetic pairs to measure detection accuracy, false positive rates, and the ability to correctly classify different types of changes. note: this section includes mixed fonts and vector graphics blocks.",
+      "bbox": {
+        "x": 0.10431372549019607,
+        "y": 0.24727272727272728,
+        "width": 0.7670588235294118,
+        "height": 0.06363636363636363
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "line",
+        "alignment_reason": "line_id",
+        "similarity": 1.0,
+        "line_id": "para_fb385debd214",
+        "line_id_base": "para_fb385debd214",
+        "line_id_mod": "para_fb385debd214",
+        "page_width": 612.0,
+        "page_height": 792.0,
+        "is_ocr": true,
+        "ocr_change_ratio": 0.5359897172236504,
+        "ocr_changed_chars": 417,
+        "word_ops": [
+          {
+            "tag": "insert",
+            "a_tokens": [],
+            "b_tokens": [
+              "Extended Content Section This page demonstrates how the generator handles multi-page documents. Paragraphs are distributed",
+              "across pages, and modifications can occur on any page. The evaluation framework uses these synthetic pairs to measure detection",
+              "accuracy, false positive rates, and the ability to correctly classify different types of changes. Note: this section includes mixed",
+              "fonts and vector graphics blocks."
+            ]
+          }
+        ],
+        "word_bboxes_a": [],
+        "word_bboxes_b": [
+          {
+            "x": 0.09568627450980391,
+            "y": 0.34727272727272723,
+            "width": 0.7913725490196079,
+            "height": 0.021212121212121227
+          },
+          {
+            "x": 0.09568627450980391,
+            "y": 0.36363636363636365,
+            "width": 0.8023529411764705,
+            "height": 0.023030303030303043
+          },
+          {
+            "x": 0.09490196078431372,
+            "y": 0.37999999999999995,
+            "width": 0.7811764705882352,
+            "height": 0.023030303030303043
+          },
+          {
+            "x": 0.09490196078431372,
+            "y": 0.403030303030303,
+            "width": 0.20784313725490192,
+            "height": 0.016363636363636337
+          }
+        ],
+        "word_bboxes": [],
+        "highlight_mode": "line_fallback",
+        "fusion_modules": [
+          "line"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "subtype": "character_change",
+        "description": "Character content changed"
+      }
+    },
+    {
+      "page_num": 19,
+      "page_num_b": null,
+      "diff_type": "modified",
+      "change_type": "layout",
+      "old_text": "Table (5x3)",
+      "new_text": "Table (5x4)",
+      "old_text_normalized": "table (5x3)",
+      "new_text_normalized": "table (5x4)",
+      "bbox": {
+        "x": 0.10106089872472426,
+        "y": 0.5723765980113636,
+        "width": 0.31731355554917284,
+        "height": 0.15135098544034087
+      },
+      "bbox_b": null,
+      "confidence": 0.75,
+      "element_type": "text",
+      "layout_change_type": null,
+      "sources": [],
+      "word_diffs": [],
+      "metadata": {
+        "type": "table",
+        "table_change": "structure",
+        "old_structure": {
+          "rows": 5,
+          "cols": 3
+        },
+        "new_structure": {
+          "rows": 5,
+          "cols": 4
+        },
+        "fusion_modules": [
+          "table"
+        ],
+        "fusion_count": 1,
+        "fusion_diff_count": 1,
+        "is_ocr": true,
+        "subtype": "table:structure",
+        "description": "Table structure changed: 1 column added"
+      }
+    }
+  ],
+  "comparison_report": {
+    "text_diffs_count": 18,
+    "table_diffs_count": 5,
+    "figure_diffs_count": 0,
+    "formula_diffs_count": 0,
+    "layout_diffs_count": 5,
+    "total_diffs": 23,
+    "diffs_before_fusion": 92,
+    "diffs_after_fusion": 81,
+    "fusion_reduction_percent": 11.956521739130432,
+    "by_change_type": {
+      "content": 17,
+      "visual": 0,
+      "layout": 5,
+      "formatting": 1
+    },
+    "by_diff_type": {
+      "added": 0,
+      "deleted": 1,
+      "modified": 22
+    }
+  }
+}

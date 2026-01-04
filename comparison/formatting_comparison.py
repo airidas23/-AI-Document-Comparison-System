@@ -1,13 +1,57 @@
 """Style/layout difference detection."""
 from __future__ import annotations
 
-from typing import List
+# NOTE: Using difflib.SequenceMatcher for token-list alignment (word-level style comparison).
+# rapidfuzz only supports string comparison, not list-of-tokens matching.
+# This is acceptable since formatting comparison is not the performance bottleneck.
+from difflib import SequenceMatcher
+from typing import Any, Dict, List, Optional, Tuple
 
 from comparison.alignment import align_pages, align_sections
 from comparison.models import Diff, PageData
 from config.settings import settings
 from utils.logging import logger
 from utils.text_normalization import normalize_text
+
+
+def _texts_similar_enough_for_formatting(norm_a: str, norm_b: str) -> bool:
+    """Return True if two normalized texts are similar enough to compare formatting.
+
+    Formatting-only edits (font size, spacing) can change line wrapping and block
+    segmentation, so requiring exact equality is too strict.
+    """
+    a = (norm_a or "").strip()
+    b = (norm_b or "").strip()
+    if not a or not b:
+        return False
+
+    # If one is contained in the other, allow as long as coverage is reasonably high.
+    if a in b or b in a:
+        coverage = min(len(a), len(b)) / max(1, max(len(a), len(b)))
+        return coverage >= 0.7
+
+    # Otherwise require a high similarity ratio to avoid mixing in true content edits.
+    return SequenceMatcher(None, a, b).ratio() >= 0.92
+
+
+def _detect_any_ocr(pages_a: List[PageData], pages_b: List[PageData]) -> bool:
+    """Check if any page in either document was extracted via OCR."""
+    for p in pages_a + pages_b:
+        md = p.metadata or {}
+        extraction_method = str(md.get("extraction_method") or "")
+        line_method = str(md.get("line_extraction_method") or "")
+        ocr_engine = str(md.get("ocr_engine_used") or "")
+        
+        if (
+            "ocr" in extraction_method.lower()
+            or "ocr" in line_method.lower()
+            or "ocr" in ocr_engine.lower()
+            or "tesseract" in ocr_engine.lower()
+            or "paddle" in ocr_engine.lower()
+            or "deepseek" in ocr_engine.lower()
+        ):
+            return True
+    return False
 
 
 def compare_formatting(
@@ -26,6 +70,14 @@ def compare_formatting(
     Returns:
         List of Diff objects representing formatting changes
     """
+    # Early exit: skip entire formatting comparison for OCR documents if configured
+    # This is the primary gate - OCR font/size data is synthetic and unreliable
+    if settings.skip_formatting_for_ocr and _detect_any_ocr(pages_a, pages_b):
+        logger.info(
+            "Skipping formatting comparison: OCR detected and skip_formatting_for_ocr=True"
+        )
+        return []
+    
     logger.info("Comparing formatting (threshold=%.2f)", settings.formatting_change_threshold)
     
     if alignment_map is None:
@@ -44,6 +96,10 @@ def compare_formatting(
         
         page_b = page_b_lookup[page_b_num]
         block_alignment = align_sections(page_a, page_b)
+
+        extraction_method_a = (page_a.metadata or {}).get("extraction_method", "")
+        extraction_method_b = (page_b.metadata or {}).get("extraction_method", "")
+        is_ocr_page = ("ocr" in (extraction_method_a or "").lower()) or ("ocr" in (extraction_method_b or "").lower())
         
         # Compare formatting for aligned blocks
         for idx_a, idx_b in block_alignment.items():
@@ -55,13 +111,17 @@ def compare_formatting(
             
             # Skip if text content is different (handled by text comparison)
             # Use normalized comparison to ignore case and minor differences
-            if normalize_text(block_a.text) != normalize_text(block_b.text):
+            norm_a = normalize_text(block_a.text, ocr=is_ocr_page)
+            norm_b = normalize_text(block_b.text, ocr=is_ocr_page)
+            if norm_a != norm_b and not _texts_similar_enough_for_formatting(norm_a, norm_b):
                 continue
             
             # Compare styles (pass page dimensions for normalization)
             style_diffs = _compare_styles(
                 block_a, block_b, page_a.page_num, confidence,
-                page_a.width, page_a.height
+                page_a.width, page_a.height,
+                extraction_method_a=extraction_method_a,
+                extraction_method_b=extraction_method_b,
             )
             all_diffs.extend(style_diffs)
         
@@ -75,7 +135,10 @@ def compare_formatting(
 
 def _compare_styles(
     block_a, block_b, page_num: int, confidence: float,
-    page_width: float, page_height: float
+    page_width: float, page_height: float,
+    *,
+    extraction_method_a: str = "",
+    extraction_method_b: str = "",
 ) -> List[Diff]:
     """Compare style attributes between two text blocks using fingerprint-based comparison."""
     diffs: List[Diff] = []
@@ -92,13 +155,9 @@ def _compare_styles(
     if not style_a.font and not style_a.size and not style_b.font and not style_b.size:
         return diffs
     
-    # Check extraction method - handle OCR-extracted styles
-    extraction_method_a = getattr(block_a, 'metadata', {}).get("extraction_method", "")
-    extraction_method_b = getattr(block_b, 'metadata', {}).get("extraction_method", "")
-    
     # Skip formatting comparison for OCR if configured
-    is_ocr_a = "ocr" in extraction_method_a.lower()
-    is_ocr_b = "ocr" in extraction_method_b.lower()
+    is_ocr_a = "ocr" in (extraction_method_a or "").lower()
+    is_ocr_b = "ocr" in (extraction_method_b or "").lower()
     
     if settings.skip_formatting_for_ocr and (is_ocr_a or is_ocr_b):
         # Skip formatting comparison when OCR is used (styles are unreliable)
@@ -120,6 +179,8 @@ def _compare_styles(
     fp_a = style_a.get_fingerprint()
     fp_b = style_b.get_fingerprint()
     
+    block_font_size_reported = False
+
     # Compare font family (normalized)
     if fp_a["font_family_normalized"] != fp_b["font_family_normalized"]:
         diffs.append(Diff(
@@ -176,6 +237,7 @@ def _compare_styles(
                         "page_height": page_height,
                     },
                 ))
+                block_font_size_reported = True
             elif size_diff >= settings.font_size_change_threshold_pt:
                 # Buckets same but absolute diff exceeds threshold (fallback for edge cases)
                 diffs.append(Diff(
@@ -197,6 +259,7 @@ def _compare_styles(
                         "page_height": page_height,
                     },
                 ))
+                block_font_size_reported = True
     
     # Compare bold/italic (using fingerprint)
     if fp_a["weight"] != fp_b["weight"] or fp_a["slant"] != fp_b["slant"]:
@@ -243,7 +306,238 @@ def _compare_styles(
                     "page_height": page_height,
                 },
             ))
+
+    # Word-level formatting (only when word metadata is available)
+    diffs.extend(
+        _compare_word_styles(
+            block_a,
+            block_b,
+            page_num,
+            adjusted_confidence,
+            page_width,
+            page_height,
+            suppress_font_size=block_font_size_reported,
+        )
+    )
     
+    return diffs
+
+
+def _normalize_bbox_dict(b: Dict[str, float], page_width: float, page_height: float) -> Dict[str, float]:
+    """Normalize a bbox dict (absolute pt) to 0-1 coordinates."""
+    x = float(b.get("x", 0.0))
+    y = float(b.get("y", 0.0))
+    w = float(b.get("width", 0.0))
+    h = float(b.get("height", 0.0))
+    pw = float(page_width) if page_width else 1.0
+    ph = float(page_height) if page_height else 1.0
+    return {
+        "x": x / pw,
+        "y": y / ph,
+        "width": w / pw,
+        "height": h / ph,
+    }
+
+
+def _style_from_word_meta(word: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    st = word.get("style")
+    return st if isinstance(st, dict) else None
+
+
+def _style_color_tuple(st: Dict[str, Any]) -> Optional[Tuple[int, int, int]]:
+    c = st.get("color")
+    if isinstance(c, tuple) and len(c) == 3:
+        try:
+            return (int(c[0]), int(c[1]), int(c[2]))
+        except Exception:
+            return None
+    if isinstance(c, list) and len(c) == 3:
+        try:
+            return (int(c[0]), int(c[1]), int(c[2]))
+        except Exception:
+            return None
+    return None
+
+
+def _compare_word_styles(
+    block_a,
+    block_b,
+    page_num: int,
+    confidence: float,
+    page_width: float,
+    page_height: float,
+    *,
+    suppress_font_size: bool = False,
+) -> List[Diff]:
+    """Compare per-word styles when metadata['words'][].style is available."""
+    diffs: List[Diff] = []
+
+    meta_a = getattr(block_a, "metadata", None) or {}
+    meta_b = getattr(block_b, "metadata", None) or {}
+    words_a = meta_a.get("words") or []
+    words_b = meta_b.get("words") or []
+    if not isinstance(words_a, list) or not isinstance(words_b, list):
+        return diffs
+
+    # Only proceed if at least one side actually has word style info.
+    if not any(isinstance(_style_from_word_meta(w), dict) for w in words_a) and not any(
+        isinstance(_style_from_word_meta(w), dict) for w in words_b
+    ):
+        return diffs
+
+    tokens_a = [normalize_text(str(w.get("text", ""))) for w in words_a]
+    tokens_b = [normalize_text(str(w.get("text", ""))) for w in words_b]
+    if not tokens_a or not tokens_b:
+        return diffs
+
+    sm = SequenceMatcher(a=tokens_a, b=tokens_b)
+
+    # Word-level size threshold: smaller than block threshold, but still noise-gated.
+    size_threshold = max(0.3, float(settings.font_size_change_threshold_pt) * 0.3)
+
+    from utils.style_normalization import normalize_font_name
+
+    for tag, i1, i2, j1, j2 in sm.get_opcodes():
+        if tag != "equal":
+            continue
+        n = min(i2 - i1, j2 - j1)
+        for k in range(n):
+            wa = words_a[i1 + k]
+            wb = words_b[j1 + k]
+            if not isinstance(wa, dict) or not isinstance(wb, dict):
+                continue
+            bbox_a = wa.get("bbox")
+            if not isinstance(bbox_a, dict):
+                continue
+            st_a = _style_from_word_meta(wa)
+            st_b = _style_from_word_meta(wb)
+            if not st_a or not st_b:
+                continue
+
+            word_text = str(wa.get("text", ""))
+
+            # Font family
+            fa = normalize_font_name(str(st_a.get("font") or ""))
+            fb = normalize_font_name(str(st_b.get("font") or ""))
+            if fa and fb and fa != fb:
+                diffs.append(
+                    Diff(
+                        page_num=page_num,
+                        diff_type="modified",
+                        change_type="formatting",
+                        old_text=word_text,
+                        new_text=word_text,
+                        bbox=_normalize_bbox_dict(bbox_a, page_width, page_height),
+                        confidence=confidence,
+                        metadata={
+                            "formatting_type": "font",
+                            "scope": "word",
+                            "word_text": word_text,
+                            "line_text": getattr(block_a, "text", ""),
+                            "old_font": st_a.get("font"),
+                            "new_font": st_b.get("font"),
+                            "old_font_normalized": fa,
+                            "new_font_normalized": fb,
+                            "page_width": page_width,
+                            "page_height": page_height,
+                        },
+                    )
+                )
+
+            # Font size
+            sa = st_a.get("size")
+            sb = st_b.get("size")
+            try:
+                sa_f = None if sa is None else float(sa)
+                sb_f = None if sb is None else float(sb)
+            except Exception:
+                sa_f = None
+                sb_f = None
+            if (not suppress_font_size) and sa_f is not None and sb_f is not None:
+                sd = abs(sa_f - sb_f)
+                if sd >= size_threshold:
+                    diffs.append(
+                        Diff(
+                            page_num=page_num,
+                            diff_type="modified",
+                            change_type="formatting",
+                            old_text=word_text,
+                            new_text=word_text,
+                            bbox=_normalize_bbox_dict(bbox_a, page_width, page_height),
+                            confidence=confidence,
+                            metadata={
+                                "formatting_type": "font_size",
+                                "scope": "word",
+                                "word_text": word_text,
+                                "line_text": getattr(block_a, "text", ""),
+                                "old_size": sa_f,
+                                "new_size": sb_f,
+                                "size_diff": sd,
+                                "threshold_pt": size_threshold,
+                                "page_width": page_width,
+                                "page_height": page_height,
+                            },
+                        )
+                    )
+
+            # Bold/italic
+            ba = bool(st_a.get("bold"))
+            bb = bool(st_b.get("bold"))
+            ia = bool(st_a.get("italic"))
+            ib = bool(st_b.get("italic"))
+            if ba != bb or ia != ib:
+                diffs.append(
+                    Diff(
+                        page_num=page_num,
+                        diff_type="modified",
+                        change_type="formatting",
+                        old_text=word_text,
+                        new_text=word_text,
+                        bbox=_normalize_bbox_dict(bbox_a, page_width, page_height),
+                        confidence=confidence,
+                        metadata={
+                            "formatting_type": "style",
+                            "scope": "word",
+                            "word_text": word_text,
+                            "line_text": getattr(block_a, "text", ""),
+                            "old_bold": ba,
+                            "old_italic": ia,
+                            "new_bold": bb,
+                            "new_italic": ib,
+                            "page_width": page_width,
+                            "page_height": page_height,
+                        },
+                    )
+                )
+
+            # Color
+            ca = _style_color_tuple(st_a)
+            cb = _style_color_tuple(st_b)
+            if ca and cb:
+                color_diff = sum(abs(x - y) for x, y in zip(ca, cb))
+                if color_diff > settings.color_difference_threshold:
+                    diffs.append(
+                        Diff(
+                            page_num=page_num,
+                            diff_type="modified",
+                            change_type="formatting",
+                            old_text=word_text,
+                            new_text=word_text,
+                            bbox=_normalize_bbox_dict(bbox_a, page_width, page_height),
+                            confidence=confidence,
+                            metadata={
+                                "formatting_type": "color",
+                                "scope": "word",
+                                "word_text": word_text,
+                                "line_text": getattr(block_a, "text", ""),
+                                "old_color": ca,
+                                "new_color": cb,
+                                "page_width": page_width,
+                                "page_height": page_height,
+                            },
+                        )
+                    )
+
     return diffs
 
 

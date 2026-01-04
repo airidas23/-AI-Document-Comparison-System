@@ -7,6 +7,29 @@ from typing import Dict, List, Optional
 from comparison.models import Diff
 
 
+def _norm_text(text: Optional[str]) -> str:
+    return (text or "").strip().lower()
+
+
+def _text_similarity(a: str, b: str) -> float:
+    """Return similarity in [0, 1]. Uses RapidFuzz if available."""
+    a = _norm_text(a)
+    b = _norm_text(b)
+    if not a or not b:
+        return 0.0
+
+    try:
+        from rapidfuzz import fuzz
+
+        # token_set_ratio is robust to small reorderings / punctuation.
+        return float(fuzz.token_set_ratio(a, b)) / 100.0
+    except Exception:
+        # Fallback: simple substring overlap.
+        if a in b or b in a:
+            return 1.0
+        return 0.0
+
+
 @dataclass
 class ChangeDetectionMetrics:
     """Metrics for change detection evaluation."""
@@ -91,6 +114,8 @@ def calculate_change_detection_metrics(
     
     for pred_idx, pred_diff in enumerate(predicted_diffs):
         for gt_idx, gt_diff in enumerate(ground_truth_diffs):
+            if gt_idx in matched_ground_truth:
+                continue
             if _match_diff(pred_diff, gt_diff, tolerance):
                 matched_predicted.add(pred_idx)
                 matched_ground_truth.add(gt_idx)
@@ -124,9 +149,11 @@ def _match_diff(pred_diff: Diff, gt_diff: Diff, tolerance: float) -> bool:
     if pred_diff.change_type != gt_diff.change_type:
         return False
     
-    # Same diff type
+    # Diff type compatibility
     if pred_diff.diff_type != gt_diff.diff_type:
-        return False
+        # Allow flexibility: many detectors collapse changes into "modified".
+        if not (pred_diff.diff_type == "modified" or gt_diff.diff_type == "modified"):
+            return False
     
     # Similar position (if both have bboxes)
     if pred_diff.bbox and gt_diff.bbox:
@@ -138,6 +165,36 @@ def _match_diff(pred_diff: Diff, gt_diff: Diff, tolerance: float) -> bool:
         distance = ((pred_x - gt_x) ** 2 + (pred_y - gt_y) ** 2) ** 0.5
         if distance > tolerance:
             return False
+    else:
+        # If bbox is missing on either side (common for synthetic ground truth),
+        # fall back to text-based matching for content/formatting diffs.
+        if pred_diff.change_type in ("content", "formatting"):
+            pred_old = _norm_text(pred_diff.old_text)
+            pred_new = _norm_text(pred_diff.new_text)
+            gt_old = _norm_text(gt_diff.old_text)
+            gt_new = _norm_text(gt_diff.new_text)
+
+            # If ground truth has no text, accept page+type match.
+            if not (gt_old or gt_new):
+                return True
+
+            pairs = [
+                (pred_old, gt_old),
+                (pred_new, gt_new),
+                (pred_old, gt_new),
+                (pred_new, gt_old),
+            ]
+            best_sim = 0.0
+            for a, b in pairs:
+                if not a or not b:
+                    continue
+                # Substring shortcut for common partial matches
+                if a[:30] and (a[:30] in b or b[:30] in a):
+                    return True
+                best_sim = max(best_sim, _text_similarity(a, b))
+
+            # Relaxed threshold: synthetic GT may differ in punctuation/casing.
+            return best_sim >= 0.6
     
     return True
 

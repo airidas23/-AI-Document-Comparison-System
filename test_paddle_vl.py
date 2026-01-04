@@ -1,0 +1,1 @@
+from extraction.ocr_router import ocr_pdf_multi; import logging; logging.basicConfig(level=logging.INFO); print(ocr_pdf_multi('data/synthetic/test_output/base_test.pdf', engine_priority=['paddle'], run_layout_analysis=False))

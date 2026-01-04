@@ -57,6 +57,25 @@ def export_json(result: ComparisonResult, output_path: str | Path) -> Path:
                     }
                     for block in page.blocks
                 ],
+                "lines": [
+                    {
+                        "line_id": line.line_id,
+                        "text": line.text,
+                        "bbox": line.bbox,
+                        "confidence": line.confidence,
+                        "reading_order": line.reading_order,
+                        "tokens": [
+                            {
+                                "token_id": token.token_id,
+                                "text": token.text,
+                                "bbox": token.bbox,
+                                "confidence": token.confidence,
+                            }
+                            for token in line.tokens
+                        ],
+                    }
+                    for line in page.lines
+                ],
             }
             for page in result.pages
         ],
@@ -65,7 +84,11 @@ def export_json(result: ComparisonResult, output_path: str | Path) -> Path:
             "bbox_format": "normalized_dict",
             "bbox_structure": {"x": "float", "y": "float", "width": "float", "height": "float"},
             "bbox_range": [0.0, 1.0],
-            "description": "Bounding box coordinates in diffs are normalized (0-1) in {x, y, width, height} format. Use page dimensions from metadata or pages array for denormalization.",
+            "description": (
+                "Diff bboxes are normalized (0-1) in {x, y, width, height} format. "
+                "Page blocks/lines/tokens use absolute PDF points in the same bbox dict format. "
+                "Use page dimensions from metadata or pages array for denormalization."
+            ),
         },
     }
     output.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")

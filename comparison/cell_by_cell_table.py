@@ -5,8 +5,15 @@ import re
 from dataclasses import dataclass
 from typing import Dict, List, Optional, Tuple
 
-from bs4 import BeautifulSoup
-from comparison.models import Diff, PageData, TextBlock
+import numpy as np
+
+try:
+    from bs4 import BeautifulSoup
+except ImportError:
+    BeautifulSoup = None  # type: ignore
+
+from comparison.models import Diff, PageData, TextBlock, TableCell, CellDiff, TableDiff
+from config.settings import settings
 from utils.coordinates import normalize_bbox
 from utils.logging import logger
 from utils.text_normalization import normalize_text
@@ -573,3 +580,245 @@ def _detect_column_mapping(table_a: ParsedTable, table_b: ParsedTable) -> Dict[i
     
     return mapping
 
+
+def detect_border_changes(
+    page_image_a: np.ndarray,
+    page_image_b: np.ndarray,
+    table_bbox: Dict[str, float],
+    page_width: float,
+    page_height: float,
+) -> Dict[str, any]:
+    """
+    Detect table border changes using drawing signature analysis.
+    
+    Uses edge detection and Hough line transform to count horizontal
+    and vertical lines in the table region, comparing between documents.
+    
+    Args:
+        page_image_a: Page image from document A (numpy array)
+        page_image_b: Page image from document B (numpy array)
+        table_bbox: Table bounding box (normalized 0-1 coordinates)
+        page_width: Page width in points
+        page_height: Page height in points
+    
+    Returns:
+        Dictionary with border change information:
+        - horizontal_diff: Difference in horizontal line count
+        - vertical_diff: Difference in vertical line count
+        - border_changed: Whether borders changed significantly
+        - lines_a: Line counts in document A
+        - lines_b: Line counts in document B
+    """
+    if not settings.table_border_detection_enabled:
+        return {
+            "horizontal_diff": 0,
+            "vertical_diff": 0,
+            "border_changed": False,
+            "lines_a": {"horizontal": 0, "vertical": 0},
+            "lines_b": {"horizontal": 0, "vertical": 0},
+        }
+    
+    try:
+        import cv2
+    except ImportError:
+        logger.warning("OpenCV not available for border detection")
+        return {
+            "horizontal_diff": 0,
+            "vertical_diff": 0,
+            "border_changed": False,
+            "lines_a": {"horizontal": 0, "vertical": 0},
+            "lines_b": {"horizontal": 0, "vertical": 0},
+        }
+    
+    def _get_table_lines(img: np.ndarray, bbox: Dict[str, float]) -> Dict[str, int]:
+        """Extract horizontal and vertical line counts from table region."""
+        if img is None or img.size == 0:
+            return {"horizontal": 0, "vertical": 0}
+        
+        h, w = img.shape[:2]
+        
+        # Convert normalized bbox to pixel coordinates
+        x1 = int(bbox["x"] * w)
+        y1 = int(bbox["y"] * h)
+        x2 = int((bbox["x"] + bbox["width"]) * w)
+        y2 = int((bbox["y"] + bbox["height"]) * h)
+        
+        # Clamp to image bounds
+        x1 = max(0, min(x1, w - 1))
+        y1 = max(0, min(y1, h - 1))
+        x2 = max(x1 + 1, min(x2, w))
+        y2 = max(y1 + 1, min(y2, h))
+        
+        # Crop table region
+        crop = img[y1:y2, x1:x2]
+        if crop.size == 0:
+            return {"horizontal": 0, "vertical": 0}
+        
+        # Convert to grayscale if needed
+        if len(crop.shape) == 3:
+            gray = cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY)
+        else:
+            gray = crop
+        
+        # Edge detection
+        edges = cv2.Canny(gray, 50, 150, apertureSize=3)
+        
+        # Hough line detection
+        lines = cv2.HoughLinesP(
+            edges,
+            rho=1,
+            theta=np.pi / 180,
+            threshold=50,
+            minLineLength=20,
+            maxLineGap=5,
+        )
+        
+        h_lines = 0
+        v_lines = 0
+        
+        if lines is not None:
+            for line in lines:
+                x1_l, y1_l, x2_l, y2_l = line[0]
+                dx = abs(x2_l - x1_l)
+                dy = abs(y2_l - y1_l)
+                
+                # Classify as horizontal or vertical
+                if dy < dx:  # Horizontal
+                    h_lines += 1
+                else:  # Vertical
+                    v_lines += 1
+        
+        return {"horizontal": h_lines, "vertical": v_lines}
+    
+    lines_a = _get_table_lines(page_image_a, table_bbox)
+    lines_b = _get_table_lines(page_image_b, table_bbox)
+    
+    h_diff = lines_b["horizontal"] - lines_a["horizontal"]
+    v_diff = lines_b["vertical"] - lines_a["vertical"]
+    
+    # Significant change threshold: more than 1 line difference
+    border_changed = abs(h_diff) > 1 or abs(v_diff) > 1
+    
+    return {
+        "horizontal_diff": h_diff,
+        "vertical_diff": v_diff,
+        "border_changed": border_changed,
+        "lines_a": lines_a,
+        "lines_b": lines_b,
+    }
+
+
+def extract_table_cells_from_lines(
+    lines: List,
+    table_bbox: Dict[str, float],
+    page_width: float,
+    page_height: float,
+) -> List[TableCell]:
+    """
+    Extract table cells from line data using Y-clustering for rows
+    and X-clustering for columns.
+    
+    Args:
+        lines: List of Line objects from extraction
+        table_bbox: Table bounding box (normalized 0-1 coordinates)
+        page_width: Page width in points
+        page_height: Page height in points
+    
+    Returns:
+        List of TableCell objects with row/column indices
+    """
+    from comparison.models import Line, TableCell as ModelTableCell
+    
+    # Filter lines that overlap with table region
+    table_lines = []
+    for line in lines:
+        if not hasattr(line, 'bbox') or not line.bbox:
+            continue
+        
+        # Check overlap with table bbox
+        overlap = _compute_overlap(line.bbox, table_bbox)
+        if overlap > 0.5:
+            table_lines.append(line)
+    
+    if not table_lines:
+        return []
+    
+    # Y-clustering for rows
+    y_coords = [(line.bbox["y"] + line.bbox["height"] / 2, line) for line in table_lines]
+    y_coords.sort(key=lambda x: x[0])
+    
+    row_groups = _cluster_by_proximity([y for y, _ in y_coords], threshold=0.02)
+    
+    # Create row index mapping
+    line_to_row = {}
+    for row_idx, y_cluster in enumerate(row_groups):
+        for y in y_cluster:
+            # Find lines with this y coordinate
+            for line_y, line in y_coords:
+                if abs(line_y - y) < 0.01:
+                    line_to_row[id(line)] = row_idx
+    
+    # X-clustering for columns
+    x_coords = [(line.bbox["x"], line) for line in table_lines]
+    x_coords.sort(key=lambda x: x[0])
+    
+    col_groups = _cluster_by_proximity([x for x, _ in x_coords], threshold=0.02)
+    
+    # Create column index mapping
+    line_to_col = {}
+    for col_idx, x_cluster in enumerate(col_groups):
+        for x in x_cluster:
+            for line_x, line in x_coords:
+                if abs(line_x - x) < 0.01:
+                    line_to_col[id(line)] = col_idx
+    
+    # Create cells
+    cells = []
+    for line in table_lines:
+        row = line_to_row.get(id(line), 0)
+        col = line_to_col.get(id(line), 0)
+        
+        cells.append(ModelTableCell(
+            row=row,
+            col=col,
+            text=line.text,
+            bbox=line.bbox,
+        ))
+    
+    return cells
+
+
+def _compute_overlap(bbox_a: Dict[str, float], bbox_b: Dict[str, float]) -> float:
+    """Compute intersection over union for two bboxes."""
+    x1 = max(bbox_a["x"], bbox_b["x"])
+    y1 = max(bbox_a["y"], bbox_b["y"])
+    x2 = min(bbox_a["x"] + bbox_a["width"], bbox_b["x"] + bbox_b["width"])
+    y2 = min(bbox_a["y"] + bbox_a["height"], bbox_b["y"] + bbox_b["height"])
+    
+    if x2 <= x1 or y2 <= y1:
+        return 0.0
+    
+    intersection = (x2 - x1) * (y2 - y1)
+    area_a = bbox_a["width"] * bbox_a["height"]
+    area_b = bbox_b["width"] * bbox_b["height"]
+    union = area_a + area_b - intersection
+    
+    return intersection / max(union, 1e-6)
+
+
+def _cluster_by_proximity(values: List[float], threshold: float) -> List[List[float]]:
+    """Cluster values by proximity using a simple greedy algorithm."""
+    if not values:
+        return []
+    
+    sorted_values = sorted(values)
+    clusters = [[sorted_values[0]]]
+    
+    for val in sorted_values[1:]:
+        # Check if value is close to any value in the last cluster
+        if any(abs(val - v) <= threshold for v in clusters[-1]):
+            clusters[-1].append(val)
+        else:
+            clusters.append([val])
+    
+    return clusters

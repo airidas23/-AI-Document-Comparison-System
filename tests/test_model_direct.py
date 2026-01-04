@@ -1,29 +1,29 @@
-#!/usr/bin/env python3
-"""Direct test of DocLayout-YOLO model."""
-from ultralytics import YOLO
+"""Opt-in integration test for DocLayout-YOLO model loading.
+
+This is intentionally skipped by default because it requires local model weights.
+Run manually with:
+  RUN_MODEL_DIRECT=1 pytest -q tests/test_model_direct.py
+"""
+
+from __future__ import annotations
+
+import os
 from pathlib import Path
 
-print("=" * 70)
-print("Direct DocLayout-YOLO Model Test")
-print("=" * 70)
+import pytest
 
-model_path = Path("models/doclayout_yolo_docstructbench_imgsz1024.pt")
 
-if not model_path.exists():
-    print(f"❌ Model not found: {model_path}")
-    exit(1)
+@pytest.mark.integration
+def test_model_direct_loading_opt_in():
+    if os.environ.get("RUN_MODEL_DIRECT") != "1":
+        pytest.skip("Set RUN_MODEL_DIRECT=1 to run this integration test")
 
-print(f"\n📁 Loading model from: {model_path}")
-print(f"📊 File size: {model_path.stat().st_size / (1024*1024):.2f} MB")
+    model_path = Path("models/doclayout_yolo_docstructbench_imgsz1024.pt")
+    if not model_path.exists():
+        pytest.skip(f"Model not found: {model_path}")
 
-model = YOLO(str(model_path))
+    ultralytics = pytest.importorskip("ultralytics")
+    YOLO = getattr(ultralytics, "YOLO")
 
-print(f"\n✅ Model loaded successfully!")
-print(f"🔢 Number of classes: {len(model.names)}")
-print(f"\n📋 Detected classes:")
-for idx, name in model.names.items():
-    print(f"   {idx}: {name}")
-
-print("\n" + "=" * 70)
-print("✅ DocLayout-YOLO model verification complete!")
-print("=" * 70)
+    model = YOLO(str(model_path))
+    assert getattr(model, "names", None) is not None
